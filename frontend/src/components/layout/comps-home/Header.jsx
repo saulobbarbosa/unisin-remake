@@ -1,8 +1,14 @@
 import React from "react";
 
 import Style from "./header.module.css";
+import Login from "../../forms/Login";
+
+import { useState } from "react";
 
 export default function CompHeaderHome() {
+
+    const [mostrarLogin, setMostrarLogin] = useState(false);
+
     return (
         <div className={Style.containerHeader}>
             <a href="#home">
@@ -22,13 +28,24 @@ export default function CompHeaderHome() {
                 <a href="#beneficios"><h3>Benefícios</h3></a>
             </div>
             <div className={Style.divBtns}>
-                <button>
+
+                <button onClick={() => setMostrarLogin(true)}>
                     <p>Login</p>
                 </button>
+
                 <button className={Style.btnCadastro}>
                     <p>Cadastro</p>
                 </button>
+
             </div>
+            {/* FORMULÁRIO DE LOGIN */}
+
+            {mostrarLogin && (
+                <Login
+                    fechar={() => setMostrarLogin(false)}
+                />
+            )}
+
         </div>
     );
 }
