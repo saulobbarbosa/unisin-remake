@@ -2,12 +2,14 @@ import React from "react";
 
 import Style from "./header.module.css";
 import Login from "../../forms/Login";
+import Cadastro from "../../forms/Cadastro";
 
 import { useState } from "react";
 
 export default function CompHeaderHome() {
 
     const [mostrarLogin, setMostrarLogin] = useState(false);
+    const [mostrarCadastro, setMostrarCadastro] = useState(false);
 
     return (
         <div className={Style.containerHeader}>
@@ -33,7 +35,9 @@ export default function CompHeaderHome() {
                     <p>Login</p>
                 </button>
 
-                <button className={Style.btnCadastro}>
+                <button
+                    className={Style.btnCadastro}
+                    onClick={() => setMostrarCadastro(true)}>
                     <p>Cadastro</p>
                 </button>
 
@@ -43,6 +47,17 @@ export default function CompHeaderHome() {
             {mostrarLogin && (
                 <Login
                     fechar={() => setMostrarLogin(false)}
+                />
+            )}
+            {/* FORMULÁRIO DE CADASTRO */}
+
+            {mostrarCadastro && (
+                <Cadastro
+                    fechar={() => setMostrarCadastro(false)}
+                    entrar={() => {
+                        setMostrarCadastro(false);
+                        setMostrarLogin(true);
+                    }}
                 />
             )}
 

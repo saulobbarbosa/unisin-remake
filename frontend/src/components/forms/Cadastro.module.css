@@ -1,0 +1,207 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 29, 57, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modalCadastro {
+    position: relative;
+    width: 430px;
+    max-height: 92vh;
+    padding: 28px 22px 22px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border-radius: 22px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.modalCadastro::-webkit-scrollbar {
+    width: 7px;
+}
+
+.modalCadastro::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modalCadastro::-webkit-scrollbar-thumb {
+    background: #aeb8c5;
+
+    border-radius: 10px;
+}
+
+.btnFechar {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    border: none;
+    background: transparent;
+    color: #64748b;
+    font-size: 25px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.btnFechar:hover {
+    color: #10233f;
+}
+
+.iconeUsuario {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    background: #087ff5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 27px;
+    box-shadow: 0 8px 20px rgba(8, 127, 245, 0.18);
+}
+
+.modalCadastro h2 {
+    margin: 0 0 4px;
+    color: #10233f;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.subtitulo {
+    margin: 0 0 14px;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+/* Aluno / Professor / Escola */
+.tipoUsuario {
+    display: flex;
+    width: 100%;
+    padding: 3px;
+    margin-bottom: 18px;
+    box-sizing: border-box;
+    background: #eaf3fb;
+    border-radius: 14px;
+}
+
+.tipoUsuario button {
+    flex: 1;
+    height: 27px;
+    border: none;
+    border-radius: 11px;
+    background: transparent;
+    color: #526782;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.tipoUsuario .ativo {
+    background: white;
+    color: #10233f;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.10);
+}
+
+.formCadastro {
+    text-align: left;
+}
+
+.formCadastro label {
+    display: block;
+    margin: 0 0 5px;
+    color: #10233f;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.inputIcon {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 36px;
+    margin-bottom: 11px;
+    padding: 0 11px;
+    box-sizing: border-box;
+    border: 1px solid #dce5ef;
+    border-radius: 15px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(20, 50, 80, 0.04);
+}
+
+
+.inputIcon i {
+    width: 17px;
+    margin-right: 8px;
+    color: #64748b;
+    font-size: 11px;
+    text-align: center;
+}
+
+.inputIcon input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #10233f;
+    font-size: 11px;
+}
+
+.inputIcon input::placeholder {
+    color: #71829a;
+}
+
+.inputIcon:focus-within {
+    border-color: #087ff5;
+    box-shadow: 0 0 0 2px rgba(8, 127, 245, 0.10);
+}
+
+.duasColunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.btnCadastrar {
+    width: 100%;
+    height: 38px;
+    margin-top: 4px;
+    border: none;
+    border-radius: 16px;
+    background: #087ff5;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 7px 16px rgba(8, 127, 245, 0.18);
+    transition: 0.2s;
+}
+
+.btnCadastrar:hover {
+    background: #006fe6;
+    transform: translateY(-1px);
+}
+
+.loginLink {
+    margin: 15px 0 0;
+    color: #64748b;
+    font-size: 11px;
+}
+
+.loginLink span {
+    margin-left: 4px;
+    color: #087ff5;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.loginLink span:hover {
+    text-decoration: underline;
+}
