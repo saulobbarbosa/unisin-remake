@@ -21,7 +21,7 @@ export default function CompCarrosselHome() {
     }, []);
 
     return (
-        <div className={Style.carrosselContainer}>
+        <div className={Style.carrosselContainer} id="home">
             {/* Imagens do carrossel */}
             <div className={Style.imageContainer}>
                 {images.map((image, index) => (
