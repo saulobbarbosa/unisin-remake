@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Style from "./Login.module.css";
 
-export default function Login({ fechar }) {
+export default function CompLogin({ fechar }) {
 
     const [tipoUsuario, setTipoUsuario] = useState("aluno");
 

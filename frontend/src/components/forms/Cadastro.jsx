@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Style from "../forms/Cadastro.module.css";
 
-export default function Cadastro({ fechar, entrar }) {
+export default function CompCadastro({ fechar, entrar }) {
 
     const [tipoUsuario, setTipoUsuario] = useState("aluno");
 
