@@ -28,7 +28,7 @@ a {
 .headerScrollado {
     background: #ffffffbf;
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 107, 237, 0.18);
+    box-shadow: 0 4px 20px #006bed2e;
     color: #000 !important;
 }
 
@@ -112,6 +112,6 @@ a {
 
 .btnCadastro:hover {
     background: none;
-    box-shadow: 0 0 20px rgba(0, 97, 226, 0.4);
+    box-shadow: 0 0 20px #0061e266;
     transform: scale(1.05);
 }
