@@ -71,7 +71,7 @@ export default function TelaHome() {
                     </p>
                 </div>
             </section>
-            {/* Apresentação de algumas matérias */}
+            {/* Apresentação de benefícios */}
             <section id="beneficios" className={Style.containerPadrao}>
                 <div>
                     <span className={Style.subTituloPadrao}>VANTAGENS</span>
@@ -80,8 +80,61 @@ export default function TelaHome() {
                         Tudo o que uma plataforma educacional moderna precisa ter.
                     </p>
                 </div>
-                <div>
-
+                <div className={Style.divBeneficios}>
+                    <div className={Style.blocoBeneficio}>
+                        <div className={Style.icons}>
+                            <i className="fa-solid fa-table-columns"></i>
+                        </div>
+                        <div className={Style.textoBeneficios}>
+                            <h1>Ensino organizado</h1>
+                            <p>Conteúdos estruturados por matéria, turma e nível.</p>
+                        </div>
+                    </div>
+                    <div className={Style.blocoBeneficio}>
+                        <div className={Style.icons}>
+                            <i className="fa-solid fa-wifi"></i>
+                        </div>
+                        <div className={Style.textoBeneficios}>
+                            <h1>Acesso online</h1>
+                            <p>Estude de qualquer lugar, em qualquer dispositivo.</p>
+                        </div>
+                    </div>
+                    <div className={Style.blocoBeneficio}>
+                        <div className={Style.icons}>
+                            <i className="fa-solid fa-book-open"></i>
+                        </div>
+                        <div className={Style.textoBeneficios}>
+                            <h1>Facilidade para professores</h1>
+                            <p>Ferramentas para criar, publicar e avaliar atividades.</p>
+                        </div>
+                    </div>
+                    <div className={Style.blocoBeneficio}>
+                        <div className={Style.icons}>
+                            <i className="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div className={Style.textoBeneficios}>
+                            <h1>Acompanhamento dos alunos</h1>
+                            <p>Relatórios de progresso em tempo real.</p>
+                        </div>
+                    </div>
+                    <div className={Style.blocoBeneficio}>
+                        <div className={Style.icons}>
+                            <i className="fa-solid fa-user-group"></i>
+                        </div>
+                        <div className={Style.textoBeneficios}>
+                            <h1>Ambiente intuitivo</h1>
+                            <p>Interface moderna e fácil de usar para todas as idades.</p>
+                        </div>
+                    </div>
+                    <div className={Style.blocoBeneficio}>
+                        <div className={Style.icons}>
+                            <i className="fa-solid fa-comments"></i>
+                        </div>
+                        <div className={Style.textoBeneficios}>
+                            <h1>Comunicação direta</h1>
+                            <p>Escola, professor e estudante conectados em um só lugar.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
             <Footer />
