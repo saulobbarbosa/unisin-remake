@@ -35,10 +35,9 @@ export default function CompFooterHome() {
                 </div>
                 <div className={Style.divsPadroes}>
                     <h1>Tecnologias</h1>
-                    <p>React.js</p>
-                    <p>Node.js</p>
-                    <p>MySQL</p>
-                    <p>Docker</p>
+                    <p><i className="fa-brands fa-react"></i> React.js</p>
+                    <p><i className="fa-brands fa-node"></i> Node.js</p>
+                    <p><i className="fa-solid fa-database"></i> MySQL</p>
                 </div>
             </div>
             <p>© 2026 UNISIN — Todos os direitos reservados.</p>
