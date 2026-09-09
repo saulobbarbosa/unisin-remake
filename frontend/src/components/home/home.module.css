@@ -4,7 +4,7 @@ html {
 
 /* Estilos reaproveitados para varias sessões */
 .containerPadrao {
-    scroll-margin-top: 6rem;
+    scroll-margin-top: 15rem;
     margin: 6rem 0rem 10rem 0rem;
     display: flex;
     flex-direction: column;
@@ -80,7 +80,63 @@ html {
     font-weight: 700;
 }
 
-/* Parte das Meterias */
+/* Parte das Materias */
+.divMaterias {
+    display: flex;
+    gap: 1rem;
+    width: 80rem;
+}
+
+.cardMateria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 25%;
+    border-radius: 1rem;
+    box-shadow: 0px 5px 10px 10px #006bed18;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cardMateria:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0px 10px 10px 5px #0173ff24;
+}
+
+.iconeMateria {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 5rem;
+    border-radius: 1rem 1rem 0rem 0rem;
+    background: linear-gradient(135deg, #006bed, #0099fa);
+}
+
+.iconeMateria > i {
+    font-size: 1.7rem;
+    color: #fff;
+}
+
+.conteudoMateria {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+    padding-inline: 0.8rem;
+}
+
+.conteudoMateria > h2 {
+    font-size: 1.4rem;
+    color: #05162c;
+}
+
+.conteudoMateria > p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #54657a;
+}
+
 /* Parte dos Sobre Nós */
 .containerSobre {
     display: flex;
@@ -104,13 +160,23 @@ html {
 .blocoBeneficio {
     display: flex;
     gap: 1rem;
-    box-shadow: 0 4px 20px -4px #026fd726;
+    background: #fff;
+    box-shadow: 0px 5px 10px 10px #006bed18;
     padding: 1.5rem;
     border-radius: 1rem;
-    border: 0.1rem solid #000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.textoBeneficios{
+.blocoBeneficio:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0px 5px 10px 10px #0173ff24;
+}
+
+.blocoBeneficio:hover .icons {
+    transform: scale(1.05);
+}
+
+.textoBeneficios {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -135,9 +201,10 @@ html {
     height: 3.5rem;
     border-radius: 1rem;
     background: linear-gradient(135deg, #006bed, #0099fa);
+    transition: transform 0.3s ease;
 }
 
-.icons>i {
+.icons > i {
     font-size: 1.65rem;
     color: #fff;
 }

@@ -45,11 +45,56 @@ export default function TelaHome() {
                     <span className={Style.subTituloPadrao}>APRENDIZADO</span>
                     <h1 className={Style.tituloPadrao}>Algumas das Matérias Disponíveis</h1>
                     <p className={Style.paragrafoPadrao}>
-                        Conteúdo completo, atualizado e alinhado à realidade das escolas.
+                        Conteúdo completo, atualizado e alinhado à realidade das escolas
                     </p>
                 </div>
-                <div>
-
+                <div className={Style.divMaterias}>
+                    <div className={Style.cardMateria}>
+                        <div className={Style.iconeMateria}>
+                            <i className="fa-solid fa-calculator"></i>
+                        </div>
+                        <div className={Style.conteudoMateria}>
+                            <h2>Matemática</h2>
+                            <p>
+                                Do básico ao avançado, com exercícios práticos e
+                                explicações claras.
+                            </p>
+                        </div>
+                    </div>
+                    <div className={Style.cardMateria}>
+                        <div className={Style.iconeMateria}>
+                            <i className="fa-solid fa-book"></i>
+                        </div>
+                        <div className={Style.conteudoMateria}>
+                            <h2>Português</h2>
+                            <p>
+                                Gramática, redação e literatura para dominar a língua
+                                portuguesa.
+                            </p>
+                        </div>
+                    </div>
+                    <div className={Style.cardMateria}>
+                        <div className={Style.iconeMateria}>
+                            <i className="fa-solid fa-landmark"></i>
+                        </div>
+                        <div className={Style.conteudoMateria}>
+                            <h2>História</h2>
+                            <p>
+                                Descubra os eventos que moldaram o mundo em que vivemos.
+                            </p>
+                        </div>
+                    </div>
+                    <div className={Style.cardMateria}>
+                        <div className={Style.iconeMateria}>
+                            <i className="fa-solid fa-flask"></i>
+                        </div>
+                        <div className={Style.conteudoMateria}>
+                            <h2>Ciências</h2>
+                            <p>
+                                Explore o universo, a natureza e o método científico.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </section>
             {/* Apresentação do projeto */}
@@ -77,7 +122,7 @@ export default function TelaHome() {
                     <span className={Style.subTituloPadrao}>VANTAGENS</span>
                     <h1 className={Style.tituloPadrao}>Benefícios</h1>
                     <p className={Style.paragrafoPadrao}>
-                        Tudo o que uma plataforma educacional moderna precisa ter.
+                        Tudo o que uma plataforma educacional moderna precisa ter
                     </p>
                 </div>
                 <div className={Style.divBeneficios}>
