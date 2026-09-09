@@ -182,6 +182,20 @@ export default function TelaHome() {
                     </div>
                 </div>
             </section>
+            {/* Apresentação para Escolas */}
+            <section id="escola" className={Style.containerPadrao}>
+                <div className={Style.divEscola}>
+                    <i className="fa-solid fa-school"></i>
+                    <h1>As escolas podem participar?</h1>
+                    <p>
+                        Sim! Qualquer instituição de ensino pode realizar seu cadastro e começar a 
+                        utilizar a UNISIN gratuitamente para conectar sua comunidade escolar.
+                    </p>
+                    <button>
+                        <p>Cadastrar Escola</p>
+                    </button>
+                </div>
+            </section>
             <Footer />
         </div>
     );

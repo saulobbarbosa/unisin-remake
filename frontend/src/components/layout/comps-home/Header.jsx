@@ -42,6 +42,7 @@ export default function CompHeaderHome() {
                 <a href="#materias"><h3>Matérias</h3></a>
                 <a href="#sobre"><h3>Sobre Nós</h3></a>
                 <a href="#beneficios"><h3>Benefícios</h3></a>
+                <a href="#escola"><h3>Escola</h3></a>
             </div>
             <div className={Style.divBtns}>
                 <button onClick={() => setMostrarLogin(true)}>

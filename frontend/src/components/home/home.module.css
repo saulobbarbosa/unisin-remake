@@ -113,7 +113,7 @@ html {
     background: linear-gradient(135deg, #006bed, #0099fa);
 }
 
-.iconeMateria > i {
+.iconeMateria>i {
     font-size: 1.7rem;
     color: #fff;
 }
@@ -126,12 +126,12 @@ html {
     padding-inline: 0.8rem;
 }
 
-.conteudoMateria > h2 {
+.conteudoMateria>h2 {
     font-size: 1.4rem;
     color: #05162c;
 }
 
-.conteudoMateria > p {
+.conteudoMateria>p {
     font-size: 1rem;
     line-height: 1.5rem;
     color: #54657a;
@@ -204,7 +204,54 @@ html {
     transition: transform 0.3s ease;
 }
 
-.icons > i {
+.icons>i {
     font-size: 1.65rem;
     color: #fff;
+}
+
+/* Parte das Escolas */
+.divEscola {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 64rem;
+    height: 27.25rem;
+    box-sizing: border-box;
+    border-radius: 1.625rem;
+    background: linear-gradient(135deg, #006bed, #0099fa);
+    color: #fff;
+}
+
+.divEscola>i {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.divEscola>h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.divEscola>p {
+    font-size: 1.25rem;
+    margin: 1.5rem 8rem 0;
+}
+
+.divEscola>button {
+    padding: 1rem 2rem 1rem 2rem;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: #0061e2;
+    background-color: #fff;
+    border-radius: 1.125rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.divEscola>button:hover {
+    background-color: #ffffffe6;
+    transform: scale(1.05);
 }
