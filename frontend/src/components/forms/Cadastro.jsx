@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Style from "../forms/Cadastro.module.css";
+import { createPortal } from "react-dom";
 
 export default function CompCadastro({ fechar, entrar }) {
 
     const [tipoUsuario, setTipoUsuario] = useState("aluno");
 
-    return (
+    return createPortal(
         <div className={Style.overlay}>
 
             <div className={Style.modalCadastro}>
@@ -304,6 +305,7 @@ export default function CompCadastro({ fechar, entrar }) {
 
             </div>
 
-        </div>
+        </div>,
+        document.body
     );
 }

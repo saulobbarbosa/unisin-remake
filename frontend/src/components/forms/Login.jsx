@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Style from "./Login.module.css";
+import { createPortal } from "react-dom";
 
 export default function CompLogin({ fechar }) {
 
     const [tipoUsuario, setTipoUsuario] = useState("aluno");
 
-    return (
+    return createPortal(
         <div className={Style.overlay}>
 
             <div className={Style.modalLogin}>
@@ -80,6 +81,7 @@ export default function CompLogin({ fechar }) {
 
             </div>
 
-        </div>
+        </div>,
+        document.body
     );
 }

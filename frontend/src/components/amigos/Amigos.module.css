@@ -1,0 +1,182 @@
+.pagina {
+    min-height: 100vh;
+    background: #f5f9fd;
+}
+
+.conteudo {
+    width: 100%;
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 42px 20px;
+    box-sizing: border-box;
+}
+
+.tituloArea {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.titulo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.titulo i {
+    color: #087ff5;
+    font-size: 27px;
+}
+
+.titulo h1 {
+    margin: 0;
+    color: #061a36;
+    font-size: 36px;
+}
+
+.acoes {
+    display: flex;
+    gap: 10px;
+}
+
+.acoes button {
+    height: 38px;
+    padding: 0 14px;
+
+    border: none;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btnSolicitacoes {
+    background: #edf5fc;
+    color: #10233f;
+}
+
+.btnSolicitacoes span {
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f5223b;
+    color: white;
+    font-size: 11px;
+}
+
+.btnAdicionar {
+    background: #087ff5;
+    color: white;
+}
+
+.abas {
+    display: flex;
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.abas button {
+    border: none;
+    padding: 10px 17px;
+    border-radius: 20px;
+    background: #eaf3fb;
+    color: #17345c;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.abas .abaAtiva {
+    background: #087ff5;
+    color: white;
+}
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    margin-top: 24px;
+}
+
+.cardAmigo {
+    position: relative;
+    width: 100%;
+    min-height: 88px;
+    padding: 16px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(20, 70, 110, 0.07);
+}
+
+.avatarAmigo {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #087ff5;
+    font-size: 27px;
+}
+
+.infoAmigo {
+    margin-left: 16px;
+}
+
+.infoAmigo h3 {
+    margin: 0 0 7px;
+    color: #10233f;
+    font-size: 15px;
+}
+
+.status {
+    display: flex;
+    gap: 8px;
+}
+
+.nivelAmigo,
+.moedasAmigo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.nivelAmigo {
+    background: #edf5fc;
+    color: #087ff5;
+}
+
+.nivelAmigo i {
+    font-size: 10px;
+}
+
+.moedasAmigo {
+    background: #fff4cf;
+    color: #a66a00;
+}
+
+.btnMenu {
+    position: absolute;
+    right: 18px;
+    top: 27px;
+    border: none;
+    background: transparent;
+    color: #10233f;
+    font-size: 25px;
+    cursor: pointer;
+}
