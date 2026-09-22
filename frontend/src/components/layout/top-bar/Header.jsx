@@ -1,7 +1,7 @@
 import React from "react";
-import Style from "./HeaderAmigos.module.css";
+import Style from "./header.module.css";
 
-export default function HeaderAmigos() {
+export default function CompHeader() {
     return (
         <header className={Style.header}>
 

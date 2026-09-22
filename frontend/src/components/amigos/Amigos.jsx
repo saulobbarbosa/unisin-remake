@@ -1,16 +1,12 @@
 import React, { useState } from "react";
-import HeaderAmigos from "./HeaderAmigos";
-import Style from "./Amigos.module.css";
+import Style from "./amigos.module.css";
 import amigos from "./dadosAmigos";
-
 
 export default function Amigos() {
     const [aba, setAba] = useState("amigos");
 
     return (
         <div className={Style.pagina}>
-            <HeaderAmigos />
-
             <main className={Style.conteudo}>
                 {/* CABECALHO DA PÁGINA */}
                 <div className={Style.tituloArea}>

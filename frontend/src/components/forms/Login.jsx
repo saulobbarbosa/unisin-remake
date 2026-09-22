@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Style from "./Login.module.css";
+import Style from "./login.module.css";
 import { createPortal } from "react-dom";
 
 export default function CompLogin({ fechar }) {

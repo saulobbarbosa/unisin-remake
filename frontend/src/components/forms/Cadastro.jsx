@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Style from "../forms/Cadastro.module.css";
+import Style from "../forms/cadastro.module.css";
 import { createPortal } from "react-dom";
 
 export default function CompCadastro({ fechar, entrar }) {
