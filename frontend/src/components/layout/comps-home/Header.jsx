@@ -58,6 +58,7 @@ export default function CompHeaderHome() {
             {mostrarLogin && (
                 <Login
                     fechar={() => setMostrarLogin(false)}
+                    setMostrarCadastro={setMostrarCadastro}
                 />
             )}
             {/* FORMULÁRIO DE CADASTRO */}

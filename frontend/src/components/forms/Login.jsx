@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 import Style from "./login.module.css";
-import { createPortal } from "react-dom";
 
-export default function CompLogin({ fechar }) {
+export default function CompLogin({ fechar, setMostrarCadastro }) {
 
     const [tipoUsuario, setTipoUsuario] = useState("aluno");
 
-    return createPortal(
+    return(
         <div className={Style.overlay}>
-
             <div className={Style.modalLogin}>
-
-                <button
-                    className={Style.btnFechar}
+                <button className={Style.btnFechar}
                     onClick={fechar}
                 >
-                    ×
+                    <i className="fa-solid fa-x" style={{ fontSize: "1.25rem", color: "#64748b" }}></i>
                 </button>
 
                 <div className={Style.iconeUsuario}>
@@ -26,62 +22,45 @@ export default function CompLogin({ fechar }) {
                 <p>Acesse sua conta UNISIN</p>
 
                 {/* TIPOS DE USUÁRIO */}
-
                 <div className={Style.tipoUsuario}>
-
-                    <button
-                        className={
-                            tipoUsuario === "aluno" ? Style.ativo : ""
-                        }
+                    <button className={tipoUsuario === "aluno" ? Style.ativo : ""}
                         onClick={() => setTipoUsuario("aluno")}
                     >
                         Aluno
                     </button>
-
-                    <button
-                        className={
-                            tipoUsuario === "professor" ? Style.ativo : ""
-                        }
+                    <button className={tipoUsuario === "professor" ? Style.ativo : ""}
                         onClick={() => setTipoUsuario("professor")}
                     >
                         Professor
                     </button>
-
-                    <button
-                        className={
-                            tipoUsuario === "escola" ? Style.ativo : ""
-                        }
+                    <button className={tipoUsuario === "escola" ? Style.ativo : ""}
                         onClick={() => setTipoUsuario("escola")}
                     >
                         Escola
                     </button>
-
                 </div>
 
-
                 {/* FORMULÁRIO */}
-
                 <div className={Style.formLogin}>
-
                     <label>E-mail</label>
                     <input type="email" placeholder="voce@exemplo.com" />
                     <label>Senha</label>
-
                     <input type="password" placeholder="••••••••" />
 
                     <button className={Style.btnEntrar}>
                         Entrar como {tipoUsuario}
                     </button>
-
                     <p className={Style.cadastro}>
-                        Não tem conta? <span>Cadastre-se</span>
+                        Não tem conta?{" "}
+                        <span onClick={() => {
+                            fechar();
+                            setMostrarCadastro(true);
+                        }}>
+                            Cadastre-se
+                        </span>
                     </p>
-
                 </div>
-
             </div>
-
-        </div>,
-        document.body
+        </div>
     );
 }

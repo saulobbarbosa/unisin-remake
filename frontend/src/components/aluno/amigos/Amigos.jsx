@@ -1,9 +1,24 @@
-import React, { useState } from "react";
-import Style from "./amigos.module.css";
-import amigos from "./dadosAmigos";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-export default function Amigos() {
+import Style from "./amigos.module.css";
+
+export default function TelaAmigos() {
+    const [dadosAmigos, setDadosAmigos] = useState([]);
     const [aba, setAba] = useState("amigos");
+
+    const carregarDados = async () => {
+        try {
+            const response = await axios.get("/dadosJson/usuarios.json");
+            setDadosAmigos(response.data);
+        } catch (error) {
+            console.error("Erro ao carregar dados", error);
+        }
+    }
+
+    useEffect(() => {
+        carregarDados();
+    }, []);
 
     return (
         <div className={Style.pagina}>
@@ -35,7 +50,7 @@ export default function Amigos() {
                         className={aba === "amigos" ? Style.abaAtiva : ""}
                         onClick={() => setAba("amigos")}
                     >
-                        Meus amigos ({amigos.length})
+                        Meus amigos ({dadosAmigos.length})
                     </button>
 
                     <button
@@ -49,7 +64,7 @@ export default function Amigos() {
                 {/* LISTA */}
                 {aba === "amigos" && (
                     <div className={Style.lista}>
-                        {amigos.map(amigo => (
+                        {dadosAmigos.map(amigo => (
                             <div key={amigo.id} className={Style.cardAmigo}>
                                 <div className={Style.avatarAmigo}>
                                     {amigo.avatar}

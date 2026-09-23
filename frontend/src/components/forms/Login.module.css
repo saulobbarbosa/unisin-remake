@@ -1,15 +1,20 @@
 .overlay {
     position: fixed;
+    width: 100%;
+    height: 100dvh;
+    
     inset: 0;
     background: rgba(8, 29, 57, 0.75);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 1000;
+    overflow-y: auto;
 }
 
 .modalLogin {
     position: relative;
+
     width: 448px;
     min-height: 500px;
     padding: 40px 32px 32px;
@@ -28,12 +33,11 @@
     height: 30px;
     border: none;
     background: transparent;
-    color: #64748b;
-    font-size: 30px;
-    font-weight: 300;
-    line-height: 30px;
     cursor: pointer;
     padding: 0;
+
+    opacity: 1;
+    transition: color 0.2s ease;
 }
 
 .btnFechar:hover {
