@@ -1,0 +1,121 @@
+.aberta {
+    transform: translateX(0);
+}
+
+.fechada {
+    transform: translateX(100%);
+}
+
+.overlayBarraLateral {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    z-index: 10;
+    background-color: #05162c80;
+    backdrop-filter: blur(8px);
+}
+
+.containerBarraLateral {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20rem;
+    height: 100dvh;
+    background-color: #ffffff;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.divUsuarioBarra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    border-bottom: 0.1rem solid #d2d8df;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.625rem;
+    height: 2.625rem;
+    border: 0.3rem solid #006bed;
+    border-radius: 50%;
+}
+
+.divUsuarioTexto {
+    flex: 1;
+}
+
+.divUsuarioTexto>h2 {
+    font-size: 1rem;
+}
+
+.divUsuarioTexto>p {
+    font-size: 0.875rem;
+    color: #54657a;
+}
+
+.divMenuBarraLateral {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem 0.75rem;
+}
+
+.itemMenu {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.75rem;
+    border-radius: 0.625rem;
+    cursor: pointer;
+    color: #334155;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.itemMenu:hover {
+    background-color: #d9e4f0;
+    color: #006bed;
+}
+
+.itemMenu:hover>.iconMenu {
+    background: linear-gradient(135deg, #006bed, #0099fa);
+    color: #fff;
+}
+
+.itemMenu>p {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.iconMenu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.75rem;
+    background-color: #d9e4f0;
+    color: #006bed;
+}
+
+/* Parte da Opção de Sair */
+.itemMenuSair {
+    color: #ee0f1f !important;
+}
+
+.itemMenuSair:hover {
+    background-color: #ee0f1f33 !important;
+}
+
+.itemMenuSair:hover>.iconMenu {
+    background: #ee0f1f1a !important;
+}
+
+.itemMenuSair>.iconMenu {
+    background-color: #ee0f1f1a !important;
+    color: #ee0f1f !important;
+}
