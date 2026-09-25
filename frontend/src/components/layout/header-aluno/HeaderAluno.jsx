@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Style from "./header.module.css";
+import Style from "./headerAluno.module.css";
 
 import BarraLateral from "../barra-lateral/BarraLateral";
 

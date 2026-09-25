@@ -10,7 +10,8 @@
     height: 4rem;
     z-index: 5;
     background: #ffffffcc;
-    backdrop-filter: blur(16px);
+    backdrop-filter: blur(14px);
+    border-bottom: 0.075rem solid #dcdddd;
 }
 
 /* Logotipo */

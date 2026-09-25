@@ -1,0 +1,81 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem;
+    z-index: 5;
+    background: #ffffffcc;
+    backdrop-filter: blur(14px);
+    border-bottom: 0.075rem solid #dcdddd;
+}
+
+/* Logotipo */
+.divLogotipo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.iconCap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #006bed, #0099fa);
+}
+
+.iconCap:hover {
+    transform: scale(1.1);
+}
+
+.divLogotipoTexto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.divLogotipoTexto>h1 {
+    font-size: 1.25rem;
+}
+.divLogotipoTexto>p{
+    font-size: 0.875rem;
+    color: #54657a;
+}
+
+
+.infoUsuario {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.infoUsuario > p {
+    color: #10233f;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+/* Parte da Opção de Sair */
+.btnSair {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    color: #ee0f1f;
+    background-color: #ee0f1f1f;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btnSair:hover {
+    background-color: #ee0f1f33;
+}

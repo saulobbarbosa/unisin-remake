@@ -18,6 +18,7 @@ export default function CompBarraLateral({ barraAberta, setBarraAberta }) {
     const logout = () => {
         try {
             localStorage.removeItem("id");
+            localStorage.removeItem("tipo");
             navigate("/");
         } catch (error) {
             console.error("Erro ao Realizar logout", error);

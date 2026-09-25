@@ -1,6 +1,6 @@
 import React from "react";
 
-import Style from "./footer.module.css";
+import Style from "./footerHome.module.css";
 
 export default function CompFooterHome() {
     return (

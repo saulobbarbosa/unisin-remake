@@ -4,8 +4,8 @@ import Style from "./home.module.css";
 
 // Import Componentes
 import Carrossel from "./carrossel/Carrossel";
-import Header from "../layout/comps-home/Header";
-import Footer from "../layout/comps-home/Footer";
+import Header from "../layout/comps-home/HeaderHome";
+import Footer from "../layout/comps-home/FooterHome";
 
 export default function TelaHome() {
     return (
