@@ -23,6 +23,7 @@ export default function App() {
                     {/* Rotas Alunos */}
                     <Route path="/home-aluno" element={<HomeAluno />} />
                     <Route path="/amigos" element={<Amigos />} />
+                    <Route path="/loja" element={<h1>Olha a Loja</h1>} />
 
                     {/* Rotas Professores */}
                     <Route path="/home-prof" element={<h1>Olá Professor</h1>} />

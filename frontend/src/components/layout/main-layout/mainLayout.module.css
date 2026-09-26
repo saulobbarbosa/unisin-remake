@@ -1,34 +1,14 @@
 .container {
     height: 100dvh;
+    overflow: hidden;
 }
 
 .main {
-    padding-top: 4rem;
-    transition: margin-left 0.3s ease;
-    height: 100dvh;
-    overflow-y: hidden;
+    height: calc(100dvh - 4rem); /* desconta a TopBar */
+    margin-top: 4rem;
+    overflow-y: auto;
+    overflow-x: hidden;
     position: relative;
     z-index: 1;
     user-select: none;
-}
-
-.scrollArea {
-    height: calc(100dvh - 4rem); /* desconta a TopBar */
-    overflow-y: auto;
-
-    position: relative;
-    z-index: 200; /* maior que TopBar e SlideBar (100) */
-}
-
-/* Responsividade */
-@media screen and (max-width: 769px) {
-    .scrollArea{
-        padding-bottom: 9rem;
-    }
-}
-
-@media screen and (min-width: 770px) {
-    .scrollArea{
-        padding-bottom: 2rem;
-    }
 }

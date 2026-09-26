@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 import Style from "./headerAdmin.module.css";
 
-export default function CompHeader() {
+export default function CompHeaderAdmin() {
     const navigate = useNavigate();
     let tipoUser = localStorage.getItem("tipo");
 

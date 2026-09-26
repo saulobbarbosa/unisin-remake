@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
 
 import Style from "./mainLayout.module.css";
@@ -9,7 +9,6 @@ import HeaderAdmin from "../header-admin/HeaderAdmin";
 
 export default function TelaLayout() {
     const navigate = useNavigate();
-    const mainRef = useRef(null);
 
     // Verifica se User está logado
     const [userLogado, setUserLogado] = useState(null);
@@ -47,10 +46,8 @@ export default function TelaLayout() {
                 <HeaderAdmin />
             )}
             {/* Conteúdo dinâmico */}
-            <main className={`${Style.main}`}>
-                <div ref={mainRef} className={Style.scrollArea}>
-                    <Outlet />
-                </div>
+            <main className={Style.main}>
+                <Outlet />
             </main>
         </div>
     );

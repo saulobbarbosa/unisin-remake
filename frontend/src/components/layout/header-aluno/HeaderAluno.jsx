@@ -5,7 +5,7 @@ import Style from "./headerAluno.module.css";
 
 import BarraLateral from "../barra-lateral/BarraLateral";
 
-export default function CompHeader() {
+export default function CompHeaderAluno() {
     const navigate = useNavigate();
     const [barraAberta, setBarraAberta] = useState(false);
 
