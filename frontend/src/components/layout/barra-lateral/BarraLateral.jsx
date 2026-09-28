@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 import Style from "./barraLateral.module.css";
 
-export default function CompBarraLateral({ barraAberta, setBarraAberta }) {
+export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUser }) {
     const navigate = useNavigate();
     const barraRef = useRef(null);
 
@@ -70,8 +70,8 @@ export default function CompBarraLateral({ barraAberta, setBarraAberta }) {
                         <i className="fa-regular fa-user"></i>
                     </div>
                     <div className={Style.divUsuarioTexto}>
-                        <h2>Leonardo</h2>
-                        <p>Nível 1 • 500 Moedas</p>
+                        <h2>{dadosUser.nome}</h2>
+                        <p>Nível {dadosUser.nivel} • {dadosUser.moedas} Moedas</p>
                     </div>
                     <i className="fa-solid fa-x" style={{
                         fontSize: "0.875rem",
