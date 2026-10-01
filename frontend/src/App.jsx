@@ -12,7 +12,9 @@ import Amigos from "./components/aluno/amigos/Amigos";
 // Import Telas Escolas
 
 export default function App() {
+
     return (
+        <div></div>
         <Router>
             <Routes>
                 {/* Rotas SEM layout */}
