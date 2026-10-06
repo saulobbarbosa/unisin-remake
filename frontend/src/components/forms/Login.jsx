@@ -29,7 +29,7 @@ export default function CompLogin({ fechar, setMostrarCadastro }) {
             } else if (usuario.tipo === "escola") {
                 navigate("/home-escola");
             } else {
-                navigate("/home-aluno");
+                navigate("/aluno/home");
                 localStorage.setItem("tipo", "aluno");
             }
         } catch (error) {

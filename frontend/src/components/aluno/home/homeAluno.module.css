@@ -1,35 +1,29 @@
 /* Container Principal */
-.containerHomeAluno{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.conteudoHomeAluno{
+.containerHomeAluno {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     width: 70%;
-    margin-top: 2rem;
+    margin-top: 2rem; 
 }
 
 /* Título da Tela */
-.tituloHomeAluno{
+.tituloHomeAluno {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.tituloHomeAluno > h1{
+.tituloHomeAluno>h1 {
     font-size: 2.25rem;
 }
 
-.tituloHomeAluno > p{
+.tituloHomeAluno>p {
     font-size: 1.125rem;
     color: #54657a;
 }
 
-.badgeHomeAluno{
+.badgeHomeAluno {
     display: flex;
     align-items: center;
     align-self: flex-start;
@@ -85,7 +79,7 @@
     color: #05162c;
 }
 
-.badgeCard{
+.badgeCard {
     align-self: flex-start;
     padding: 0.5rem 1rem;
     margin: 0rem 0rem 1rem 1rem;

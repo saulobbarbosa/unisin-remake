@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Swal from 'sweetalert2';
 
 import Style from "./headerAdmin.module.css";
@@ -7,6 +8,7 @@ import Style from "./headerAdmin.module.css";
 export default function CompHeaderAdmin() {
     const navigate = useNavigate();
     let tipoUser = localStorage.getItem("tipo");
+    const [dadosHeader, setDadosHeader] = useState([]);
 
     // Função Logout
     const logout = () => {
@@ -35,6 +37,26 @@ export default function CompHeaderAdmin() {
         });
     }
 
+    // Função para carregar os dados do usuario
+    const carregarDados = async () => {
+        try {
+            const response = await axios.get("/dadosJson/usuarios.json");
+            const idUser = localStorage.getItem("id");
+            const usuario = response.data.find(u => String(u.id) === String(idUser));
+            if (!usuario) {
+                console.error("Usuário não encontrado para o ID:", idUser);
+                return;
+            }
+            setDadosHeader(usuario);
+        } catch (error) {
+            console.error("Erro ao Carregar dados do Header", error);
+        }
+    }
+
+    useEffect(() => {
+        carregarDados();
+    }, []);
+
     return (
         <div className={Style.header}>
             <div className={Style.divLogotipo} onClick={() => {
@@ -52,7 +74,7 @@ export default function CompHeaderAdmin() {
             </div>
 
             <div className={Style.infoUsuario}>
-                <p>Colégio Exemplo</p>
+                <p>{dadosHeader.nome}</p>
                 <div className={Style.btnSair}
                     onClick={() => { alertSair() }}
                 >

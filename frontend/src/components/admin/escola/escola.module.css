@@ -1,0 +1,49 @@
+/* Container Principal */
+.containerEscola {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    width: 55%;
+}
+
+/* Parte do 1° bloco da tela */
+.divTitulo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+}
+
+.divIconProfessor {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.divIconProfessor>i {
+    color: #006bed;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.divIconProfessor>h1 {
+    font-size: 2.25rem;
+}
+
+.paragrafoTitulo {
+    font-size: 1rem;
+    color: #54657a;
+}
+
+.btnCadastrar {
+    width: 13rem;
+    height: 2.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 1rem;
+    color: #fff;
+    background: linear-gradient(135deg, #006bed, #0099fa);
+    cursor: pointer;
+}
+
+.divCardsProfessores {}

@@ -7,6 +7,7 @@ import Style from "./barraLateral.module.css";
 export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUser }) {
     const navigate = useNavigate();
     const barraRef = useRef(null);
+    const idUser = localStorage.getItem("id");
 
     // Função de Trocar Telas
     const navegar = (rota) => {
@@ -83,7 +84,7 @@ export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUse
                 </div>
                 <div className={Style.divMenuBarraLateral}>
                     <div className={Style.itemMenu}
-                        onClick={() => { navegar("/home-aluno") }}
+                        onClick={() => { navegar("/aluno/home") }}
                     >
                         <div className={Style.iconMenu}>
                             <i className="fa-solid fa-house"></i>
@@ -91,7 +92,7 @@ export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUse
                         <p>Home</p>
                     </div>
                     <div className={Style.itemMenu}
-                        onClick={() => { navegar("/amigos") }}
+                        onClick={() => { navegar("/aluno/amigos") }}
                     >
                         <div className={Style.iconMenu}>
                             <i className="fa-solid fa-user-group"></i>
@@ -99,7 +100,7 @@ export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUse
                         <p>Amigos</p>
                     </div>
                     <div className={Style.itemMenu}
-                        onClick={() => { navegar("/loja") }}
+                        onClick={() => { navegar("/aluno/loja") }}
                     >
                         <div className={Style.iconMenu}>
                             <i className="fa-solid fa-shop"></i>
@@ -107,7 +108,7 @@ export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUse
                         <p>Loja</p>
                     </div>
                     <div className={Style.itemMenu}
-                        onClick={() => { navegar("/inventario") }}
+                        onClick={() => { navegar(`/aluno/inventario/${idUser}`) }}
                     >
                         <div className={Style.iconMenu}>
                             <i className="fa-solid fa-suitcase-rolling"></i>
@@ -115,7 +116,7 @@ export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUse
                         <p>Inventário</p>
                     </div>
                     <div className={Style.itemMenu}
-                        onClick={() => { navegar("/conquistas") }}
+                        onClick={() => { navegar("/aluno/conquistas") }}
                     >
                         <div className={Style.iconMenu}>
                             <i className="fa-solid fa-trophy"></i>
@@ -123,7 +124,7 @@ export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUse
                         <p>Conquistas</p>
                     </div>
                     <div className={Style.itemMenu}
-                        onClick={() => { navegar("/ranking") }}
+                        onClick={() => { navegar("/aluno/ranking") }}
                     >
                         <div className={Style.iconMenu}>
                             <i className="fa-solid fa-medal"></i>
@@ -131,7 +132,7 @@ export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUse
                         <p>Ranking</p>
                     </div>
                     <div className={Style.itemMenu}
-                        onClick={() => { navegar("/perfil") }}
+                        onClick={() => { navegar(`/aluno/perfil/${idUser}`) }}
                     >
                         <div className={Style.iconMenu}>
                             <i className="fa-solid fa-user"></i>

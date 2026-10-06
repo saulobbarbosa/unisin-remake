@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Style from "./home.module.css";
 
@@ -8,9 +8,17 @@ import Header from "../layout/comps-home/HeaderHome";
 import Footer from "../layout/comps-home/FooterHome";
 
 export default function TelaHome() {
+    const [mostrarCadastro, setMostrarCadastro] = useState(false);
+    const [tipoUsuario, setTipoUsuario] = useState("");
+
     return (
         <div>
-            <Header />
+            <Header
+                mostrarCadastro={mostrarCadastro}
+                setMostrarCadastro={setMostrarCadastro}
+                tipoUsuario={tipoUsuario}
+                setTipoUsuario={setTipoUsuario}
+            />
             <Carrossel />
             {/* "Apresentação" do Unisin */}
             <section className={Style.containerPadrao}>
@@ -188,10 +196,13 @@ export default function TelaHome() {
                     <i className="fa-solid fa-school"></i>
                     <h1>As escolas podem participar?</h1>
                     <p>
-                        Sim! Qualquer instituição de ensino pode realizar seu cadastro e começar a 
+                        Sim! Qualquer instituição de ensino pode realizar seu cadastro e começar a
                         utilizar a UNISIN gratuitamente para conectar sua comunidade escolar.
                     </p>
-                    <button>
+                    <button onClick={() => { 
+                        setTipoUsuario("escola")
+                        setMostrarCadastro(true);
+                    }}>
                         <p>Cadastrar Escola</p>
                     </button>
                 </div>

@@ -6,9 +6,8 @@ import Style from "./headerHome.module.css";
 import Login from "../../forms/Login";
 import Cadastro from "../../forms/Cadastro";
 
-export default function CompHeaderHome() {
+export default function CompHeaderHome({ mostrarCadastro, setMostrarCadastro, tipoUsuario, setTipoUsuario }) {
     const [mostrarLogin, setMostrarLogin] = useState(false);
-    const [mostrarCadastro, setMostrarCadastro] = useState(false);
 
     // Parte de mudar o css quando scrollar]
     const [scrolled, setScrolled] = useState(false);
@@ -49,7 +48,10 @@ export default function CompHeaderHome() {
                     <p>Login</p>
                 </button>
                 <button className={Style.btnCadastro}
-                    onClick={() => setMostrarCadastro(true)}
+                    onClick={() => {
+                        setTipoUsuario("");
+                        setMostrarCadastro(true);
+                    }}
                 >
                     <p>Cadastro</p>
                 </button>
@@ -69,6 +71,7 @@ export default function CompHeaderHome() {
                         setMostrarCadastro(false);
                         setMostrarLogin(true);
                     }}
+                    tipoUsuario={tipoUsuario}
                 />
             )}
         </div>

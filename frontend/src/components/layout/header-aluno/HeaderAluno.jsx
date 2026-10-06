@@ -11,6 +11,7 @@ export default function CompHeaderAluno() {
     const [barraAberta, setBarraAberta] = useState(false);
     const [dadosHeader, setDadosHeader] = useState([]);
 
+    // Função para carregar os dados do usuario
     const carregarDados = async () => {
         try {
             const response = await axios.get("/dadosJson/usuarios.json");
@@ -32,7 +33,7 @@ export default function CompHeaderAluno() {
 
     return (
         <div className={Style.header}>
-            <div className={Style.divLogotipo} onClick={() => { navigate("/home-aluno") }}>
+            <div className={Style.divLogotipo} onClick={() => { navigate("/aluno/home") }}>
                 <div className={Style.iconCap}>
                     <i className="fa-solid fa-graduation-cap"
                         style={{ fontSize: "1.25rem", color: "#fff" }}
