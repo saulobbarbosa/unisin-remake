@@ -4,7 +4,8 @@
       "id": 1,
       "pergunta": "Quanto é 7 × 8?",
       "respostas": ["54", "56", "58", "60"],
-      "correta": "56"
+      "correta": "56",
+      "respondida": true
     },
     {
       "id": 2,
