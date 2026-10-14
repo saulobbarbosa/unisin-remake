@@ -67,9 +67,10 @@ export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUse
         `}>
             <div className={Style.containerBarraLateral} ref={barraRef}>
                 <div className={Style.divUsuarioBarra}>
-                    <div className={Style.avatar}>
-                        <i className="fa-regular fa-user"></i>
-                    </div>
+                    <img src={dadosUser.avatar} alt="Avatar"
+                        className={Style.avatar}
+                        style={{ border: `0.188rem solid ${dadosUser.borda}` }}
+                    />
                     <div className={Style.divUsuarioTexto}>
                         <h2>{dadosUser.nome}</h2>
                         <p>Nível {dadosUser.nivel} • {dadosUser.moedas} Moedas</p>

@@ -56,16 +56,17 @@ export default function CompHeaderAluno() {
                 <div className={Style.usuario}
                     onClick={() => { setBarraAberta(true) }}
                 >
-                    <div className={Style.avatar}>
-                        <i className="fa-regular fa-user"></i>
-                    </div>
+                    <img src={dadosHeader.avatar} alt="Avatar"
+                        className={Style.avatar}
+                        style={{ border: `0.188rem solid ${dadosHeader.borda}` }}
+                    />
                     <p>{dadosHeader.nome}</p>
                 </div>
             </div>
 
             {/* Parte da Slide Bar */}
-            <BarraLateral 
-                barraAberta={barraAberta} 
+            <BarraLateral
+                barraAberta={barraAberta}
                 setBarraAberta={setBarraAberta}
                 dadosUser={dadosHeader}
             />

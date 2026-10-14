@@ -36,13 +36,9 @@
 }
 
 .avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.625rem;
-    height: 2.625rem;
-    border: 0.3rem solid #006bed;
-    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100%;
 }
 
 .divUsuarioTexto {
