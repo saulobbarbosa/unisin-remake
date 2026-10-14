@@ -49,7 +49,7 @@ export default function CompHeaderAluno() {
                 </div>
 
                 <div className={Style.moedas}>
-                    <i className="fa-solid fa-link"></i>
+                    <img src={require('../../../imgs/moeda.png')} alt="Icon de Moeda" />
                     <span>{dadosHeader.moedas}</span>
                 </div>
 
