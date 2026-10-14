@@ -104,14 +104,14 @@ export default function TelaLoja() {
                         >
                             {menuOpcoes === "bordas" && (
                                 <div className={Style.previewAvatar}>
-                                    <img src={`/imgs/boy_black.webp`} alt="Avatar"
+                                    <img src={dadosUser.avatar} alt="Avatar"
                                         style={{ border: `0.3rem solid ${item.color}` }}
                                     />
                                 </div>
                             )}
                             {menuOpcoes === "avatares" && (
                                 <div className={Style.previewAvatar}>
-                                    <img src={item.img} alt={item.nome}
+                                    <img src={item.img} alt="Avatar"
                                         style={{ border: `0.3rem solid ${dadosUser.borda}` }}
                                     />
                                 </div>
