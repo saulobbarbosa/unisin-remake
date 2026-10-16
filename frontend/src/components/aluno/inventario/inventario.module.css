@@ -1,0 +1,25 @@
+/* Container Principal */
+.containerInventario {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 76rem;
+    margin-top: 2rem;
+}
+
+/* Titulo do Inventario */
+.tituloInventario {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.tituloInventario>i {
+    font-size: 2rem;
+    color: #006bed;
+}
+
+.tituloInventario>h1 {
+    font-size: 2.25rem;
+}

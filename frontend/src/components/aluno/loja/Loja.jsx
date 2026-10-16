@@ -61,6 +61,7 @@ export default function TelaLoja() {
             ? "comprar"
             : "block";
     };
+    
     return (
         <div className={Style.containerLoja}>
             {/* Header Loja */}

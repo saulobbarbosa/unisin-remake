@@ -12,6 +12,7 @@ import AlunoTrilha from "./components/aluno/trilha/Trilha";
 import AlunoAmigos from "./components/aluno/amigos/Amigos";
 
 import LojaAluno from "./components/aluno/loja/Loja";
+import InventarioAluno from "./components/aluno/inventario/Inventario";
 // Import Telas Professores
 import ProfessorAdmin from "./components/admin/professor/Professor";
 // Import Telas Escolas
@@ -35,7 +36,7 @@ export default function App() {
                     <Route path="/aluno/lobby/:adversarioId" element={<h1>PVP</h1>} />
                     
                     <Route path="/aluno/loja" element={<LojaAluno />} />
-                    <Route path="/aluno/inventario/:alunoId" element={<h1>Olha o Inventário</h1>} />
+                    <Route path="/aluno/inventario" element={<InventarioAluno />} />
                     <Route path="/aluno/conquistas" element={<h1>Olha a Conquistas</h1>} />
                     <Route path="/aluno/ranking" element={<h1>Olha o Ranking</h1>} />
                     <Route path="/aluno/perfil/:alunoId" element={<h1>Olha o Perfil</h1>} />

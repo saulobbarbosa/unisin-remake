@@ -109,7 +109,7 @@ export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUse
                         <p>Loja</p>
                     </div>
                     <div className={Style.itemMenu}
-                        onClick={() => { navegar(`/aluno/inventario/${idUser}`) }}
+                        onClick={() => { navegar(`/aluno/inventario`) }}
                     >
                         <div className={Style.iconMenu}>
                             <i className="fa-solid fa-suitcase-rolling"></i>
