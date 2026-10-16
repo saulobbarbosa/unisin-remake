@@ -1,57 +1,75 @@
 .pagina {
-    min-height: 100vh;
-    background: #f5f9fd;
+    width: 100%;
+    min-height: 100%;
+    align-self: flex-start;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 .conteudo {
     width: 100%;
-    max-width: 840px;
+    max-width: 52.5rem;
     margin: 0 auto;
-    padding: 42px 20px;
+    padding: 2.625rem 1.25rem;
     box-sizing: border-box;
 }
 
+/* Cabeçalho */
 .tituloArea {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1.25rem;
 }
 
 .titulo {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 0.875rem;
+    min-width: 0;
 }
 
 .titulo i {
+    flex-shrink: 0;
     color: #087ff5;
-    font-size: 27px;
+    font-size: 1.6875rem;
 }
 
 .titulo h1 {
     margin: 0;
     color: #061a36;
-    font-size: 36px;
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
 }
 
+/* Botões do cabeçalho */
 .acoes {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    gap: 0.625rem;
 }
 
 .acoes button {
-    height: 38px;
-    padding: 0 14px;
-
+    min-height: 2.375rem;
+    padding: 0 0.875rem;
     border: none;
-    border-radius: 20px;
-
+    border-radius: 1.25rem;
     display: flex;
     align-items: center;
-    gap: 8px;
-
-    font-size: 13px;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
     cursor: pointer;
+    transition: background 0.2s ease;
 }
 
 .btnSolicitacoes {
@@ -59,17 +77,23 @@
     color: #10233f;
 }
 
-.btnSolicitacoes span {
-    width: 20px;
-    height: 20px;
+.btnSolicitacoes:hover {
+    background: #dcecfb;
+}
 
+.btnSolicitacoes span {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     background: #f5223b;
     color: white;
-    font-size: 11px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 700;
 }
 
 .btnAdicionar {
@@ -77,83 +101,126 @@
     color: white;
 }
 
+.btnAdicionar:hover {
+    background: #006fe6;
+}
+
+.acoes button i {
+    font-size: 0.8125rem;
+}
+
+/* Abas */
 .abas {
     display: flex;
-    gap: 8px;
-    margin-top: 25px;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5625rem;
 }
 
 .abas button {
+    min-height: 2.5rem;
     border: none;
-    padding: 10px 17px;
-    border-radius: 20px;
+    padding: 0.625rem 1.0625rem;
+    border-radius: 1.25rem;
     background: #eaf3fb;
     color: #17345c;
-    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
     cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.abas button:hover {
+    background: #dcecfb;
 }
 
 .abas .abaAtiva {
     background: #087ff5;
     color: white;
+    font-weight: 600;
 }
 
+.abas .abaAtiva:hover {
+    background: #006fe6;
+}
+
+/* Lista de amigos */
 .lista {
     display: flex;
     flex-direction: column;
-    gap: 13px;
-    margin-top: 24px;
+    gap: 0.8125rem;
+    margin-top: 1.5rem;
 }
 
 .cardAmigo {
     position: relative;
     width: 100%;
-    min-height: 88px;
-    padding: 16px;
+    min-height: 5.5rem;
+    padding: 1rem 3.5rem 1rem 1rem;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     background: white;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(20, 70, 110, 0.07);
+    border-radius: 1.25rem;
+    box-shadow: 0 0.5rem 1.25rem rgba(20, 70, 110, 0.07);
+    gap: 1rem;
 }
 
+/* Avatar */
 .avatarAmigo {
-    width: 56px;
-    height: 56px;
+    width: 3.5rem;
+    height: 3.5rem;
     flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 50%;
+    overflow: hidden;
     background: #087ff5;
-    font-size: 27px;
+}
+
+.avatarAmigo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
 }
 
 .infoAmigo {
-    margin-left: 16px;
+    flex: 1;
+    min-width: 0;
 }
 
 .infoAmigo h3 {
-    margin: 0 0 7px;
+    margin: 0 0 0.4375rem;
     color: #10233f;
-    font-size: 15px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
 }
 
 .status {
     display: flex;
-    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.375rem;
 }
 
 .nivelAmigo,
 .moedasAmigo {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 4px;
-    padding: 4px 8px;
-    border-radius: 10px;
-    font-size: 11px;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.3125rem 0.5rem;
+    border-radius: 0.625rem;
+    font-size: 0.6875rem;
+    line-height: 1.2;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .nivelAmigo {
@@ -162,7 +229,7 @@
 }
 
 .nivelAmigo i {
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 
 .moedasAmigo {
@@ -170,13 +237,128 @@
     color: #a66a00;
 }
 
+/* Imagem da moeda */
+.iconeMoeda {
+    width: 0.875rem;
+    height: 0.875rem;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: block;
+}
+
+/* Menu do cartão */
 .btnMenu {
     position: absolute;
-    right: 18px;
-    top: 27px;
+    right: 0.875rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
+    border-radius: 0.5rem;
     background: transparent;
     color: #10233f;
-    font-size: 25px;
+    font-size: 1.5625rem;
     cursor: pointer;
+}
+
+.btnMenu:hover {
+    background: #f5f9fd;
+}
+
+/* Tablets e telas menores */
+@media (max-width: 48rem) {
+    .conteudo {
+        padding: 2rem 1.25rem;
+    }
+
+    .tituloArea {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .acoes {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+}
+
+/* Celulares */
+@media (max-width: 30rem) {
+    .conteudo {
+        padding: 1.5rem 1rem;
+    }
+
+    .titulo {
+        gap: 0.625rem;
+    }
+
+    .titulo h1 {
+        font-size: 1.75rem;
+    }
+
+    .titulo i {
+        font-size: 1.5rem;
+    }
+
+    .acoes {
+        gap: 0.5rem;
+    }
+
+    .acoes button {
+        padding: 0 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .abas {
+        gap: 0.375rem;
+        margin-top: 1.25rem;
+    }
+
+    .abas button {
+        min-height: 2.25rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .lista {
+        margin-top: 1.125rem;
+        gap: 0.625rem;
+    }
+
+    .cardAmigo {
+        min-height: 4.75rem;
+        padding: 0.75rem 2.75rem 0.75rem 0.75rem;
+        gap: 0.75rem;
+        border-radius: 1rem;
+    }
+
+    .avatarAmigo {
+        width: 2.875rem;
+        height: 2.875rem;
+    }
+
+    .infoAmigo h3 {
+        font-size: 0.875rem;
+    }
+
+    .nivelAmigo,
+    .moedasAmigo {
+        padding: 0.25rem 0.375rem;
+        font-size: 0.625rem;
+    }
+
+    .iconeMoeda {
+        width: 0.875rem;
+        height: 0.875rem;
+    }
+
+    .btnMenu {
+        right: 0.375rem;
+        width: 1.875rem;
+    }
 }

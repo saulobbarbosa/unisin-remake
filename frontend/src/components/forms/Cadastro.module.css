@@ -1,29 +1,32 @@
 .overlay {
     position: fixed;
+    width: 100%;
+    height: 100dvh;
     inset: 0;
     background: rgba(8, 29, 57, 0.75);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 1000;
+    overflow-y: auto;
 }
 
 .modalCadastro {
     position: relative;
-    width: 430px;
-    max-height: 92vh;
-    padding: 28px 22px 22px;
+    width: min(26.875rem, 95vw);
+    max-height: 92dvh;
+    padding: 1.75rem 1.375rem 1.375rem;
     box-sizing: border-box;
     background: #ffffff;
-    border-radius: 22px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    border-radius: 1.375rem;
+    box-shadow: 0 1.25rem 3.125rem rgba(0, 0, 0, 0.25);
     text-align: center;
     overflow-y: auto;
     scrollbar-width: thin;
 }
 
 .modalCadastro::-webkit-scrollbar {
-    width: 7px;
+    width: 0.4375rem;
 }
 
 .modalCadastro::-webkit-scrollbar-track {
@@ -32,81 +35,80 @@
 
 .modalCadastro::-webkit-scrollbar-thumb {
     background: #aeb8c5;
-
-    border-radius: 10px;
+    border-radius: 0.625rem;
 }
 
 .btnFechar {
     position: absolute;
-    top: 16px;
-    right: 18px;
+    top: 1.25rem;
+    right: 1.375rem;
+    width: 1.875rem;
+    height: 1.875rem;
     border: none;
     background: transparent;
-    color: #64748b;
-    font-size: 25px;
     cursor: pointer;
-    z-index: 2;
+    padding: 0;
+    opacity: 1;
+    transition: color 0.2s ease;
 }
 
 .btnFechar:hover {
-    color: #10233f;
+    color: #172b4d;
 }
 
 .iconeUsuario {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 10px;
+    width: 5rem;
+    height: 5rem;
+    margin: 0 auto 0.9375rem;
     border-radius: 50%;
     background: #087ff5;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 27px;
-    box-shadow: 0 8px 20px rgba(8, 127, 245, 0.18);
+    color: #ffffff;
+    font-size: 2.125rem;
+    box-shadow: 0 0.5rem 1.25rem rgba(8, 127, 245, 0.18);
 }
 
 .modalCadastro h2 {
-    margin: 0 0 4px;
+    margin: 0.625rem 0 0.3125rem;
     color: #10233f;
-    font-size: 20px;
+    font-size: 1.5625rem;
     font-weight: 700;
 }
 
 .subtitulo {
-    margin: 0 0 14px;
-
+    margin: 0 0 1.25rem;
     color: #64748b;
-
-    font-size: 12px;
+    font-size: 0.875rem;
 }
 
 /* Aluno / Professor / Escola */
 .tipoUsuario {
     display: flex;
     width: 100%;
-    padding: 3px;
-    margin-bottom: 18px;
+    padding: 0.1875rem;
+    margin-bottom: 1.125rem;
     box-sizing: border-box;
     background: #eaf3fb;
-    border-radius: 14px;
+    border-radius: 0.875rem;
 }
 
 .tipoUsuario button {
     flex: 1;
-    height: 27px;
+    height: 2.25rem;
     border: none;
-    border-radius: 11px;
+    border-radius: 0.6875rem;
     background: transparent;
     color: #526782;
-    font-size: 11px;
+    font-size: 0.875rem;
     cursor: pointer;
 }
 
 .tipoUsuario .ativo {
-    background: white;
+    background: #ffffff;
     color: #10233f;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.10);
 }
 
 .formCadastro {
@@ -115,9 +117,9 @@
 
 .formCadastro label {
     display: block;
-    margin: 0 0 5px;
+    margin-bottom: 0.375rem;
     color: #10233f;
-    font-size: 10px;
+    font-size: 0.8125rem;
     font-weight: 500;
 }
 
@@ -125,33 +127,35 @@
     display: flex;
     align-items: center;
     width: 100%;
-    height: 36px;
-    margin-bottom: 11px;
-    padding: 0 11px;
+    height: 2.8125rem;
+    margin-bottom: 1.25rem;
+    padding: 0 0.9375rem;
     box-sizing: border-box;
-    border: 1px solid #dce5ef;
-    border-radius: 15px;
-    background: white;
-    box-shadow: 0 2px 5px rgba(20, 50, 80, 0.04);
+    border: 0.0625rem solid #dce5ef;
+    border-radius: 1.25rem;
+    background: #ffffff;
+    box-shadow: 0 0.125rem 0.3125rem rgba(20, 50, 80, 0.04);
+    transition: 0.2s;
 }
 
-
 .inputIcon i {
-    width: 17px;
-    margin-right: 8px;
+    width: 1.0625rem;
+    flex-shrink: 0;
+    margin-right: 0.5rem;
     color: #64748b;
-    font-size: 11px;
+    font-size: 0.875rem;
     text-align: center;
 }
 
 .inputIcon input {
     width: 100%;
+    min-width: 0;
     height: 100%;
     border: none;
     outline: none;
     background: transparent;
     color: #10233f;
-    font-size: 11px;
+    font-size: 0.875rem;
 }
 
 .inputIcon input::placeholder {
@@ -160,43 +164,48 @@
 
 .inputIcon:focus-within {
     border-color: #087ff5;
-    box-shadow: 0 0 0 2px rgba(8, 127, 245, 0.10);
+    box-shadow: 0 0 0 0.1875rem rgba(8, 127, 245, 0.10);
 }
 
 .duasColunas {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 0.5rem;
 }
 
 .btnCadastrar {
     width: 100%;
-    height: 38px;
-    margin-top: 4px;
+    height: 2.8125rem;
+    margin-top: 0.0625rem;
     border: none;
-    border-radius: 16px;
+    border-radius: 1.25rem;
     background: #087ff5;
-    color: white;
-    font-size: 11px;
+    color: #ffffff;
+    font-size: 0.875rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 7px 16px rgba(8, 127, 245, 0.18);
+    box-shadow: 0 0.5rem 1.125rem rgba(8, 127, 245, 0.18);
     transition: 0.2s;
 }
 
 .btnCadastrar:hover {
     background: #006fe6;
-    transform: translateY(-1px);
+    transform: translateY(-0.0625rem);
+}
+
+.btnCadastrar:active {
+    transform: translateY(0);
 }
 
 .loginLink {
-    margin: 15px 0 0;
+    text-align: center;
+    margin: 1.5625rem 0 0;
     color: #64748b;
-    font-size: 11px;
+    font-size: 0.875rem;
 }
 
 .loginLink span {
-    margin-left: 4px;
+    margin-left: 0.25rem;
     color: #087ff5;
     font-weight: 600;
     cursor: pointer;
@@ -204,4 +213,24 @@
 
 .loginLink span:hover {
     text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 30rem) {
+    .overlay {
+        align-items: flex-start;
+    }
+
+    .modalCadastro {
+        width: 95vw;
+        max-height: 95dvh;
+        margin: auto 0;
+        padding: 1.5rem 1rem 1rem;
+        border-radius: 1.125rem;
+    }
+
+    .duasColunas {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
 }

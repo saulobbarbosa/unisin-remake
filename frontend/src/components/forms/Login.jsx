@@ -60,7 +60,7 @@ export default function CompLogin({ fechar, setMostrarCadastro }) {
                 }}>
                     <label>E-mail</label>
                     <input type="email" placeholder="voce@exemplo.com"
-                        onChange={(e) => { setEmail(e.target.value) }}
+                        maxLength={100} onChange={(e) => { setEmail(e.target.value) }}
                     />
                     <label>Senha</label>
                     <input type="password" placeholder="••••••••"

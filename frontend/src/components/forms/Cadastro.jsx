@@ -6,11 +6,10 @@ export default function CompCadastro({ fechar, entrar, tipoUsuario }) {
         <div className={Style.overlay}>
             <div className={Style.modalCadastro}>
                 {/* Botão fechar */}
-                <button
-                    className={Style.btnFechar}
-                    onClick={fechar}
+                <button className={Style.btnFechar}
+                    onClick={() => { fechar() }}
                 >
-                    ×
+                    <i className="fa-solid fa-x" style={{ fontSize: "1rem", color: "#000" }}></i>
                 </button>
                 {/* Ícone */}
                 <div className={Style.iconeUsuario}>

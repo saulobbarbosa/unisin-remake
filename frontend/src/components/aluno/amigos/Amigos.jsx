@@ -31,12 +31,6 @@ export default function TelaAmigos() {
                     </div>
 
                     <div className={Style.acoes}>
-                        <button className={Style.btnSolicitacoes}>
-                            <i className="fa-regular fa-envelope"></i>
-                            Solicitações
-                            <span>2</span>
-                        </button>
-
                         <button className={Style.btnAdicionar}>
                             <i className="fa-solid fa-user-plus"></i>
                             Adicionar
@@ -67,6 +61,10 @@ export default function TelaAmigos() {
                         {dadosAmigos.map(amigo => (
                             <div key={amigo.id} className={Style.cardAmigo}>
                                 <div className={Style.avatarAmigo}>
+                                    <img
+                                        src={amigo.avatar}
+                                        alt={`Avatar de ${amigo.nome}`}
+                                    />
                                     {amigo.avatar}
                                 </div>
 
@@ -78,7 +76,11 @@ export default function TelaAmigos() {
                                             Nv. {amigo.nivel}
                                         </span>
                                         <span className={Style.moedasAmigo}>
-                                            <i className="fa-solid fa-link"></i>
+                                            <img
+                                                src={require('../../../imgs/moeda.png')}
+                                                alt="Moedas"
+                                                className={Style.iconeMoeda}
+                                            />
                                             {amigo.moedas}
                                         </span>
                                     </div>
