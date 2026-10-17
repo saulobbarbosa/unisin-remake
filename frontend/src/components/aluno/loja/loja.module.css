@@ -120,10 +120,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 24.5rem;
+    width: 100%;
     height: 10rem;
-    box-sizing: border-box;
-    padding-block: 2rem;
     border-radius: 1.375rem;
 }
 

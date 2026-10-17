@@ -8,7 +8,8 @@
     "moedas": 2500,
     "avatar": "/imgs/boy_black.webp",
     "borda": "#FF0000",
-    "fundo": "#000"
+    "fundo": "#000",
+    "titulo": "Lenda UNISIN"
   },
   {
     "id": 2,
