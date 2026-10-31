@@ -1,0 +1,35 @@
+[
+  {
+    "id": 10,
+    "email": "carlos@teste.com",
+    "senha": "1",
+    "nome": "Carlos Henrique",
+    "nivel": 5,
+    "moedas": 120,
+    "avatar": "/imgs/boy_black.webp",
+    "borda": "#3498DB",
+    "fundo": "#333"
+  },
+  {
+    "id": 11,
+    "email": "mariana@teste.com",
+    "senha": "1",
+    "nome": "Mariana Costa",
+    "nivel": 8,
+    "moedas": 250,
+    "avatar": "/imgs/girl_yellow.webp",
+    "borda": "#E84393",
+    "fundo": "#333"
+  },
+  {
+    "id": 12,
+    "email": "pedro@teste.com",
+    "senha": "1",
+    "nome": "Pedro Oliveira",
+    "nivel": 7,
+    "moedas": 450,
+    "avatar": "/imgs/boy_red.webp",
+    "borda": "#2ECC71",
+    "fundo": "#333"
+  }
+]

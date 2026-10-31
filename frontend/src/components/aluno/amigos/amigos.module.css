@@ -264,11 +264,206 @@
     font-size: 1.5625rem;
     cursor: pointer;
 }
+.acoesSolicitacao {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+.acoesSolicitacao button {
+    padding: 0.5rem 0.875rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s ease;
+}
+
+.acoesSolicitacao button:first-child {
+    background-color: #087ff5;
+    color: white;
+}
+
+.acoesSolicitacao button:first-child:hover {
+    background-color: #0068d9;
+}
+
+.acoesSolicitacao button:last-child {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.acoesSolicitacao button:last-child:hover {
+    background-color: #c0392b;
+}
 
 .btnMenu:hover {
     background: #f5f9fd;
 }
 
+/* MODAL */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modalConteudo {
+    width: 100%;
+    max-width: 30rem;
+    max-height: 80vh;
+    overflow-y: auto;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1.25rem;
+    box-sizing: border-box;
+}
+
+.modalConteudo h2 {
+    margin-top: 0;
+    color: #10233f;
+}
+
+.modalConteudo input {
+    width: 100%;
+    padding: 0.875rem;
+    margin-bottom: 1rem;
+    border: 0.0625rem solid #dce5ef;
+    border-radius: 0.625rem;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.modalConteudo input:focus {
+    border-color: #087ff5;
+}
+
+.modalConteudo .cardAmigo {
+    padding: 0.75rem;
+    margin-bottom: 0.625rem;
+    box-shadow: none;
+    border: 0.0625rem solid #edf2f7;
+}
+
+.modalConteudo button {
+    cursor: pointer;
+}
+
+.modalConteudo button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* BOTÃO ADICIONAR USUÁRIO */
+
+.btnAdicionarUsuario {
+    background-color: #087ff5;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btnAdicionarUsuario:hover {
+    background-color: #0068d9;
+    transform: translateY(-0.0625rem);
+}
+
+.btnAdicionarUsuario:disabled {
+    background-color: #dce5ef;
+    color: #64748b;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* BOTÃO FECHAR */
+
+.btnFechar {
+    width: 100%;
+    padding: 0.625rem;
+    margin-top: 0.9375rem;
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 0.0625rem solid #dce5ef;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btnFechar:hover {
+    background-color: #e2e8f0;
+    color: #0068d9;
+}
+
+/* BOTÃO DESFAZER AMIZADE */
+
+.btnDesfazer {
+    color: #ef4444 !important;
+}
+
+.btnDesfazer:hover {
+    background-color: #fef2f2;
+}
+
+/* MENU DE OPÇÕES */
+
+.menuContainer {
+    position: relative;
+    margin-left: auto;
+}
+
+.menuOpcoes {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 10.625rem;
+    background: white;
+    border-radius: 0.75rem;
+    padding: 0.5rem;
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.12);
+    z-index: 10;
+}
+
+.menuOpcoes button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    font-weight: 550;
+    padding: 0.625rem;
+    border: none;
+    background: transparent;
+    color: #0068d9;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.85rem;
+    border-radius: 0.375rem;
+    transition: 0.2s ease;
+}
+
+.menuOpcoes button:hover {
+    background-color: #f1f5f9;
+}
+.menuOpcoes button:hover {
+    background-color: #f1f5f9;
+}
+
+.menuOpcoes .btnDesfazer {
+    color: #ef4444;
+    font-weight: 550;
+}
 /* Tablets e telas menores */
 @media (max-width: 48rem) {
     .conteudo {
