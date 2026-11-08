@@ -10,41 +10,41 @@ export default function TelaTrilha() {
     const [atividades, setAtividades] = useState([]);
 
     // Estrutura de Dados para pegar um gradient para matérias
-    const backgroundsMaterias = [
-        { id: 1, gradient: "linear-gradient(135deg, #006bed, #003b8e)" },
-        { id: 2, gradient: "linear-gradient(135deg, #16A34A, #14532D)" },
-        { id: 3, gradient: "linear-gradient(135deg, #7C3AED, #4C1D95)" },
-        { id: 4, gradient: "linear-gradient(135deg, #EA580C, #9A3412)" },
-        { id: 5, gradient: "linear-gradient(135deg, #0891B2, #164E63)" },
-        { id: 6, gradient: "linear-gradient(135deg, #059669, #064E3B)" },
-        { id: 7, gradient: "linear-gradient(135deg, #1E3A8A, #0F172A)" },
-        { id: 8, gradient: "linear-gradient(135deg, #DC2626, #7F1D1D)" },
-        { id: 9, gradient: "linear-gradient(135deg, #0F766E, #134E4A)" },
-    ];
+    const [materias, setMaterias] = useState([]);
 
     // Função para Pegar o Baground Gradient certo
-    const backgroundAtual = backgroundsMaterias.find(
+    const backgroundAtual = materias.find(
         (item) => item.id === Number(idMateria)
     )?.gradient ?? "linear-gradient(135deg, #006bed, #003b8e)";
 
-    // Carregar Dados das Atividades
-    const carregarDados = async () => {
-        try {
-            const response = await axios.get("/dadosJson/atividades.json");
-            const ativ = response.data[materia];
-            if (!ativ) {
-                console.error("Atividades não encontradas para a Matéria:", materia);
-                return;
-            }
-            setAtividades(ativ);
-        } catch (error) {
-            console.error("Erro ao carregar dados", error);
-        }
-    }
-
     useEffect(() => {
+        // Carregar Dados das Atividades
+        const carregarDados = async () => {
+            try {
+                const response = await axios.get("/dadosJson/atividades.json");
+                const ativ = response.data[materia];
+                if (!ativ) {
+                    console.error("Atividades não encontradas para a Matéria:", materia);
+                    return;
+                }
+                setAtividades(ativ);
+            } catch (error) {
+                console.error("Erro ao carregar dados", error);
+            }
+        }
+        // Carregar Matérias
+        const carregarMaterias = async () => {
+            try {
+                const response = await axios.get("/dadosJson/materias.json");
+                setMaterias(response.data);
+            } catch (error) {
+                console.error("Erro ao carregar matérias", error);
+            }
+        }
+
         carregarDados();
-    });
+        carregarMaterias();
+    }, [materia]);
 
     return (
         <div className={Style.containerTrilha}>

@@ -18,6 +18,7 @@ export default function CompLogin({ fechar, setMostrarCadastro }) {
                 return;
             }
             localStorage.setItem("id", usuario.id);
+            localStorage.setItem("nome", usuario.nome);
 
             if (usuario.tipo) {
                 localStorage.setItem("tipo", usuario.tipo);

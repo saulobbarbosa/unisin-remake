@@ -1,67 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import Style from "./homeAluno.module.css";
 
 export default function TelaHomeAluno() {
     const navigate = useNavigate();
+    const nomeUser = localStorage.getItem("nome");
+    const [materias, setMaterias] = useState([]);
 
-    const materias = [
-        {
-            id: 1,
-            nome: "Matemática",
-            icone: "calculator",
-            background: "#006bed",
-        },
-        {
-            id: 2,
-            nome: "Português",
-            icone: "book",
-            background: "#16A34A",
-        },
-        {
-            id: 3,
-            nome: "Inglês",
-            icone: "language",
-            background: "#7C3AED",
-        },
-        {
-            id: 4,
-            nome: "História",
-            icone: "landmark",
-            background: "#EA580C",
-        },
-        {
-            id: 5,
-            nome: "Geografia",
-            icone: "globe",
-            background: "#0891B2",
-        },
-        {
-            id: 6,
-            nome: "Química",
-            icone: "flask",
-            background: "#059669",
-        },
-        {
-            id: 7,
-            nome: "Física",
-            icone: "compass-drafting",
-            background: "#1E3A8A",
-        },
-        {
-            id: 8,
-            nome: "Artes",
-            icone: "palette",
-            background: "#DC2626",
-        },
-        {
-            id: 9,
-            nome: "Educação Física",
-            icone: "volleyball",
-            background: "#0F766E",
+    const carregarMaterias = async () => {
+        try {
+            const response = await axios.get("/dadosJson/materias.json");
+            setMaterias(response.data);
+        } catch (error) {
+            console.error("Erro ao carregar matérias", error);
         }
-    ];
+    }
+
+    useEffect(()=>{
+        carregarMaterias();
+    }, []);
 
     return (
         <div className={Style.containerHomeAluno}>
@@ -69,7 +28,7 @@ export default function TelaHomeAluno() {
             <div className={Style.tituloHomeAluno}>
                 <div className={Style.badgeHomeAluno}>
                     <i className="fa-solid fa-certificate"></i>
-                    <p>Olá, Leonardo!</p>
+                    <p>Olá, {nomeUser}!</p>
                 </div>
                 <h1>Escolha uma matéria para estudar</h1>
                 <p>Cada matéria tem sua própria trilha, missões e conquistas.</p>

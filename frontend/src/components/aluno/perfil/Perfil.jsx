@@ -5,65 +5,16 @@ import Style from "./perfil.module.css";
 
 export default function TelaPerfil() {
     const [dadosUser, setDadosUser] = useState([]);
+    const [materias, setMaterias] = useState([]);
 
-    // Estrutura de Dados para pegar matérias
-    const materias = [
-        {
-            id: 1,
-            nome: "Matemática",
-            icone: "calculator",
-            background: "#006bed",
-        },
-        {
-            id: 2,
-            nome: "Português",
-            icone: "book",
-            background: "#16A34A",
-        },
-        {
-            id: 3,
-            nome: "Inglês",
-            icone: "language",
-            background: "#7C3AED",
-        },
-        {
-            id: 4,
-            nome: "História",
-            icone: "landmark",
-            background: "#EA580C",
-        },
-        {
-            id: 5,
-            nome: "Geografia",
-            icone: "globe",
-            background: "#0891B2",
-        },
-        {
-            id: 6,
-            nome: "Química",
-            icone: "flask",
-            background: "#059669",
-        },
-        {
-            id: 7,
-            nome: "Física",
-            icone: "compass-drafting",
-            background: "#1E3A8A",
-        },
-        {
-            id: 8,
-            nome: "Artes",
-            icone: "palette",
-            background: "#DC2626",
-        },
-        {
-            id: 9,
-            nome: "Educação Física",
-            icone: "volleyball",
-            background: "#0F766E",
+    const carregarMaterias = async () => {
+        try{
+            const response = await axios.get("/dadosJson/materias.json");
+            setMaterias(response.data);
+        } catch (error){
+            console.error("Erro ao carregar matérias", error);
         }
-    ];
-
+    }
 
     // Função para carregar os dados do usuario
     const carregarDados = async () => {
@@ -83,6 +34,7 @@ export default function TelaPerfil() {
 
     useEffect(() => {
         carregarDados();
+        carregarMaterias();
     }, []);
 
     return (

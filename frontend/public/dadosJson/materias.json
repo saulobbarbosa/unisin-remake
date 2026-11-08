@@ -1,0 +1,65 @@
+[
+    {
+            "id": 1,
+            "nome": "Matemática",
+            "icone": "calculator",
+            "background": "#006bed",
+            "gradient": "linear-gradient(135deg, #006bed, #003b8e)"
+        },
+        {
+            "id": 2,
+            "nome": "Português",
+            "icone": "book",
+            "background": "#16A34A",
+            "gradient": "linear-gradient(135deg, #16A34A, #14532D)"
+        },
+        {
+            "id": 3,
+            "nome": "Inglês",
+            "icone": "language",
+            "background": "#7C3AED",
+            "gradient": "linear-gradient(135deg, #7C3AED, #4C1D95)"
+        },
+        {
+            "id": 4,
+            "nome": "História",
+            "icone": "landmark",
+            "background": "#EA580C",
+            "gradient": "linear-gradient(135deg, #EA580C, #9A3412)"
+        },
+        {
+            "id": 5,
+            "nome": "Geografia",
+            "icone": "globe",
+            "background": "#0891B2",
+            "gradient": "linear-gradient(135deg, #0891B2, #164E63)"
+        },
+        {
+            "id": 6,
+            "nome": "Química",
+            "icone": "flask",
+            "background": "#059669",
+            "gradient": "linear-gradient(135deg, #059669, #064E3B)"
+        },
+        {
+            "id": 7,
+            "nome": "Física",
+            "icone": "compass-drafting",
+            "background": "#1E3A8A",
+            "gradient": "linear-gradient(135deg, #1E3A8A, #0F172A)"
+        },
+        {
+            "id": 8,
+            "nome": "Artes",
+            "icone": "palette",
+            "background": "#DC2626",
+            "gradient": "linear-gradient(135deg, #DC2626, #7F1D1D)"
+        },
+        {
+            "id": 9,
+            "nome": "Educação Física",
+            "icone": "volleyball",
+            "background": "#0F766E",
+            "gradient": "linear-gradient(135deg, #0F766E, #134E4A)"
+        }
+]
