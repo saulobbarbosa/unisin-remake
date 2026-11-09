@@ -1,0 +1,92 @@
+/* Container Principal */
+.containerResponder {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-inline: 1rem;
+    box-shadow: 0 8px 25px #006bed2e;
+    border-radius: 1rem;
+}
+
+.containerResponder>h1 {
+    font-size: 1.5rem;
+}
+
+/* Estilo para as 4 opções de respostas */
+.divRespostas {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.resposta {
+    display: flex;
+    align-items: center;
+    gap: 1.125rem;
+    border: 0.2rem solid #dde6ee;
+    border-radius: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.resposta:hover {
+    border-color: #0099fa;
+}
+
+.resposta>p {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    color: #8b8b8b;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.resposta>h1 {
+    max-width: 35rem;
+    font-size: 1rem;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+/* Estilos para quando clica em uma opção resposta */
+.respostaAtiva {
+    border-color: #006bed !important;
+}
+
+.respostaAtiva>p {
+    color: #fff !important;
+    background: linear-gradient(135deg, #006bed, #0099fa);
+}
+
+/* Estilo para Botão de Confirmar Resposta */
+.btnConfirmar {
+    width: 11.25rem;
+    height: 2.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 1.125rem;
+    font-weight: bold;
+    font-size: 0.875rem;
+    color: #fff;
+    background: linear-gradient(135deg, #006bed, #0099fa);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btnConfirmar:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btnConfirmar:not(:disabled):hover {
+    transform: scale(1.02);
+}

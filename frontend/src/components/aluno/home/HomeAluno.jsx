@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import Style from "./homeAluno.module.css";
 
 export default function TelaHomeAluno() {
     const navigate = useNavigate();
-    const nomeUser = localStorage.getItem("nome");
+    const location = useLocation();
+    const nomeUser = location.state?.nome;
     const [materias, setMaterias] = useState([]);
 
     const carregarMaterias = async () => {
@@ -18,7 +19,7 @@ export default function TelaHomeAluno() {
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         carregarMaterias();
     }, []);
 
@@ -40,7 +41,11 @@ export default function TelaHomeAluno() {
                         key={materia.id}
                         className={Style.cardMateria}
                         onClick={() => {
-                            navigate(`/aluno/${materia.nome}/${materia.id}`);
+                            navigate(`/aluno/${materia.nome}`, {
+                                state: {
+                                    idMateria: materia.id
+                                }
+                            });
                         }}
                     >
                         <div className={Style.iconeMateria}

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import Style from "./trilha.module.css";
 
 export default function TelaTrilha() {
     const navigate = useNavigate();
-    const { materia, idMateria } = useParams();
+    const location = useLocation();
+    const { materia } = useParams();
+    const idMateria = location.state?.idMateria
     const [atividades, setAtividades] = useState([]);
 
     // Estrutura de Dados para pegar um gradient para matérias
@@ -18,6 +20,10 @@ export default function TelaTrilha() {
     )?.gradient ?? "linear-gradient(135deg, #006bed, #003b8e)";
 
     useEffect(() => {
+        if (!idMateria) {
+            navigate("/aluno/home", { replace: true });
+            return;
+        }
         // Carregar Dados das Atividades
         const carregarDados = async () => {
             try {
@@ -44,7 +50,7 @@ export default function TelaTrilha() {
 
         carregarDados();
         carregarMaterias();
-    }, [materia]);
+    }, [materia, idMateria, navigate]);
 
     return (
         <div className={Style.containerTrilha}>
@@ -73,6 +79,17 @@ export default function TelaTrilha() {
                             <div key={atividade.id}
                                 className={Style.divAtividade}
                                 style={index % 2 !== 0 ? { marginLeft: "8rem" } : {}}
+                                onClick={() => {
+                                    if(atividade.respondida){
+                                        navigate(`/aluno/${materia}/atividade`, {
+                                            state: {
+                                                idMateria,
+                                                idAtividade: atividade.id,
+                                                background: backgroundAtual
+                                            }
+                                        });
+                                    }
+                                }}
                             >
                                 <div className={`
                                     ${Style.divIcon} 

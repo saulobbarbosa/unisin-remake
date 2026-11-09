@@ -18,7 +18,6 @@ export default function CompLogin({ fechar, setMostrarCadastro }) {
                 return;
             }
             localStorage.setItem("id", usuario.id);
-            localStorage.setItem("nome", usuario.nome);
 
             if (usuario.tipo) {
                 localStorage.setItem("tipo", usuario.tipo);
@@ -30,7 +29,11 @@ export default function CompLogin({ fechar, setMostrarCadastro }) {
             } else if (usuario.tipo === "escola") {
                 navigate("/home-escola");
             } else {
-                navigate("/aluno/home");
+                navigate("/aluno/home", {
+                    state: {
+                        nome: usuario.nome
+                    }
+                });
                 localStorage.setItem("tipo", "aluno");
             }
         } catch (error) {

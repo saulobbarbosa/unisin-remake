@@ -67,7 +67,8 @@
       "id": 1,
       "pergunta": "Qual é o plural de 'cidadão'?",
       "respostas": ["cidadões", "cidadãos", "cidadães", "cidades"],
-      "correta": "cidadãos"
+      "correta": "cidadãos",
+      "respondida": true
     },
     {
       "id": 2,
@@ -109,7 +110,8 @@
       "id": 1,
       "pergunta": "What is the past tense of 'go'?",
       "respostas": ["goed", "went", "goes", "going"],
-      "correta": "went"
+      "correta": "went",
+      "respondida": true
     },
     {
       "id": 2,
@@ -141,7 +143,8 @@
       "id": 1,
       "pergunta": "Quem foi o primeiro presidente do Brasil?",
       "respostas": ["Dom Pedro II", "Deodoro da Fonseca", "Getúlio Vargas", "Marechal Floriano"],
-      "correta": "Deodoro da Fonseca"
+      "correta": "Deodoro da Fonseca",
+      "respondida": true
     },
     {
       "id": 2,
@@ -173,7 +176,8 @@
       "id": 1,
       "pergunta": "Qual é o maior país do mundo em extensão territorial?",
       "respostas": ["Brasil", "China", "Rússia", "Canadá"],
-      "correta": "Rússia"
+      "correta": "Rússia",
+      "respondida": true
     },
     {
       "id": 2,
@@ -205,7 +209,8 @@
       "id": 1,
       "pergunta": "Qual é o símbolo químico da água?",
       "respostas": ["O2", "H2O", "CO2", "HO"],
-      "correta": "H2O"
+      "correta": "H2O",
+      "respondida": true
     },
     {
       "id": 2,
@@ -237,7 +242,8 @@
       "id": 1,
       "pergunta": "Qual a unidade de medida da força no SI?",
       "respostas": ["Joule", "Newton", "Pascal", "Watt"],
-      "correta": "Newton"
+      "correta": "Newton",
+      "respondida": true
     },
     {
       "id": 2,
@@ -274,7 +280,8 @@
       "id": 1,
       "pergunta": "Quem pintou a Mona Lisa?",
       "respostas": ["Michelangelo", "Leonardo da Vinci", "Van Gogh", "Picasso"],
-      "correta": "Leonardo da Vinci"
+      "correta": "Leonardo da Vinci",
+      "respondida": true
     },
     {
       "id": 2,
@@ -306,7 +313,8 @@
       "id": 1,
       "pergunta": "Quantos jogadores cada time tem no voleibol?",
       "respostas": ["5", "6", "7", "11"],
-      "correta": "6"
+      "correta": "6",
+      "respondida": true
     },
     {
       "id": 2,

@@ -8,6 +8,7 @@ import Home from "./components/home/Home";
 // Import Telas de Aluno
 import AlunoHome from "./components/aluno/home/HomeAluno";
 import AlunoTrilha from "./components/aluno/trilha/Trilha";
+import AlunoAtividade from "./components/aluno/atividade/Atividade";
 
 import AlunoAmigos from "./components/aluno/amigos/Amigos";
 
@@ -31,10 +32,8 @@ export default function App() {
                 <Route element={<MainLayout />}>
                     {/* Rotas Alunos */}
                     <Route path="/aluno/home" element={<AlunoHome />} />
-                    <Route path="/aluno/:materia/:idMateria" element={<AlunoTrilha />} />
-                    <Route path="/aluno/:materia/:idMateria/atividade/:idAtividade"
-                        element={<h1>Olha a Atividade</h1>}
-                    />
+                    <Route path="/aluno/:materia" element={<AlunoTrilha />} />
+                    <Route path="/aluno/:materia/atividade" element={<AlunoAtividade />} />
 
                     <Route path="/aluno/amigos" element={<AlunoAmigos />} />
                     <Route path="/aluno/lobby/:adversarioId" element={<h1>PVP</h1>} />
