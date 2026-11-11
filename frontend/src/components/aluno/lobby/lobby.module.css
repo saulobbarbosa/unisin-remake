@@ -1,0 +1,99 @@
+/* Container Principal */
+.containerLobby {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 60rem;
+    margin-top: 2rem;
+}
+
+/* Titulo do Inventario */
+.tituloLobby {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.tituloLobby>i {
+    font-size: 2rem;
+    color: #006bed;
+}
+
+.tituloLobby>h1 {
+    font-size: 2.25rem;
+}
+
+/* Estilos para estilizar o a div que mostra os users e as ações */
+.divApresentacao {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border: 0.1rem solid #000;
+    box-shadow: 0 20px 50px -12px #004dc040;
+}
+
+/* Estilo para parte de cima onde tem os users */
+.mostrarUser {
+    display: flex;
+    align-items: center;
+    background-color: aqua;
+}
+
+.mostrarUser>h1 {
+    color: #ee0f1f;
+    flex-shrink: 0;
+    width: 4rem;
+    text-align: center;
+}
+
+.cardUser {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+}
+
+.avatar>img {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 100%;
+}
+
+.texto {
+    text-align: center;
+}
+
+.texto>h1 {
+    font-size: 1.25rem;
+}
+
+.texto>p {
+    font-size: 1rem;
+    color: #54657a;
+    margin-block: 0.5rem;
+}
+
+/* Estilo para parte de baxio onde tem os botões de ação */
+.divBtnAcao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.divBtnAcao>button{
+    width: 10rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
