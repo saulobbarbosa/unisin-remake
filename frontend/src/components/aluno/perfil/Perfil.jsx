@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 import Style from "./perfil.module.css";
@@ -6,36 +7,35 @@ import Style from "./perfil.module.css";
 export default function TelaPerfil() {
     const [dadosUser, setDadosUser] = useState([]);
     const [materias, setMaterias] = useState([]);
-
-    const carregarMaterias = async () => {
-        try{
-            const response = await axios.get("/dadosJson/materias.json");
-            setMaterias(response.data);
-        } catch (error){
-            console.error("Erro ao carregar matérias", error);
-        }
-    }
-
-    // Função para carregar os dados do usuario
-    const carregarDados = async () => {
-        try {
-            const response = await axios.get("/dadosJson/usuarios.json");
-            const idUser = localStorage.getItem("id");
-            const usuario = response.data.find(u => String(u.id) === String(idUser));
-            if (!usuario) {
-                console.error("Usuário não encontrado para o ID:", idUser);
-                return;
-            }
-            setDadosUser(usuario);
-        } catch (error) {
-            console.error("Erro ao Carregar dados", error);
-        }
-    }
+    const { alunoId } = useParams();
 
     useEffect(() => {
+        const carregarMaterias = async () => {
+            try {
+                const response = await axios.get("/dadosJson/materias.json");
+                setMaterias(response.data);
+            } catch (error) {
+                console.error("Erro ao carregar matérias", error);
+            }
+        }
+
+        const carregarDados = async () => {
+            try {
+                const response = await axios.get("/dadosJson/usuarios.json");
+                const usuario = response.data.find(u => String(u.id) === String(alunoId));
+                if (!usuario) {
+                    console.error("Usuário não encontrado para o ID:", alunoId);
+                    return;
+                }
+                setDadosUser(usuario);
+            } catch (error) {
+                console.error("Erro ao Carregar dados", error);
+            }
+        }
+
         carregarDados();
         carregarMaterias();
-    }, []);
+    }, [alunoId]);
 
     return (
         <div className={Style.containerPerfil}>

@@ -7,6 +7,41 @@
     margin-top: 2rem;
 }
 
+/* Estilos para Contagem Regresiva */
+.overlayContagem {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    color: white;
+}
+
+.overlayContagem h1 {
+    font-size: 10rem;
+    margin: 0;
+    animation: aparecer 1s ease;
+}
+
+.overlayContagem p {
+    font-size: 1.5rem;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(2);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 /* Titulo do Inventario */
 .tituloLobby {
     display: flex;
@@ -28,11 +63,10 @@
 .divApresentacao {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
     box-sizing: border-box;
     padding: 2rem;
     border-radius: 1.5rem;
-    border: 0.1rem solid #000;
     box-shadow: 0 20px 50px -12px #004dc040;
 }
 
@@ -40,7 +74,6 @@
 .mostrarUser {
     display: flex;
     align-items: center;
-    background-color: aqua;
 }
 
 .mostrarUser>h1 {
@@ -54,6 +87,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 0.5rem;
     flex: 1;
     min-width: 0;
 }
@@ -65,7 +99,9 @@
 }
 
 .texto {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .texto>h1 {
@@ -78,6 +114,22 @@
     margin-block: 0.5rem;
 }
 
+.texto>span {
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+}
+
+.spanAguardo {
+    color: #fe9a00;
+    background-color: #fef3c6;
+}
+
+.spanPronto {
+    color: #00bc7d;
+    background-color: #d0fae5;
+}
+
 /* Estilo para parte de baxio onde tem os botões de ação */
 .divBtnAcao {
     display: flex;
@@ -86,7 +138,7 @@
     gap: 3rem;
 }
 
-.divBtnAcao>button{
+.divBtnAcao>button {
     width: 10rem;
     height: 3rem;
     display: flex;
@@ -94,6 +146,25 @@
     align-items: center;
     gap: 0.5rem;
     border-radius: 0.8rem;
+    border: none;
     font-size: 1rem;
     font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btnFicarPronto {
+    background: linear-gradient(135deg, #006bed, #0099fa);
+}
+
+.btnPronto {
+    background: #00bc7d;
+}
+
+.btnPlay {
+    background: #fe9a00;
+}
+
+.btnSair {
+    background: #ee0f1f;
 }

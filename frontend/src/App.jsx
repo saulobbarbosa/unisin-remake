@@ -41,8 +41,10 @@ export default function App() {
 
                     <Route path="/aluno/loja" element={<LojaAluno />} />
                     <Route path="/aluno/inventario" element={<InventarioAluno />} />
+                    
                     <Route path="/aluno/conquistas" element={<h1>Olha a Conquistas</h1>} />
                     <Route path="/aluno/ranking" element={<h1>Olha o Ranking</h1>} />
+
                     <Route path="/aluno/perfil/:alunoId" element={<PerfilAluno />} />
                     {/* Rotas Professores */}
                     <Route path="/home-prof" element={<ProfessorAdmin />} />
