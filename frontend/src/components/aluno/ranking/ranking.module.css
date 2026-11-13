@@ -1,0 +1,51 @@
+/* Container Principal */
+.containerRanking {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 45rem;
+    margin-top: 2rem;
+}
+
+/* Titulo do Inventario */
+.tituloRanking {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.tituloRanking>i {
+    font-size: 2rem;
+    color: #fe9a00;
+}
+
+.tituloRanking>h1 {
+    font-size: 2.25rem;
+}
+
+/* Estilos para o menu de trocar o ranking */
+.menuTrocarRanking{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btnMenu{
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btnMenu:hover{
+    background: #d9e4f0;
+}
+
+.menuAtivo{
+    background: linear-gradient(135deg, #006bed, #0099fa) !important;
+    color: #fff;
+}

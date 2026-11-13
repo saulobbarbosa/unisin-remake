@@ -13,10 +13,11 @@ import AlunoAtividade from "./components/aluno/atividade/Atividade";
 import AlunoAmigos from "./components/aluno/amigos/Amigos";
 import AlunoLobby from "./components/aluno/lobby/Lobby";
 
-import LojaAluno from "./components/aluno/loja/Loja";
-import InventarioAluno from "./components/aluno/inventario/Inventario";
+import AlunoLoja from "./components/aluno/loja/Loja";
+import AlunoInventario from "./components/aluno/inventario/Inventario";
 
-import PerfilAluno from "./components/aluno/perfil/Perfil";
+import AlunoRanking from "./components/aluno/ranking/Ranking";
+import AlunoPerfil from "./components/aluno/perfil/Perfil";
 // Import Telas Professores
 import ProfessorAdmin from "./components/admin/professor/Professor";
 // Import Telas Escolas
@@ -39,13 +40,13 @@ export default function App() {
                     <Route path="/aluno/amigos" element={<AlunoAmigos />} />
                     <Route path="/aluno/lobby/:adversarioId" element={<AlunoLobby />} />
 
-                    <Route path="/aluno/loja" element={<LojaAluno />} />
-                    <Route path="/aluno/inventario" element={<InventarioAluno />} />
-                    
-                    <Route path="/aluno/conquistas" element={<h1>Olha a Conquistas</h1>} />
-                    <Route path="/aluno/ranking" element={<h1>Olha o Ranking</h1>} />
+                    <Route path="/aluno/loja" element={<AlunoLoja />} />
+                    <Route path="/aluno/inventario" element={<AlunoInventario />} />
 
-                    <Route path="/aluno/perfil/:alunoId" element={<PerfilAluno />} />
+                    <Route path="/aluno/conquistas" element={<h1>Olha a Conquistas</h1>} />
+                    <Route path="/aluno/ranking" element={<AlunoRanking />} />
+
+                    <Route path="/aluno/perfil/:alunoId" element={<AlunoPerfil />} />
                     {/* Rotas Professores */}
                     <Route path="/home-prof" element={<ProfessorAdmin />} />
                     {/* Rotas Escolas */}
