@@ -90,3 +90,36 @@
 .btnConfirmar:not(:disabled):hover {
     transform: scale(1.02);
 }
+
+/* Feedback de resposta correta */
+.respostaCorreta {
+    border-color: #00bc7d !important;
+}
+
+.respostaCorreta>h1 {
+    color: #00bc7d !important;
+}
+
+.respostaCorreta>p {
+    color: #fff !important;
+    background: #00bc7d !important;
+}
+
+/* Feedback de resposta errada */
+.respostaErrada {
+    border-color: #ee0f1f !important;
+}
+
+.respostaErrada>h1 {
+    color: #ee0f1f !important;
+}
+
+.respostaErrada>p {
+    color: #fff !important;
+    background: #ee0f1f !important;
+}
+
+/* Opacidade das alternativas não selecionadas */
+.respostaOpaca {
+    opacity: 0.4;
+}

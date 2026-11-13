@@ -52,6 +52,9 @@ export default function TelaLobby() {
                     console.error("Usuário não encontrado para o ID:", idUser);
                     return;
                 }
+                if (usuario.id === oponente.id){
+                    navigate("/aluno/home");
+                }
                 setDadosUser(usuario);
                 setDadosOponente(oponente);
             } catch (error) {
@@ -62,7 +65,7 @@ export default function TelaLobby() {
         setPronto(false);
         setOponentePronto(true);
         carregarDados();
-    }, [adversarioId]);
+    }, [adversarioId, navigate]);
 
     return (
         <div className={Style.containerLobby}>

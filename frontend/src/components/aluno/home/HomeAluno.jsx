@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import Style from "./homeAluno.module.css";
 
 export default function TelaHomeAluno() {
     const navigate = useNavigate();
-    const location = useLocation();
-    const nomeUser = location.state?.nome;
+    const nomeUser = localStorage.getItem("nomeUser");
     const [materias, setMaterias] = useState([]);
 
     const carregarMaterias = async () => {
