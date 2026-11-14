@@ -25,13 +25,13 @@
 }
 
 /* Estilos para o menu de trocar o ranking */
-.menuTrocarRanking{
+.menuTrocarRanking {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-.btnMenu{
+.btnMenu {
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 1rem;
@@ -41,11 +41,116 @@
     transition: background 0.3s ease;
 }
 
-.btnMenu:hover{
+.btnMenu:hover {
     background: #d9e4f0;
 }
 
-.menuAtivo{
+.menuAtivo {
     background: linear-gradient(135deg, #006bed, #0099fa) !important;
     color: #fff;
+}
+
+/* Estilos para Listagem do Ranking */
+.divListagem {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cardUser {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    box-sizing: border-box;
+    padding: 1rem;
+    box-shadow: 0 20px 50px -12px #004dc02f;
+    background-color: #fff;
+    border-radius: 0.875rem;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.cardUser:hover {
+    transform: translateY(-0.5rem);
+}
+
+.cardUserAtivo{
+    background-color: #d9e4f0;
+    z-index: 2;
+}
+
+.posicao {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.cardUser:nth-child(1) .posicao {
+    background: #ffb900;
+    color: #fff;
+}
+
+.cardUser:nth-child(2) .posicao {
+    background: #cad5e2;
+    color: #000;
+}
+
+.cardUser:nth-child(3) .posicao {
+    background: #bb4d00;
+    color: #fff;
+}
+
+.infoUser {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.infoUser>img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+}
+
+.nomeNivel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nomeNivel>h1 {
+    font-size: 1.125rem;
+}
+
+.nivel {
+    color: #006aff;
+    font-size: 0.875rem;
+}
+
+.moedas {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: 1.125rem;
+    font-size: 1.125rem;
+    font-weight: bold;
+}
+
+.moedas {
+    background: #fff4cf;
+    color: #a66a00;
+}
+
+.moedas>img {
+    width: 1.125rem;
+    height: 1.125rem;
 }

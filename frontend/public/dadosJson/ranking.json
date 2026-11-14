@@ -1,12 +1,104 @@
 {
   "humanas": [
-    { "id": 1, "nome": "Guilherme Freitas", "moedas": 2500 },
-    { "id": 2, "nome": "Maria Silva", "moedas": 2200 },
-    { "id": 3, "nome": "Lucas Oliveira", "moedas": 2000 }
+    {
+      "id": 1,
+      "nome": "Guilherme Freitas",
+      "moedas": 2500,
+      "nivel": 25,
+      "borda": "#FFD700",
+      "avatar": "/imgs/boy_black.webp"
+    },
+    {
+      "id": 2,
+      "nome": "Maria Silva",
+      "moedas": 2200,
+      "nivel": 22,
+      "borda": "#C0C0C0",
+      "avatar": "/imgs/girl_yellow.webp"
+    },
+    {
+      "id": 3,
+      "nome": "Lucas Oliveira",
+      "moedas": 2000,
+      "nivel": 20,
+      "borda": "#CD7F32",
+      "avatar": "/imgs/boy_red.webp"
+    },
+    {
+      "id": 4,
+      "nome": "Beatriz Souza",
+      "moedas": 1850,
+      "nivel": 18,
+      "borda": "#8A2BE2",
+      "avatar": "/imgs/girl_black.webp"
+    },
+    {
+      "id": 5,
+      "nome": "Rafael Almeida",
+      "moedas": 1700,
+      "nivel": 17,
+      "borda": "#4169E1",
+      "avatar": "/imgs/boy_yellow.webp"
+    },
+    {
+      "id": 6,
+      "nome": "Guilherme",
+      "moedas": 950,
+      "nivel": 9,
+      "borda": "#9370DB",
+      "avatar": "/imgs/boy_yellow.webp"
+    }
   ],
+
+
   "exatas": [
-    { "id": 1, "nome": "João Santos", "moedas": 3000 },
-    { "id": 2, "nome": "Ana Costa", "moedas": 2800 },
-    { "id": 3, "nome": "Pedro Lima", "moedas": 2600 }
+    {
+      "id": 1,
+      "nome": "João Santos",
+      "moedas": 3000,
+      "nivel": 30,
+      "borda": "#FFD700",
+      "avatar": "/imgs/boy_red.webp"
+    },
+    {
+      "id": 2,
+      "nome": "Ana Costa",
+      "moedas": 2800,
+      "nivel": 28,
+      "borda": "#C0C0C0",
+      "avatar": "/imgs/girl_black.webp"
+    },
+    {
+      "id": 3,
+      "nome": "Pedro Lima",
+      "moedas": 2600,
+      "nivel": 26,
+      "borda": "#CD7F32",
+      "avatar": "/imgs/boy_yellow.webp"
+    },
+    {
+      "id": 4,
+      "nome": "Mariana Alves",
+      "moedas": 2350,
+      "nivel": 23,
+      "borda": "#8A2BE2",
+      "avatar": "/imgs/girl_red.webp"
+    },
+    {
+      "id": 5,
+      "nome": "Felipe Rocha",
+      "moedas": 2150,
+      "nivel": 21,
+      "borda": "#4169E1",
+      "avatar": "/imgs/boy_black.webp"
+    },
+    {
+      "id": 6,
+      "nome": "Guilherme",
+      "moedas": 950,
+      "nivel": 9,
+      "borda": "#9370DB",
+      "avatar": "/imgs/girl_yellow.webp"
+    }
   ]
 }

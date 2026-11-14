@@ -5,14 +5,18 @@ import Style from "./ranking.module.css";
 
 export default function TelaRanking() {
     const [menuRank, setMenuRank] = useState("humanas");
-    const [rankHumanas, setRankHumanas] = useState(null);
-    const [rankExatas, setRankExatas] = useState(null);
+    const [rankHumanas, setRankHumanas] = useState([]);
+    const [rankExatas, setRankExatas] = useState([]);
+    const nomeUser = localStorage.getItem("nomeUser");
+
+    // Definir Array a ser Descarregado pelo map
+    const rankingAtual = menuRank === "humanas" ? rankHumanas : rankExatas;
 
     useEffect(() => {
         const carregarRankHumanas = async () => {
             try {
                 const response = await axios.get("/dadosJson/ranking.json");
-                setRankHumanas(response.humanas);
+                setRankHumanas(response.data.humanas);
             } catch (error) {
                 console.error("Erro ao Buscar dados do Rank de Humanas", error);
             }
@@ -20,7 +24,7 @@ export default function TelaRanking() {
         const carregarRankExatas = async () => {
             try {
                 const response = await axios.get("/dadosJson/ranking.json");
-                setRankExatas(response.exatas);
+                setRankExatas(response.data.exatas);
             } catch (error) {
                 console.error("Erro ao Buscar dados do Rank de Exatas", error);
             }
@@ -53,6 +57,37 @@ export default function TelaRanking() {
                 >
                     <p>Exatas</p>
                 </button>
+            </div>
+            <div className={Style.divListagem}>
+                {rankingAtual.map((item, index) => (
+                    <div key={item.id} className={`
+                        ${Style.cardUser}
+                        ${item.nome === nomeUser ? Style.cardUserAtivo : ""}
+                    `}>
+                        <div className={Style.posicao}>
+                            <p>{index + 1}</p>
+                        </div>
+                        <div className={Style.infoUser}>
+                            <img src={item.avatar} alt="Imagem de Avatar do Usuário"
+                                style={{ border: `0.2rem solid ${item.borda}` }}
+                            />
+                            <div className={Style.nomeNivel}>
+                                <h1>
+                                    {item.nome}{" "}
+                                    {item.nome === nomeUser ? "(você)" : ""}
+                                </h1>
+                                <p className={Style.nivel}>
+                                    <i class="fa-solid fa-star"></i>{" "}
+                                    Nv. {item.nivel}
+                                </p>
+                            </div>
+                        </div>
+                        <div className={Style.moedas}>
+                            <img src={require('../../../imgs/moeda.png')} alt="Icon de Moeda" />
+                            <span>{item.moedas}</span>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
