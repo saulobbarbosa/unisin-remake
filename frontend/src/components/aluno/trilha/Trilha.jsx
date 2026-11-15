@@ -4,6 +4,8 @@ import axios from "axios";
 
 import Style from "./trilha.module.css";
 
+import ConquistaRecente from "../conquista-recente/ConquistaRecente";
+
 export default function TelaTrilha() {
     const navigate = useNavigate();
     const location = useLocation();
@@ -118,57 +120,7 @@ export default function TelaTrilha() {
                     </div>
                 </div>
                 {/* Parte das Conquistas */}
-                <div className={Style.divConquistas}>
-                    <div className={Style.tituloConquista}>
-                        <i className="fa-solid fa-trophy"></i>
-                        <h1>Conquistas</h1>
-                    </div>
-                    <div className={Style.listaConquistas}>
-                        {/* Array Map aqui */}
-                        <div className={Style.blocoConquista}>
-                            <p>🥉</p>
-                            <div className={Style.infoConquista}>
-                                <h1>Primeiros passos</h1>
-                                <p>Conclua sua primeira missão.</p>
-                                <div className={Style.barraProgresso}>
-                                    <div
-                                        className={Style.progressoPreenchido}
-                                        style={{ width: "100%" }}
-                                    ></div>
-                                </div>
-                                <p>1/1</p>
-                            </div>
-                        </div>
-                        <div className={Style.blocoConquista}>
-                            <p>🧮</p>
-                            <div className={Style.infoConquista}>
-                                <h1>Calculista</h1>
-                                <p>Acerte 20 questões.</p>
-                                <div className={Style.barraProgresso}>
-                                    <div
-                                        className={Style.progressoPreenchido}
-                                        style={{ width: "50%" }}
-                                    ></div>
-                                </div>
-                                <p>10/20</p>
-                            </div>
-                        </div>
-                        <div className={Style.blocoConquista}>
-                            <p>🏅</p>
-                            <div className={Style.infoConquista}>
-                                <h1>Mestre da Matemática</h1>
-                                <p>Resolva 100 questões.</p>
-                                <div className={Style.barraProgresso}>
-                                    <div
-                                        className={Style.progressoPreenchido}
-                                        style={{ width: "10%" }}
-                                    ></div>
-                                </div>
-                                <p>10/100</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <ConquistaRecente />
             </div>
         </div >
     );
