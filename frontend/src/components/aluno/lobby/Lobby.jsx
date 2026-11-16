@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 import socket from "../../../services/socket";
 
 import Style from "./lobby.module.css";
-import axios from "axios";
 
 export default function TelaLobby() {
     const navigate = useNavigate();

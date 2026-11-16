@@ -1,0 +1,87 @@
+/* Container Principal */
+.containerPvp {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 60rem;
+    margin-top: 2rem;
+}
+
+/* Titulo do Pvp */
+.tituloPvp {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.tituloPvp>i {
+    font-size: 2rem;
+    color: #006bed;
+}
+
+.tituloPvp>h1 {
+    font-size: 2.25rem;
+}
+
+/* Estilos para mostrar a Pontuação do Pvp */
+.divPontuacao {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 0.1rem solid #006bed46;
+    border-radius: 1rem;
+}
+
+.divPlayer {
+    width: 40%;
+}
+
+.player {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.player>img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+}
+
+.textoPlayer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.textoPlayer>h1 {
+    font-size: 1rem;
+}
+
+.textoPlayer>p {
+    font-size: 0.875rem;
+    color: #54657a;
+}
+
+.barraProgresso {
+    width: 100%;
+    height: 0.5rem;
+    border-radius: 5rem;
+    margin-top: 0.6rem;
+    background-color: #e0e0e0;
+}
+
+.versus{
+    color: #ee0f1f;
+}
+
+/* Pequeno estilo para mostrar quantas perguntas são */
+.qtdPerguntas{
+    align-self: flex-start;
+    font-size: 1.125rem;
+}

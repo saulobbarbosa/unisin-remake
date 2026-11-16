@@ -12,6 +12,7 @@ import AlunoAtividade from "./components/aluno/atividade/Atividade";
 
 import AlunoAmigos from "./components/aluno/amigos/Amigos";
 import AlunoLobby from "./components/aluno/lobby/Lobby";
+import AlunoPvp from "./components/aluno/pvp/Pvp";
 
 import AlunoLoja from "./components/aluno/loja/Loja";
 import AlunoInventario from "./components/aluno/inventario/Inventario";
@@ -39,6 +40,7 @@ export default function App() {
 
                     <Route path="/aluno/amigos" element={<AlunoAmigos />} />
                     <Route path="/aluno/lobby" element={<AlunoLobby />} />
+                    <Route path="/aluno/pvp/:idUser/:adversarioId" element={<AlunoPvp />} />
 
                     <Route path="/aluno/loja" element={<AlunoLoja />} />
                     <Route path="/aluno/inventario" element={<AlunoInventario />} />

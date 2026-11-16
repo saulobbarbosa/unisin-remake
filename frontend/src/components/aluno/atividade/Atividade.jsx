@@ -4,15 +4,14 @@ import axios from "axios";
 
 import Style from "./atividade.module.css";
 
-// import de componente
-import Responder from "../responder/Responder";
-
 export default function TelaAtividade() {
     const navigate = useNavigate();
     const location = useLocation();
     const dadosState = location?.state || {};
     const { materia } = useParams();
     const [pergunta, setPergunta] = useState([]);
+    const [respostaSelecionada, setRespostaSelecionada] = useState(null);
+    const [respondida, setRespondida] = useState(false);
 
     useEffect(() => {
         const carregarAtividade = async () => {
@@ -26,9 +25,16 @@ export default function TelaAtividade() {
                 console.error("Erro ao carregar dados da atividade", error);
             }
         }
-
         carregarAtividade();
-    }, [materia, dadosState.idAtividade, navigate]);
+    }, [materia, dadosState.idAtividade]);
+
+    useEffect(() => {
+        setRespostaSelecionada(null);
+        setRespondida(false);
+    }, [pergunta?.id]);
+
+    const acertou = respostaSelecionada !== null &&
+        pergunta?.respostas?.[respostaSelecionada] === pergunta?.correta;
 
     return (
         <div className={Style.containerAtividade}>
@@ -42,7 +48,38 @@ export default function TelaAtividade() {
             >
                 <h1>{materia}</h1>
             </div>
-            <Responder pergunta={pergunta} />
+            <div className={Style.containerResponder}>
+                <h1>{pergunta?.pergunta}</h1>
+                <div className={Style.divRespostas}>
+                    {pergunta?.respostas?.map((item, index) => {
+                        const correta = item === pergunta?.correta;
+                        const selecionada = respostaSelecionada === index;
+                        return (
+                            <button type="button" key={index}
+                                disabled={respondida}
+                                className={`
+                                    ${Style.resposta} 
+                                    ${respostaSelecionada === index ? Style.respostaAtiva : ""}
+                                    ${respondida && correta ? Style.respostaCorreta : ""}
+                                    ${respondida && selecionada && !acertou ? Style.respostaErrada : ""}
+                                    ${respondida && !correta && !selecionada ? Style.respostaOpaca : ""}
+                                `}
+                                onClick={() => setRespostaSelecionada(index)}
+                            >
+                                <p>{String.fromCharCode(65 + index)}</p>
+                                <h1>{item}</h1>
+                            </button>
+                        )
+                    })}
+                </div>
+                <button
+                    disabled={respostaSelecionada === null || respondida}
+                    className={Style.btnConfirmar}
+                    onClick={() => { setRespondida(true) }}
+                >
+                    <p>{respondida ? "Resposta Confirmada" : "Confirmar resposta"}</p>
+                </button>
+            </div>
         </div>
     );
 }
