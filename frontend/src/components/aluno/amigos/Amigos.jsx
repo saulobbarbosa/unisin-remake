@@ -1,17 +1,101 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
+import socket from "../../../services/socket";
 
 import Style from "./amigos.module.css";
 
 export default function TelaAmigos() {
+    const navigate = useNavigate();
     const [dadosAmigos, setDadosAmigos] = useState([]);
     const [solicitacoes, setSolicitacoes] = useState([]);
+    const [convitesPvP, setConvitesPvP] = useState([]);
     const [modalAdicionar, setModalAdicionar] = useState(false);
     const [pesquisa, setPesquisa] = useState("");
     const [solicitacoesEnviadas, setSolicitacoesEnviadas] = useState([]);
     const [menuAberto, setMenuAberto] = useState(null);
     const [aba, setAba] = useState("amigos");
+    const idUser = localStorage.getItem("id");
 
+    // Teste de SocketIO
+    useEffect(() => {
+        socket.connect();
+
+        socket.on("connect", () => {
+            console.log("Conectado ao Socket.IO:", socket.id);
+            socket.emit("usuario:registrar", idUser);
+        });
+
+        socket.on("pvp:convite", (dados) => {
+            console.log("Convite PvP recebido:", dados);
+            setConvitesPvP(prev => [...prev, dados]);
+        });
+
+        socket.on("pvp:erro", (mensagem) => {
+            console.log("Erro no convite:", mensagem);
+        });
+
+        socket.on("pvp:resposta", (dados) => {
+            console.log("Resposta do convite PvP:", dados);
+
+            if (dados.aceito) {
+                console.log(`O jogador ${dados.jogadorId} aceitou seu convite!`);
+            } else {
+                console.log(`O jogador ${dados.jogadorId} recusou seu convite.`);
+            }
+        });
+
+        const entrarNoLobby = (dados) => {
+            console.log("Entrando no lobby:", dados);
+
+            navigate("/aluno/lobby", {
+                state: {
+                    idUser: dados.idUser,
+                    adversarioId: dados.adversarioId,
+                    lobbyId: dados.lobbyId
+                }
+            });
+        };
+
+        return () => {
+            socket.off("connect");
+            socket.off("pvp:convite");
+            socket.off("pvp:erro");
+            socket.off("pvp:resposta");
+            socket.on("lobby:entrar", entrarNoLobby);
+            socket.disconnect();
+        };
+    }, [idUser, navigate]);
+
+    const convidarParaPvP = (amigoId) => {
+        socket.emit("pvp:convidar", {
+            idUser,
+            adversarioId: String(amigoId)
+        });
+        console.log("Convite PvP enviado", {
+            idUser,
+            adversarioId: String(amigoId)
+        });
+    };
+
+    const responderConvitePvP = (convite, aceito) => {
+        socket.emit("pvp:responder", {
+            convidanteId: String(convite.idUser),
+            aceito
+        });
+
+        setConvitesPvP(prev =>
+            prev.filter(item => item !== convite)
+        );
+
+        console.log("Resposta ao convite PvP enviada:", {
+            convidanteId: convite.idUser,
+            aceito
+        });
+    };
+
+    // Código Leo
     const carregarDados = async () => {
         try {
             const response = await axios.get("/dadosJson/usuarios.json");
@@ -52,10 +136,6 @@ export default function TelaAmigos() {
         setDadosAmigos(prev => prev.filter(amigo => amigo.id !== id));
     };
 
-    const convidarParaPvP = (amigo) => {
-        console.log("Convite para PvP enviado para:", amigo.nome);
-    };
-
     return (
         <div className={Style.pagina}>
             <main className={Style.conteudo}>
@@ -89,7 +169,7 @@ export default function TelaAmigos() {
                         className={aba === "solicitacoes" ? Style.abaAtiva : ""}
                         onClick={() => setAba("solicitacoes")}
                     >
-                        Solicitações ({solicitacoes.length})
+                        Solicitações ({solicitacoes.length + convitesPvP.length})
                     </button>
                 </div>
 
@@ -102,6 +182,9 @@ export default function TelaAmigos() {
                                     <img
                                         src={amigo.avatar}
                                         alt={`Avatar de ${amigo.nome}`}
+                                        style={{
+                                            border: `0.2rem solid ${amigo.borda}`
+                                        }}
                                     />
                                 </div>
 
@@ -126,14 +209,14 @@ export default function TelaAmigos() {
                                 <div className={Style.menuContainer}>
                                     <button className={Style.btnMenu}
                                         onClick={() => setMenuAberto(menuAberto === amigo.id ? null : amigo.id)}>
-                                        ⋮
+                                        <i className="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
 
                                     {menuAberto === amigo.id && (
                                         <div className={Style.menuOpcoes}>
 
                                             <button onClick={() => {
-                                                convidarParaPvP(amigo);
+                                                convidarParaPvP(amigo.id);
                                                 setMenuAberto(null);
                                             }}>
                                                 <i className="fa-solid fa-gamepad"></i>
@@ -160,28 +243,62 @@ export default function TelaAmigos() {
                 )}
                 {aba === "solicitacoes" && (
                     <div className={Style.lista}>
+                        {convitesPvP.map((convite, index) => {
+                            const jogador = dadosAmigos.find(
+                                usuario => String(usuario.id) === String(convite.idUser)
+                            );
+
+                            return (
+                                <div key={`pvp-${index}`} className={Style.cardAmigo}>
+
+                                    <div className={Style.avatarAmigo}>
+                                        <img src={jogador?.avatar} alt={jogador?.nome || "Jogador"}
+                                            style={{ border: `0.2rem solid ${jogador?.borda || "transparent"}` }}
+                                        />
+                                    </div>
+
+                                    <div className={Style.infoAmigo}>
+                                        <h3>{jogador?.nome}</h3>
+                                        <span className={Style.nivelAmigo}
+                                            style={{ color: "#e74c3c !important" }}
+                                        >
+                                            Convite de PvP
+                                        </span>
+                                    </div>
+
+                                    <div className={Style.acoesSolicitacao}>
+                                        <button onClick={() => { responderConvitePvP(convite, true) }}>
+                                            Aceitar
+                                        </button>
+
+                                        <button onClick={() => { responderConvitePvP(convite, false) }}>
+                                            Recusar
+                                        </button>
+                                    </div>
+
+                                </div>
+                            );
+                        })}
                         {solicitacoes.map(amigo => (
                             <div key={amigo.id} className={Style.cardAmigo}>
 
                                 <div className={Style.avatarAmigo}>
-                                    <img src={amigo.avatar} alt={amigo.nome} />
+                                    <img src={amigo.avatar} alt={amigo.nome}
+                                        style={{ border: `0.2rem solid ${amigo.borda}` }}
+                                    />
                                 </div>
 
                                 <div className={Style.infoAmigo}>
                                     <h3>{amigo.nome}</h3>
-
                                     <span className={Style.nivelAmigo}>
-                                        <i className="fa-solid fa-star"></i>
-                                        Nv. {amigo.nivel}
+                                        Pedido de Amizade
                                     </span>
-
                                 </div>
 
                                 <div className={Style.acoesSolicitacao}>
                                     <button onClick={() => aceitarSolicitacao(amigo)}>
                                         Aceitar
                                     </button>
-
                                     <button onClick={() => recusarSolicitacao(amigo.id)}>
                                         Recusar
                                     </button>
@@ -190,7 +307,7 @@ export default function TelaAmigos() {
                             </div>
                         ))}
 
-                        {solicitacoes.length === 0 && (
+                        {solicitacoes.length === 0 && convitesPvP.length === 0 && (
                             <p>Nenhuma solicitação pendente.</p>
                         )}
                     </div>

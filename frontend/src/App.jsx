@@ -38,7 +38,7 @@ export default function App() {
                     <Route path="/aluno/:materia/atividade" element={<AlunoAtividade />} />
 
                     <Route path="/aluno/amigos" element={<AlunoAmigos />} />
-                    <Route path="/aluno/lobby/:adversarioId" element={<AlunoLobby />} />
+                    <Route path="/aluno/lobby" element={<AlunoLobby />} />
 
                     <Route path="/aluno/loja" element={<AlunoLoja />} />
                     <Route path="/aluno/inventario" element={<AlunoInventario />} />

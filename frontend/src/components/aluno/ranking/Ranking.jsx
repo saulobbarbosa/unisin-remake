@@ -77,7 +77,7 @@ export default function TelaRanking() {
                                     {item.nome === nomeUser ? "(você)" : ""}
                                 </h1>
                                 <p className={Style.nivel}>
-                                    <i class="fa-solid fa-star"></i>{" "}
+                                    <i className="fa-solid fa-star"></i>{" "}
                                     Nv. {item.nivel}
                                 </p>
                             </div>

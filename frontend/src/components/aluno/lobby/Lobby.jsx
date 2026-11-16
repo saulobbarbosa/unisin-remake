@@ -1,16 +1,62 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import socket from "../../../services/socket";
 
 import Style from "./lobby.module.css";
 import axios from "axios";
 
 export default function TelaLobby() {
     const navigate = useNavigate();
-    const { adversarioId } = useParams();
-    const [pronto, setPronto] = useState();
-    const [oponentePronto, setOponentePronto] = useState();
+    const location = useLocation();
+    const { idUser, adversarioId, lobbyId } = location.state || {};
+    const [pronto, setPronto] = useState(false);
+    const [oponentePronto, setOponentePronto] = useState(false);
     const [dadosUser, setDadosUser] = useState([]);
     const [dadosOponente, setDadosOponente] = useState([]);
+
+    // Funções para SocketIO
+    useEffect(() => {
+        const conectarLobby = () => {
+            console.log("Conectado ao lobby:", socket.id);
+            socket.emit("usuario:registrar", String(idUser));
+            socket.emit("lobby:reentrar", {
+                lobbyId,
+                idUser: String(idUser)
+            });
+        };
+        const atualizarEstadoLobby = (dados) => {
+            const jogadoresProntos = dados.prontos || [];
+            setPronto(jogadoresProntos.includes(String(idUser)));
+            setOponentePronto(jogadoresProntos.includes(String(adversarioId)));
+        };
+        const erroLobby = (mensagem) => {
+            console.error("Erro ao entrar no lobby:", mensagem);
+        };
+        socket.on("connect", conectarLobby);
+        socket.on("lobby:estado", atualizarEstadoLobby);
+        socket.on("lobby:erro", erroLobby);
+        if (socket.connected) {
+            conectarLobby();
+        } else {
+            socket.connect();
+        }
+        return () => {
+            socket.off("connect", conectarLobby);
+            socket.off("lobby:estado", atualizarEstadoLobby);
+            socket.off("lobby:erro", erroLobby);
+            socket.disconnect();
+        };
+    }, [idUser, adversarioId, lobbyId]);
+
+    // Função de Toggle do Pronto dos usuários
+    const alternarPronto = () => {
+        if (!socket.connected || !lobbyId) return;
+
+        socket.emit("lobby:pronto", {
+            lobbyId,
+            pronto: !pronto
+        });
+    };
 
     // Funções para fazer uma contagem regresiva aparecer
     const [contagem, setContagem] = useState(null);
@@ -45,15 +91,11 @@ export default function TelaLobby() {
         const carregarDados = async () => {
             try {
                 const response = await axios.get("/dadosJson/usuarios.json");
-                const idUser = localStorage.getItem("id");
                 const usuario = response.data.find(u => String(u.id) === String(idUser));
                 const oponente = response.data.find(u => String(u.id) === String(adversarioId));
                 if (!usuario || !oponente) {
-                    console.error("Usuário não encontrado para o ID:", idUser);
+                    console.error("Usuário não encontrado");
                     return;
-                }
-                if (usuario.id === oponente.id){
-                    navigate("/aluno/home");
                 }
                 setDadosUser(usuario);
                 setDadosOponente(oponente);
@@ -61,11 +103,8 @@ export default function TelaLobby() {
                 console.error("Erro ao Carregar dados", error);
             }
         }
-
-        setPronto(false);
-        setOponentePronto(true);
         carregarDados();
-    }, [adversarioId, navigate]);
+    }, [idUser, adversarioId]);
 
     return (
         <div className={Style.containerLobby}>
@@ -75,6 +114,7 @@ export default function TelaLobby() {
             </div>
             <div className={Style.divApresentacao}>
                 <div className={Style.mostrarUser}>
+                    {/* User 1 */}
                     <div className={Style.cardUser}>
                         <div className={Style.avatar}>
                             <img src={dadosUser?.avatar} alt="Avatar Usuário"
@@ -92,6 +132,7 @@ export default function TelaLobby() {
                         </div>
                     </div>
                     <h1>VS</h1>
+                    {/* User 2 */}
                     <div className={Style.cardUser}>
                         <div className={Style.avatar}>
                             <img src={dadosOponente?.avatar} alt="Avatar Usuário"
@@ -101,8 +142,10 @@ export default function TelaLobby() {
                         <div className={Style.texto}>
                             <h1>{dadosOponente?.nome}</h1>
                             <p>Nv. {dadosOponente?.nivel}</p>
-                            <span className={Style.spanPronto}>
-                                Pronto
+                            <span
+                                className={oponentePronto ? Style.spanPronto : Style.spanAguardo}
+                            >
+                                {oponentePronto ? "Pronto" : "Aguardando..."}
                             </span>
                         </div>
                     </div>
@@ -110,14 +153,14 @@ export default function TelaLobby() {
                 <div className={Style.divBtnAcao}>
                     {pronto ? (
                         <button className={Style.btnPronto}
-                            onClick={() => { setPronto(!pronto) }}
+                            onClick={() => { alternarPronto() }}
                         >
                             <i className="fa-solid fa-check"></i>
                             <p>Pronto!</p>
                         </button>
                     ) : (
                         <button className={Style.btnFicarPronto}
-                            onClick={() => { setPronto(!pronto) }}
+                            onClick={() => { alternarPronto() }}
                         >
                             <p>Estou Pronto</p>
                         </button>
