@@ -223,6 +223,14 @@ export default function TelaAmigos() {
                                                 Convidar para PvP
                                             </button>
 
+                                            <button 
+                                                className={Style.btnVerPerfil}
+                                                onClick={() => { navigate(`/aluno/perfil/${amigo.id}`) }}
+                                            >
+                                                <i className="fa-solid fa-user"></i>
+                                                Ver Perfil
+                                            </button>
+
                                             <button
                                                 className={Style.btnDesfazer}
                                                 onClick={() => {

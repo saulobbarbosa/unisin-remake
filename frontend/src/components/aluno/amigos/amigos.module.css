@@ -426,7 +426,7 @@
 
 .menuOpcoes {
     position: absolute;
-    top: -2.5rem;
+    top: -3.7rem;
     right: 2.5rem;
     width: 11rem;
     background: white;
@@ -458,6 +458,11 @@
 }
 .menuOpcoes button:hover {
     background-color: #f1f5f9;
+}
+
+.menuOpcoes .btnVerPerfil{
+    color: #8B5CF6;
+    font-weight: 550;
 }
 
 .menuOpcoes .btnDesfazer {
