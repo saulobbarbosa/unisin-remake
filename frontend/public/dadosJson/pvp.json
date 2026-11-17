@@ -1,0 +1,332 @@
+[
+    {
+        "id": 1,
+        "pergunta": "Quanto é 7 × 8?",
+        "respostas": [
+            "54",
+            "56",
+            "58",
+            "60"
+        ],
+        "correta": "56"
+    },
+    {
+        "id": 2,
+        "pergunta": "Qual é a raiz quadrada de 81?",
+        "respostas": [
+            "9",
+            "8",
+            "7",
+            "6"
+        ],
+        "correta": "9"
+    },
+    {
+        "id": 3,
+        "pergunta": "Qual é o plural de 'cidadão'?",
+        "respostas": [
+            "cidadões",
+            "cidadãos",
+            "cidadães",
+            "cidades"
+        ],
+        "correta": "cidadãos"
+    },
+    {
+        "id": 4,
+        "pergunta": "What is the past tense of 'go'?",
+        "respostas": [
+            "goed",
+            "went",
+            "goes",
+            "going"
+        ],
+        "correta": "went"
+    },
+    {
+        "id": 5,
+        "pergunta": "Qual é o maior país do mundo em extensão territorial?",
+        "respostas": [
+            "Brasil",
+            "China",
+            "Rússia",
+            "Canadá"
+        ],
+        "correta": "Rússia"
+    },
+    {
+        "id": 6,
+        "pergunta": "Qual é o símbolo químico da água?",
+        "respostas": [
+            "O2",
+            "H2O",
+            "CO2",
+            "HO"
+        ],
+        "correta": "H2O"
+    },
+    {
+        "id": 7,
+        "pergunta": "Qual é a unidade de medida da força no SI?",
+        "respostas": [
+            "Joule",
+            "Newton",
+            "Pascal",
+            "Watt"
+        ],
+        "correta": "Newton"
+    },
+    {
+        "id": 8,
+        "pergunta": "Quem pintou a Mona Lisa?",
+        "respostas": [
+            "Michelangelo",
+            "Leonardo da Vinci",
+            "Van Gogh",
+            "Picasso"
+        ],
+        "correta": "Leonardo da Vinci"
+    },
+    {
+        "id": 9,
+        "pergunta": "Quantos jogadores cada time tem em quadra no voleibol?",
+        "respostas": [
+            "5",
+            "6",
+            "7",
+            "11"
+        ],
+        "correta": "6"
+    },
+    {
+        "id": 10,
+        "pergunta": "Qual é a capital da França?",
+        "respostas": [
+            "Londres",
+            "Madri",
+            "Paris",
+            "Roma"
+        ],
+        "correta": "Paris"
+    },
+    {
+        "id": 11,
+        "pergunta": "Qual é o próximo número na sequência: 2, 4, 8, 16, ...?",
+        "respostas": [
+            "20",
+            "24",
+            "32",
+            "36"
+        ],
+        "correta": "32"
+    },
+    {
+        "id": 12,
+        "pergunta": "Resolva: 5² + 3²",
+        "respostas": [
+            "25",
+            "34",
+            "50",
+            "35"
+        ],
+        "correta": "34"
+    },
+    {
+        "id": 13,
+        "pergunta": "Qual é o perímetro de um quadrado de lado 7 cm?",
+        "respostas": [
+            "21 cm",
+            "28 cm",
+            "49 cm",
+            "14 cm"
+        ],
+        "correta": "28 cm"
+    },
+    {
+        "id": 14,
+        "pergunta": "Qual é a área de um triângulo com base 10 cm e altura 5 cm?",
+        "respostas": [
+            "25 cm²",
+            "50 cm²",
+            "15 cm²",
+            "30 cm²"
+        ],
+        "correta": "25 cm²"
+    },
+    {
+        "id": 15,
+        "pergunta": "Assinale a frase com concordância correta:",
+        "respostas": [
+            "As menina foi ao parque",
+            "As meninas foram ao parque",
+            "As meninas foi ao parque",
+            "As menina foram ao parque"
+        ],
+        "correta": "As meninas foram ao parque"
+    },
+    {
+        "id": 16,
+        "pergunta": "Choose the correct article: ___ apple a day keeps the doctor away.",
+        "respostas": [
+            "A",
+            "An",
+            "The",
+            "No article"
+        ],
+        "correta": "An"
+    },
+    {
+        "id": 17,
+        "pergunta": "Em que ano o Brasil proclamou a República?",
+        "respostas": [
+            "1889",
+            "1822",
+            "1500",
+            "1930"
+        ],
+        "correta": "1889"
+    },
+    {
+        "id": 18,
+        "pergunta": "Qual é o número atômico do carbono?",
+        "respostas": [
+            "6",
+            "12",
+            "8",
+            "14"
+        ],
+        "correta": "6"
+    },
+    {
+        "id": 19,
+        "pergunta": "O que é energia cinética?",
+        "respostas": [
+            "Energia armazenada",
+            "Energia do movimento",
+            "Energia térmica",
+            "Energia nuclear"
+        ],
+        "correta": "Energia do movimento"
+    },
+    {
+        "id": 20,
+        "pergunta": "Qual artista é famoso pelo movimento impressionista?",
+        "respostas": [
+            "Monet",
+            "Picasso",
+            "Da Vinci",
+            "Van Gogh"
+        ],
+        "correta": "Monet"
+    },
+    {
+        "id": 21,
+        "pergunta": "Quanto é 2³ × 3²?",
+        "respostas": [
+            "36",
+            "72",
+            "18",
+            "54"
+        ],
+        "correta": "72"
+    },
+    {
+        "id": 22,
+        "pergunta": "Qual é o valor aproximado de π?",
+        "respostas": [
+            "3,14",
+            "2,71",
+            "3,41",
+            "3,50"
+        ],
+        "correta": "3,14"
+    },
+    {
+        "id": 23,
+        "pergunta": "Qual é a capital da Austrália?",
+        "respostas": [
+            "Sydney",
+            "Canberra",
+            "Melbourne",
+            "Brisbane"
+        ],
+        "correta": "Canberra"
+    },
+    {
+        "id": 24,
+        "pergunta": "Qual é o ácido presente no estômago humano?",
+        "respostas": [
+            "HCl",
+            "H2SO4",
+            "HNO3",
+            "CH3COOH"
+        ],
+        "correta": "HCl"
+    },
+    {
+        "id": 25,
+        "pergunta": "Qual é a aceleração aproximada da gravidade na Terra?",
+        "respostas": [
+            "9,8 m/s²",
+            "10 m/s²",
+            "9,0 m/s²",
+            "9,81 km/s²"
+        ],
+        "correta": "9,8 m/s²"
+    },
+    {
+        "id": 26,
+        "pergunta": "Quem pintou 'O Nascimento de Vênus'?",
+        "respostas": [
+            "Botticelli",
+            "Michelangelo",
+            "Da Vinci",
+            "Rembrandt"
+        ],
+        "correta": "Botticelli"
+    },
+    {
+        "id": 27,
+        "pergunta": "Qual é o menor país do mundo?",
+        "respostas": [
+            "Mônaco",
+            "Vaticano",
+            "San Marino",
+            "Liechtenstein"
+        ],
+        "correta": "Vaticano"
+    },
+    {
+        "id": 28,
+        "pergunta": "Qual é o resultado de 144 ÷ 12 + 7 × 3?",
+        "respostas": [
+            "33",
+            "27",
+            "39",
+            "45"
+        ],
+        "correta": "33"
+    },
+    {
+        "id": 29,
+        "pergunta": "Qual destas palavras é um exemplo de parônimo?",
+        "respostas": [
+            "Comprimento e cumprimento",
+            "Casa e lar",
+            "Bonito e belo",
+            "Grande e pequeno"
+        ],
+        "correta": "Comprimento e cumprimento"
+    },
+    {
+        "id": 30,
+        "pergunta": "Qual é a unidade de medida da pressão no Sistema Internacional?",
+        "respostas": [
+            "Pascal",
+            "Newton",
+            "Joule",
+            "Watt"
+        ],
+        "correta": "Pascal"
+    }
+]
