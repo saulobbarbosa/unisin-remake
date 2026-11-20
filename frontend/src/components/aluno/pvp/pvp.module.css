@@ -1,3 +1,43 @@
+/* Estilos para Mostrar Vencedor */
+.overlayVencedor {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    color: white;
+}
+
+.overlayVencedor>h1 {
+    font-size: 8rem;
+    margin: 0;
+    animation: aparecer 1s ease;
+}
+
+.overlayVencedor>h2 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.overlayVencedor>p {
+    font-size: 1.5rem;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(2);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 /* Container Principal */
 .containerPvp {
     display: flex;
@@ -82,12 +122,12 @@
     transition: width 0.3s ease;
 }
 
-.versus{
+.versus {
     color: #ee0f1f;
 }
 
 /* Pequeno estilo para mostrar quantas perguntas são */
-.qtdPerguntas{
+.qtdPerguntas {
     align-self: flex-start;
     font-size: 1.125rem;
 }

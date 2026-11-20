@@ -13,12 +13,12 @@ export default function TelaLobby() {
     const [oponentePronto, setOponentePronto] = useState(false);
     const [dadosUser, setDadosUser] = useState([]);
     const [dadosOponente, setDadosOponente] = useState([]);
+    const [contagem, setContagem] = useState(null);
 
     // Funções para SocketIO
     useEffect(() => {
         const conectarLobby = () => {
             console.log("Conectado ao lobby:", socket.id);
-            socket.emit("usuario:registrar", String(idUser));
             socket.emit("lobby:reentrar", {
                 lobbyId,
                 idUser: String(idUser)
@@ -29,24 +29,42 @@ export default function TelaLobby() {
             setPronto(jogadoresProntos.includes(String(idUser)));
             setOponentePronto(jogadoresProntos.includes(String(adversarioId)));
         };
+        const iniciarPvp = (dados) => {
+            console.log("PvP iniciado:", dados);
+            navigate("/aluno/pvp", {
+                state: {
+                    idUser,
+                    adversarioId,
+                    partidaId: dados.partidaId,
+                    perguntas: dados.perguntas
+                }
+            });
+        };
+        const atualizarContagem = (numero) => {
+            setContagem(numero);
+        };
         const erroLobby = (mensagem) => {
             console.error("Erro ao entrar no lobby:", mensagem);
         };
+
         socket.on("connect", conectarLobby);
         socket.on("lobby:estado", atualizarEstadoLobby);
+        socket.on("pvp:iniciar", iniciarPvp);
+        socket.on("lobby:contagem", atualizarContagem);
         socket.on("lobby:erro", erroLobby);
+
         if (socket.connected) {
             conectarLobby();
-        } else {
-            socket.connect();
         }
+
         return () => {
             socket.off("connect", conectarLobby);
             socket.off("lobby:estado", atualizarEstadoLobby);
+            socket.off("pvp:iniciar", iniciarPvp);
+            socket.off("lobby:contagem", atualizarContagem);
             socket.off("lobby:erro", erroLobby);
-            socket.disconnect();
         };
-    }, [idUser, adversarioId, lobbyId]);
+    }, [idUser, adversarioId, lobbyId, navigate]);
 
     // Função de Toggle do Pronto dos usuários
     const alternarPronto = () => {
@@ -59,31 +77,22 @@ export default function TelaLobby() {
     };
 
     // Funções para fazer uma contagem regresiva aparecer
-    const [contagem, setContagem] = useState(null);
-
     useEffect(() => {
-        if (contagem === null) return;
-
-        if (contagem === 1) {
-            const timer = setTimeout(() => {
-                // Trocar dps para rota de pvp real
-                navigate(`/aluno/pvp/${adversarioId}`);
-            }, 1000);
-
-            return () => clearTimeout(timer);
-        }
+        if (contagem !== 1) return;
 
         const timer = setTimeout(() => {
-            setContagem(atual => atual - 1);
+            setContagem(null);
         }, 1000);
 
         return () => clearTimeout(timer);
-    }, [contagem, adversarioId, navigate]);
+    }, [contagem]);
 
     const iniciarBatalha = () => {
         if (!pronto || !oponentePronto || contagem !== null) return;
 
-        setContagem(3);
+        socket.emit("lobby:iniciar", {
+            lobbyId
+        });
     };
 
     // Carregar dados Principais quando renderizar componente
@@ -166,10 +175,10 @@ export default function TelaLobby() {
                         </button>
                     )}
                     <button className={Style.btnPlay}
-                        disabled={!pronto || !oponentePronto}
+                        disabled={!pronto || !oponentePronto || contagem !== null}
                         style={{
-                            opacity: pronto && oponentePronto ? "1" : "0.5",
-                            cursor: pronto && oponentePronto ? "pointer" : "not-allowed"
+                            opacity: pronto && oponentePronto && contagem === null ? "1" : "0.5",
+                            cursor: pronto && oponentePronto && contagem === null ? "pointer" : "not-allowed"
                         }}
                         onClick={() => { iniciarBatalha() }}
                     >

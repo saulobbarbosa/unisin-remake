@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 
+import { desconectarSocket } from "../../../services/socket";
+
 import Style from "./barraLateral.module.css";
 
 export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUser }) {
@@ -18,7 +20,9 @@ export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUse
     // Função Logout
     const logout = () => {
         try {
+            desconectarSocket();
             localStorage.removeItem("id");
+            localStorage.removeItem("nomeUser");
             localStorage.removeItem("tipo");
             navigate("/");
         } catch (error) {

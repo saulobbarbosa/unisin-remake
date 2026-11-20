@@ -20,23 +20,14 @@ export default function TelaAmigos() {
 
     // Teste de SocketIO
     useEffect(() => {
-        socket.connect();
-
-        socket.on("connect", () => {
-            console.log("Conectado ao Socket.IO:", socket.id);
-            socket.emit("usuario:registrar", idUser);
-        });
-
-        socket.on("pvp:convite", (dados) => {
+        const receberConvite = (dados) => {
             console.log("Convite PvP recebido:", dados);
             setConvitesPvP(prev => [...prev, dados]);
-        });
-
-        socket.on("pvp:erro", (mensagem) => {
+        };
+        const receberErro = (mensagem) => {
             console.log("Erro no convite:", mensagem);
-        });
-
-        socket.on("pvp:resposta", (dados) => {
+        };
+        const receberResposta = (dados) => {
             console.log("Resposta do convite PvP:", dados);
 
             if (dados.aceito) {
@@ -44,11 +35,9 @@ export default function TelaAmigos() {
             } else {
                 console.log(`O jogador ${dados.jogadorId} recusou seu convite.`);
             }
-        });
-
+        };
         const entrarNoLobby = (dados) => {
             console.log("Entrando no lobby:", dados);
-
             navigate("/aluno/lobby", {
                 state: {
                     idUser: dados.idUser,
@@ -58,18 +47,21 @@ export default function TelaAmigos() {
             });
         };
 
+        socket.on("pvp:convite", receberConvite);
+        socket.on("pvp:erro", receberErro);
+        socket.on("pvp:resposta", receberResposta);
+        socket.on("lobby:entrar", entrarNoLobby);
+
         return () => {
-            socket.off("connect");
-            socket.off("pvp:convite");
-            socket.off("pvp:erro");
-            socket.off("pvp:resposta");
-            socket.on("lobby:entrar", entrarNoLobby);
-            socket.disconnect();
+            socket.off("pvp:convite", receberConvite);
+            socket.off("pvp:erro", receberErro);
+            socket.off("pvp:resposta", receberResposta);
+            socket.off("lobby:entrar", entrarNoLobby);
         };
-    }, [idUser, navigate]);
+    }, [navigate]);
 
     const convidarParaPvP = (amigoId) => {
-        socket.emit("pvp:convidar", {
+        socket.emit("convite:convidar", {
             idUser,
             adversarioId: String(amigoId)
         });
@@ -80,7 +72,7 @@ export default function TelaAmigos() {
     };
 
     const responderConvitePvP = (convite, aceito) => {
-        socket.emit("pvp:responder", {
+        socket.emit("convite:responder", {
             convidanteId: String(convite.idUser),
             aceito
         });
@@ -223,7 +215,7 @@ export default function TelaAmigos() {
                                                 Convidar para PvP
                                             </button>
 
-                                            <button 
+                                            <button
                                                 className={Style.btnVerPerfil}
                                                 onClick={() => { navigate(`/aluno/perfil/${amigo.id}`) }}
                                             >

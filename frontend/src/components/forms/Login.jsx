@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+import { conectarSocket } from "../../services/socket";
+
 import Style from "./login.module.css";
 
 export default function CompLogin({ fechar, setMostrarCadastro }) {
@@ -23,6 +25,9 @@ export default function CompLogin({ fechar, setMostrarCadastro }) {
             if (usuario.tipo) {
                 localStorage.setItem("tipo", usuario.tipo);
             }
+
+            // Conectar ao Socket.IO
+            conectarSocket(usuario.id);
 
             // Redireciona para a tela correspondente
             if (usuario.tipo === "professor") {
