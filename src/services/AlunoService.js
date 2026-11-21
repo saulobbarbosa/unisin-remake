@@ -57,4 +57,35 @@ async function escolaDoUsuario(id_usuario) {
   return escola;
 }
 
-module.exports = { listar, buscarPorId, atualizarMe, escolaDoUsuario };
+async function ranking(id_usuario) {
+  // shortcut: carrega todos os alunos para calcular a posição; trocar por window function se a base crescer.
+  const alunos = await Aluno.findAll({
+    include: [{ model: Usuario, as: 'usuario', attributes: ['nome'] }],
+    order: [
+      ['moedas', 'DESC'],
+      ['vitorias_pvp', 'DESC'],
+      ['id_usuario', 'ASC']
+    ]
+  });
+
+  const classificacao = alunos.map((aluno, indice) => ({
+    posicao: indice + 1,
+    id_usuario: aluno.id_usuario,
+    nome: aluno.usuario.nome
+  }));
+
+  const meu = classificacao.find((aluno) => aluno.id_usuario === id_usuario);
+  if (!meu) throw criarErro('Aluno não encontrado', 404);
+
+  const resposta = classificacao
+    .slice(0, 5)
+    .map((aluno) => ({ posicao: aluno.posicao, nome: aluno.nome }));
+
+  if (!resposta.some((aluno) => aluno.posicao === meu.posicao)) {
+    resposta.push({ posicao: meu.posicao, nome: meu.nome });
+  }
+
+  return resposta;
+}
+
+module.exports = { listar, buscarPorId, atualizarMe, escolaDoUsuario, ranking };

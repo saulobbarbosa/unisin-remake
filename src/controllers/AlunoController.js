@@ -47,4 +47,13 @@ async function atualizarMe(req, res) {
   }
 }
 
-module.exports = { criar, me, buscar, listar, atualizarMe };
+async function ranking(req, res) {
+  try {
+    const classificacao = await AlunoService.ranking(req.usuario.id_usuario);
+    return res.json(classificacao);
+  } catch (erro) {
+    return responderErro(res, erro);
+  }
+}
+
+module.exports = { criar, me, buscar, listar, atualizarMe, ranking };
