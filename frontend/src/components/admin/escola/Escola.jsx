@@ -1,16 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import axios from "axios";
+import axios from "axios";
 
 import Style from "./escola.module.css";
 
+
+
 export default function TelaEscola() {
     const [abrirModal, setAbrirModal] = useState(false);
+    const [professores, setProfessores] = useState([]);
+    const [professorEditando, setProfessorEditando] = useState(null);
+    const [notificacao, setNotificacao] = useState(null);
     const [professor, setProfessor] = useState({
+
         nome: "",
         email: "",
         senha: "",
         telefone: ""
+
     });
+    const carregarProfessores = async () => {
+        try {
+            const response = await axios.get("/dadosJson/professores.json");
+            setProfessores(response.data);
+        } catch (error) {
+            console.error("Erro ao carregar professores", error);
+        }
+    };
+
+    const mostrarNotificacao = (mensagem, tipo = "sucesso") => {
+        setNotificacao({
+            mensagem,tipo //FOR YOUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
+        });
+    };
+
+    useEffect(() => {
+        carregarProfessores();
+    }, []);
+
+    useEffect(() => {
+        if (!notificacao) return;
+
+        const timer = setTimeout(() => {
+            setNotificacao(null);
+        }, 3500);
+
+        return () => clearTimeout(timer);
+    }, [notificacao]);
 
     const capturarValoresInputs = (e) => {
         const { name, value } = e.target;
@@ -19,7 +55,20 @@ export default function TelaEscola() {
             ...prev,
             [name]: name === "telefone" ? mascaraTelefone(value) : value
         }));
+
     }
+    const editarProfessor = (prof) => {
+        setProfessorEditando(prof.id);
+
+        setProfessor({
+            nome: prof.nome,
+            email: prof.email,
+            senha: "",
+            telefone: prof.telefone
+        });
+
+        setAbrirModal(true);
+    };
 
     const mascaraTelefone = (valor) => {
         return valor
@@ -31,12 +80,83 @@ export default function TelaEscola() {
 
     const cadastrarProfessor = (e) => {
         e.preventDefault();
+
+        if (professorEditando !== null) {
+            // Editar professor existente
+            setProfessores(prev =>
+                prev.map(prof =>
+                    prof.id === professorEditando ? {
+                            ...prof,
+                            nome: professor.nome,
+                            email: professor.email,
+                            telefone: professor.telefone
+                        }
+                        : prof
+                ) // pesquisei
+            );
+            mostrarNotificacao("Dados do professor atualizados com sucesso!", "aviso");
+        } else {
+            // Cadastrar novo professor
+            const novoProfessor = {
+                id: Date.now(),
+                nome: professor.nome,
+                materia: "Matéria não definida",
+                email: professor.email,
+                telefone: professor.telefone
+            };
+            mostrarNotificacao("Professor cadastrado com sucesso!",);
+
+            setProfessores(prev => [...prev, novoProfessor]);
+        }
+
+        // Limpar formulário
+        setProfessor({
+            nome: "",
+            email: "",
+            senha: "",
+            telefone: ""
+        });
+
+        setProfessorEditando(null);
         setAbrirModal(false);
-        alert("Cadastro");
-    }
+    };
+
+    const removerProfessor = (id) => {
+        setProfessores(prev => prev.filter(prof => prof.id !== id));
+
+        mostrarNotificacao("Professor removido com sucesso!", "erro");
+    };
 
     return (
         <div className={Style.containerEscola}>
+
+            {notificacao && (
+                <div className={`${Style.notificacao} ${Style[notificacao.tipo]}`}>
+                    <div className={Style.iconNotificacao}>
+                        <i className={`fa-solid ${notificacao.tipo === "sucesso" ? "fa-check" : notificacao.tipo === "aviso" ? "fa-exclamation" : "fa-xmark"}`}></i>
+                    </div>
+
+                    <div className={Style.textoNotificacao}>
+                        <h3>
+                            {notificacao.tipo === "sucesso"
+                                ? "Sucesso!"
+                                : notificacao.tipo === "aviso"
+                                    ? "Atenção!"
+                                    : "Excluído!"}
+                        </h3>
+
+                        <p>{notificacao.mensagem}</p>
+                    </div>
+
+                    <button
+                        className={Style.fecharNotificacao}
+                        onClick={() => setNotificacao(null)}
+                    >
+                        <i className="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            )}
+
             <div className={Style.divTitulo}>
                 <div>
                     <div className={Style.divIconProfessor}>
@@ -48,22 +168,71 @@ export default function TelaEscola() {
                     </p>
                 </div>
                 <button className={Style.btnAbrirModal}
-                    onClick={() => { setAbrirModal(true) }}
+                    onClick={() => {
+                        setProfessorEditando(null);
+                        setProfessor({
+                            nome: "",
+                            email: "",
+                            senha: "",
+                            telefone: ""
+                        });
+                        setAbrirModal(true);
+                    }}
                 >
+
                     <p>+ Cadastrar Professor</p>
                 </button>
             </div>
             <div className={Style.divCardsProfessores}>
-                <div>
-                    <div></div>
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                    <div>
-                        <button><p>Editar</p></button>
-                        <button><p>Remover</p></button>
+                {professores.map((prof) => (
+                    <div className={Style.cardProfessor} key={prof.id}>
+
+                        <div className={Style.infoPrincipalProfessor}>
+                            <div className={Style.avatarProfessor}>
+                                <i className="fa-solid fa-user"></i>
+                            </div>
+
+                            <div className={Style.nomeProfessor}>
+                                <h2>{prof.nome}</h2>
+                                <p>{prof.materia}</p>
+                            </div>
+                        </div>
+
+                        <div className={Style.infoProfessor}>
+                            <p>
+                                <i className="fa-regular fa-envelope"></i>
+                                <span>{prof.email}</span>
+                            </p>
+
+                            <p>
+                                <i className="fa-solid fa-phone"></i>
+                                <span>{prof.telefone}</span>
+                            </p>
+
+                            <p>
+                                <i className="fa-solid fa-book-open"></i>
+                                <span>{prof.materia}</span>
+                            </p>
+                        </div>
+
+                        <div className={Style.acoesProfessor}>
+                            <button className={Style.btnEditar} onClick={() => editarProfessor(prof)}>
+
+                                <i className="fa-solid fa-pen"></i>
+
+                                Editar
+                            </button>
+
+                            <button
+                                className={Style.btnRemover}
+                                onClick={() => removerProfessor(prof.id)}
+                            >
+                                <i className="fa-regular fa-trash-can"></i>
+                                Remover
+                            </button>
+                        </div>
                     </div>
-                </div>
+                ))}
             </div>
             {/* Modal para Cadastro de Professores */}
             {abrirModal && (
@@ -78,7 +247,7 @@ export default function TelaEscola() {
                                 onClick={() => { setAbrirModal(false) }}
                             ></i>
                         </div>
-                        <form onSubmit={() => { cadastrarProfessor() }}>
+                        <form onSubmit={cadastrarProfessor}>
                             <div className={Style.divInput}>
                                 <label>Nome</label>
                                 <input type="text" name="nome" required
@@ -114,7 +283,9 @@ export default function TelaEscola() {
                             <button type="submit"
                                 className={Style.btnCadastrar}
                             >
-                                <p>Cadastrar</p>
+                                <p>
+                                    {professorEditando !== null ? "Salvar Alterações" : "Cadastrar"}
+                                </p>
                             </button>
                         </form>
                     </div>

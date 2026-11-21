@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "nome": "Silvia Menezes",
+        "materia": "Matemática",
+        "email": "silvia@unisin.com",
+        "telefone": "(11) 98800-0001"
+    },
+    {
+        "id": 2,
+        "nome": "Carlos Silva",
+        "materia": "Português",
+        "email": "carlos@unisin.com",
+        "telefone": "(11) 98800-0002"
+    },
+    {
+        "id": 3,
+        "nome": "Renata Alves",
+        "materia": "História",
+        "email": "renata@unisin.com",
+        "telefone": "(11) 98800-0003"
+    },
+    {
+        "id": 4,
+        "nome": "Pedro Nunes",
+        "materia": "Ciências",
+        "email": "pedro@unisin.com",
+        "telefone": "(11) 98800-0004"
+    }
+]

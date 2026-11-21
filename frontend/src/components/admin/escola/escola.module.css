@@ -4,13 +4,18 @@
     flex-direction: column;
     margin-top: 2rem;
     width: 66rem;
+    width: 100%;
+    max-width: 68rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 /* Parte do 1° bloco da tela */
 .divTitulo {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 4rem;
+    align-items: center;
+    margin-bottom: 2.5rem;
 }
 
 .divIconProfessor {
@@ -27,6 +32,7 @@
 
 .divIconProfessor>h1 {
     font-size: 2.25rem;
+    margin: 0;
 }
 
 .paragrafoTitulo {
@@ -44,9 +50,7 @@
     color: #fff;
     background: linear-gradient(135deg, #006bed, #0099fa);
     cursor: pointer;
-}
-
-.divCardsProfessores {}
+}   
 
 /* Estilo para o Modal de cadastro de professores */
 .containerModal {
@@ -142,4 +146,244 @@ form {
 
 .btnCadastrar:hover {
     background: #006bed;
+}
+    /* Grid dos cards */
+.divCardsProfessores {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+    width: 100%;
+}
+
+/* Card */
+.cardProfessor {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    min-height: 14rem;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 1.6rem;
+    box-shadow: 0 8px 22px rgba(31, 85, 140, 0.08);
+    transition: 0.2s;
+}
+
+.cardProfessor:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(31, 85, 140, 0.12);
+}
+
+/* Avatar e nome */
+.infoPrincipalProfessor {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.avatarProfessor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 3.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: #0084f8;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.nomeProfessor {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.nomeProfessor h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #172033;
+    margin: 0;
+}
+
+.nomeProfessor p {
+    font-size: 0.85rem;
+    color: #005bd1;
+    margin: 0;
+}
+
+/* Informações do professor */
+.infoProfessor {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.infoProfessor p {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0;
+    color: #526987;
+    font-size: 0.9rem;
+}
+
+.infoProfessor p i {
+    width: 1rem;
+    font-size: 0.9rem;
+    color: #526987;
+}
+
+.infoProfessor p span {
+    overflow-wrap: anywhere;
+}
+
+/* Botões */
+.acoesProfessor {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btnEditar,
+.btnRemover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btnEditar {
+    background: #e8f2ff;
+    color: #153653;
+}
+
+.btnEditar:hover {
+    background: #d3e6ff;
+}
+
+.btnRemover {
+    background: #ffe8eb;
+    color: #e00022;
+}
+
+.btnRemover:hover {
+    background: #ffd5dc;
+}
+
+.notificacao {
+    position: fixed;
+    top: 1.56rem;
+    right: 1.56rem;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    gap: 0.87rem;
+
+    width: 21.25rem;
+    padding: 1.12rem;
+
+    background-color: #ffffff;
+    border-left: 0.31rem solid #22c55e;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1.56rem rgba(0, 0, 0, 0.12);
+    animation: aparecerNotificacao 0.35s ease forwards;
+}
+
+.iconNotificacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+
+    width: 2.62rem;
+    height: 2.62rem;
+    min-width: 2.62rem;
+
+    background-color: #dcfce7;
+    color: #16a34a;
+
+    border-radius: 50%;
+    font-size: 1.12rem;
+}
+
+.textoNotificacao {
+    flex: 1;
+}
+
+.textoNotificacao h3 {
+    margin: 0 0 0.25rem;
+    font-size: 0.93rem;
+    color: #166534;
+}
+
+.textoNotificacao p {
+    margin: 0;
+    font-size: 0.81rem;
+    color: #555;
+}
+
+.fecharNotificacao {
+    background: none;
+    border: none;
+    color: #a3a3a3;
+    cursor: pointer;
+    font-size: 0.93rem;
+    align-self: flex-start;
+}
+
+.fecharNotificacao:hover {
+    color: #333;
+}
+
+.sucesso {
+    border-left-color: #22c55e;
+}
+
+.sucesso .iconNotificacao {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+
+.sucesso .textoNotificacao h3 {
+    color: #166534;
+}
+
+
+/* AMARELO - ATENÇÃO */
+.aviso {
+    border-left-color: #eab308;
+}
+
+.aviso .iconNotificacao {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.aviso .textoNotificacao h3 {
+    color: #92400e;
+}
+
+
+/* VERMELHO - EXCLUSÃO */
+.erro {
+    border-left-color: #ef4444;
+}
+
+.erro .iconNotificacao {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.erro .textoNotificacao h3 {
+    color: #991b1b;
 }
