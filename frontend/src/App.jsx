@@ -1,8 +1,10 @@
 // App.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// Import Telas
+// Import do Layout Principal do Sistema
 import MainLayout from "./components/layout/main-layout/MainLayout";
+
+// Import Telas
 import Home from "./components/home/Home";
 
 // Import Telas de Aluno
@@ -19,6 +21,7 @@ import AlunoInventario from "./components/aluno/inventario/Inventario";
 
 import AlunoRanking from "./components/aluno/ranking/Ranking";
 import AlunoPerfil from "./components/aluno/perfil/Perfil";
+
 // Import Telas Professores
 import ProfessorAdmin from "./components/admin/professor/Professor";
 // Import Telas Escolas
@@ -49,6 +52,7 @@ export default function App() {
                     <Route path="/aluno/ranking" element={<AlunoRanking />} />
 
                     <Route path="/aluno/perfil/:alunoId" element={<AlunoPerfil />} />
+
                     {/* Rotas Professores */}
                     <Route path="/home-prof" element={<ProfessorAdmin />} />
                     {/* Rotas Escolas */}
