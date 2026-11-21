@@ -11,6 +11,7 @@ const avaliacaoRoutes = require('./avaliacaoRoutes');
 const amizadeRoutes = require('./amizadeRoutes');
 const pvpRoutes = require('./pvpRoutes');
 const lojaRoutes = require('./lojaRoutes');
+const conquistaRoutes = require('./conquistaRoutes');
 
 const router = express.Router();
 
@@ -25,5 +26,6 @@ router.use('/avaliacoes', avaliacaoRoutes);
 router.use('/amigos', amizadeRoutes);
 router.use('/pvp', pvpRoutes);
 router.use('/loja', lojaRoutes);
+router.use('/conquistas', conquistaRoutes);
 
 module.exports = router;
