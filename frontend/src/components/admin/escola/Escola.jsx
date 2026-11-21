@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
+
 import axios from "axios";
 
 import Style from "./escola.module.css";
@@ -21,8 +21,14 @@ export default function TelaEscola() {
     });
     const carregarProfessores = async () => {
         try {
-            const response = await axios.get("/dadosJson/professores.json");
-            setProfessores(response.data);
+            const response = await axios.get("/dadosJson/usuarios.json");
+
+            const professoresEncontrados = response.data.filter(
+                usuario => usuario.tipo === "professor"
+            );
+
+            setProfessores(professoresEncontrados);
+        
         } catch (error) {
             console.error("Erro ao carregar professores", error);
         }
@@ -30,7 +36,7 @@ export default function TelaEscola() {
 
     const mostrarNotificacao = (mensagem, tipo = "sucesso") => {
         setNotificacao({
-            mensagem,tipo //FOR YOUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
+            mensagem, tipo //FOR YOUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
         });
     };
 
@@ -86,11 +92,11 @@ export default function TelaEscola() {
             setProfessores(prev =>
                 prev.map(prof =>
                     prof.id === professorEditando ? {
-                            ...prof,
-                            nome: professor.nome,
-                            email: professor.email,
-                            telefone: professor.telefone
-                        }
+                        ...prof,
+                        nome: professor.nome,
+                        email: professor.email,
+                        telefone: professor.telefone
+                    }
                         : prof
                 ) // pesquisei
             );

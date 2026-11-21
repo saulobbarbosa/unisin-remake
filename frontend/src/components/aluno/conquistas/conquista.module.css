@@ -1,0 +1,97 @@
+
+.containerConquistas {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f8fbff;
+    padding: 2.5rem 1.5rem;
+    box-sizing: border-box;
+}
+
+.conteudoConquistas {
+    max-width: 62.5rem;
+    margin: 0 auto;
+}
+
+.cabecalho {
+    margin-bottom: 2.5rem;
+}
+
+.cabecalho h1 {
+    font-size: 1.8rem;
+    color: #101828;
+    margin: 0 0 0.3rem;
+}
+
+.cabecalho p {
+    font-size: 1rem;
+    color: #64748b;
+    margin: 0;
+}
+
+.secaoMateria {
+    margin-bottom: 2.3rem;
+}
+
+.secaoMateria h2 {
+    font-size: 1.1rem;
+    color: #101828;
+    margin-bottom: 1rem;
+}
+
+.listaConquistas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.6rem;
+}
+
+.cardConquista {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 4.3rem;
+    padding: 0.8rem 1rem;
+    background-color: #ffffff;
+    border: 1px solid #d9e2ef;
+    border-radius: 1.4rem;
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+
+.cardConquista:hover {
+    transform: translateY(-2px);
+    border-color: #b8cce5;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+.iconeConquista {
+    width: 2.6rem;
+    min-width: 2.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    color: #b8b8b8;
+}
+
+.infoConquista h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #101828;
+    margin: 0 0 0.2rem;
+}
+
+.infoConquista p {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin: 0;
+}
+
+.concluida {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.bloqueada {
+    filter: grayscale(100%);
+    opacity: 0.5;
+}

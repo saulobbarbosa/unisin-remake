@@ -26,6 +26,8 @@ import AlunoPerfil from "./components/aluno/perfil/Perfil";
 import ProfessorAdmin from "./components/admin/professor/Professor";
 // Import Telas Escolas
 import EscolaAdmin from "./components/admin/escola/Escola";
+// Import Tela Conquistas
+import AlunoConquistas from "./components/aluno/conquistas/Conquistas";
 
 export default function App() {
     return (
@@ -48,7 +50,7 @@ export default function App() {
                     <Route path="/aluno/loja" element={<AlunoLoja />} />
                     <Route path="/aluno/inventario" element={<AlunoInventario />} />
 
-                    <Route path="/aluno/conquistas" element={<h1>Olha a Conquistas</h1>} />
+                    <Route path="/aluno/conquistas" element={<AlunoConquistas />} />
                     <Route path="/aluno/ranking" element={<AlunoRanking />} />
 
                     <Route path="/aluno/perfil/:alunoId" element={<AlunoPerfil />} />
