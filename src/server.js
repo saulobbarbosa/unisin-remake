@@ -1,6 +1,8 @@
 require('dotenv').config();
 
+const http = require('http');
 const app = require('./app');
+const { configurarSocket } = require('./socket');
 const { sequelize } = require('./models');
 const { migrar } = require('../database/migrate');
 
@@ -10,7 +12,10 @@ async function iniciar() {
   await sequelize.authenticate();
   await migrar();
 
-  app.listen(porta, () => {
+  const servidor = http.createServer(app);
+  configurarSocket(servidor);
+
+  servidor.listen(porta, () => {
     console.log(`Servidor rodando na porta ${porta}`);
   });
 }

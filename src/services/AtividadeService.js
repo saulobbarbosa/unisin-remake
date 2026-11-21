@@ -58,7 +58,8 @@ function validarAlternativas(tipo, alternativas) {
   }
 }
 
-function formatar(atividade, revelarResposta) {  const dados = atividade.get({ plain: true });
+function formatar(atividade, revelarResposta) {
+  const dados = typeof atividade.get === 'function' ? atividade.get({ plain: true }) : atividade;
   const alternativas = (dados.alternativas || [])
     .sort((a, b) => a.ordem - b.ordem)
     .map((alternativa) => {
