@@ -51,6 +51,7 @@ export default function TelaPerfil() {
                     />
                     <div className={Style.textoInfo}>
                         <h1>{dadosUser.nome}</h1>
+                        <p>{dadosUser?.titulo ? `# ${dadosUser.titulo}` : ""}</p>
                         <div className={Style.blocosInfo}>
                             <div className={Style.nivel}>
                                 <i className="fa-solid fa-star"></i>

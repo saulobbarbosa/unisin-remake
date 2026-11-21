@@ -4,7 +4,13 @@ const socket = io("http://localhost:3001", {
     autoConnect: false,
 });
 
-let usuarioId = null;
+// Recupera o usuário salvo mesmo após atualizar a página
+let usuarioId = localStorage.getItem("id");
+
+// Reconectar automaticamente se existir usuário logado
+if (usuarioId) {
+    socket.connect();
+}
 
 // Registrar usuário sempre que conectar ou reconectar
 socket.on("connect", () => {

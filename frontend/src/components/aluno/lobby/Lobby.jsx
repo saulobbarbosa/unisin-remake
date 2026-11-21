@@ -132,7 +132,7 @@ export default function TelaLobby() {
                         </div>
                         <div className={Style.texto}>
                             <h1>{dadosUser?.nome}</h1>
-                            <p>Nv. {dadosUser?.nivel}</p>
+                            <p>{dadosUser?.titulo || "Nv. " + dadosUser?.nivel}</p>
                             <span
                                 className={pronto ? Style.spanPronto : Style.spanAguardo}
                             >
@@ -150,7 +150,7 @@ export default function TelaLobby() {
                         </div>
                         <div className={Style.texto}>
                             <h1>{dadosOponente?.nome}</h1>
-                            <p>Nv. {dadosOponente?.nivel}</p>
+                            <p>{dadosOponente?.titulo || "Nv. " + dadosOponente?.nivel}</p>
                             <span
                                 className={oponentePronto ? Style.spanPronto : Style.spanAguardo}
                             >
