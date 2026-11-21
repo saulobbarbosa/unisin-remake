@@ -10,6 +10,7 @@ const atividadeRoutes = require('./atividadeRoutes');
 const avaliacaoRoutes = require('./avaliacaoRoutes');
 const amizadeRoutes = require('./amizadeRoutes');
 const pvpRoutes = require('./pvpRoutes');
+const lojaRoutes = require('./lojaRoutes');
 
 const router = express.Router();
 
@@ -23,5 +24,6 @@ router.use('/atividades', atividadeRoutes);
 router.use('/avaliacoes', avaliacaoRoutes);
 router.use('/amigos', amizadeRoutes);
 router.use('/pvp', pvpRoutes);
+router.use('/loja', lojaRoutes);
 
 module.exports = router;
