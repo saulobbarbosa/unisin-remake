@@ -1,320 +1,290 @@
 [
   {
     "id": 1,
-    "materia": "Matemática",
-    "conquistas": [
-      {
-        "id": 1,
-        "nome": "Primeiros passos",
-        "icone": "🥉",
-        "descricao": "Conclua sua primeira missão.",
-        "qtdAtual": 1,
-        "qtdCompleta": 1,
-        "recompensa": {
-          "tipo": "moedas",
-          "valor": 1000
-        }
-      },
-      {
-        "id": 2,
-        "nome": "Calculista",
-        "icone": "🧮",
-        "descricao": "Acerte 20 questões.",
-        "qtdAtual": 6,
-        "qtdCompleta": 20,
-        "recompensa": {
-          "tipo": "moedas",
-          "valor": 500
-        }
-      },
-      {
-        "id": 3,
-        "nome": "Desafio semanal",
-        "icone": "📅",
-        "descricao": "Complete 10 desafios semanais.",
-        "qtdAtual": 4,
-        "qtdCompleta": 10,
-        "recompensa": {
-          "tipo": "moedas",
-          "valor": 2000
-        }
-      },
-      {
-        "id": 4,
-        "nome": "Mestre da Matemática",
-        "icone": "🏅",
-        "descricao": "Resolva 100 questões.",
-        "qtdAtual": 0,
-        "qtdCompleta": 100,
-        "recompensa": {
-          "tipo": "cosmetico",
-          "categoria": "fundos",
-          "idItem": 4,
-          "nome": "Fundo Matemático",
-          "color": "#7657D6"
-        }
-      },
-      {
-        "id": 5,
-        "nome": "Gênio dos números",
-        "icone": "💡",
-        "descricao": "Complete 20 atividades de matemática.",
-        "qtdAtual": 0,
-        "qtdCompleta": 20,
-        "recompensa": {
-          "tipo": "moedas",
-          "valor": 3000
-        }
-      }
-    ]
+    "nome": "Primeiros passos",
+    "icone": "🥉",
+    "descricao": "Conclua sua primeira missão.",
+    "qtdAtual": 1,
+    "qtdCompleta": 1,
+    "recompensa": {
+      "tipo": "moedas",
+      "valor": 1000
+    }
   },
   {
     "id": 2,
-    "materia": "Português",
-    "conquistas": [
-      {
-        "id": 6,
-        "nome": "Pequeno escritor",
-        "icone": "✏️",
-        "descricao": "Complete sua primeira atividade de português.",
-        "qtdAtual": 3,
-        "qtdCompleta": 5,
-        "recompensa": {
-          "tipo": "moedas",
-          "valor": 1000
-        }
-      },
-      {
-        "id": 7,
-        "nome": "Caçador de palavras",
-        "icone": "🔎",
-        "descricao": "Acerte 10 questões de português.",
-        "qtdAtual": 0,
-        "qtdCompleta": 10,
-        "recompensa": {
-          "tipo": "moedas",
-          "valor": 500
-        }
-      },
-      {
-        "id": 8,
-        "nome": "Amante da leitura",
-        "icone": "📚",
-        "descricao": "Complete 25 atividades de português.",
-        "qtdAtual": 0,
-        "qtdCompleta": 25,
-        "recompensa": {
-          "tipo": "cosmetico",
-          "categoria": "bordas",
-          "idItem": 5,
-          "nome": "Borda Literária",
-          "color": "#9B59B6"
-        }
-      },
-      {
-        "id": 9,
-        "nome": "Mestre das palavras",
-        "icone": "🖋️",
-        "descricao": "Acerte 50 questões de português.",
-        "qtdAtual": 0,
-        "qtdCompleta": 50,
-        "recompensa": {
-          "tipo": "moedas",
-          "valor": 2500
-        }
-      }
-    ]
+    "nome": "Calculista",
+    "icone": "🧮",
+    "descricao": "Acerte 20 questões.",
+    "qtdAtual": 6,
+    "qtdCompleta": 20,
+    "recompensa": {
+      "tipo": "moedas",
+      "valor": 500
+    }
   },
   {
     "id": 3,
-    "materia": "História",
-    "conquistas": [
-      {
-        "id": 10,
-        "nome": "Viajante do tempo",
-        "icone": "⏳",
-        "descricao": "Complete 5 atividades de história.",
-        "qtdAtual": 0,
-        "qtdCompleta": 5,
-        "recompensa": {
-          "tipo": "moedas",
-          "valor": 1000
-        }
-      },
-      {
-        "id": 11,
-        "nome": "Explorador do passado",
-        "icone": "🏛️",
-        "descricao": "Acerte 15 questões de história.",
-        "qtdAtual": 0,
-        "qtdCompleta": 15,
-        "recompensa": {
-          "tipo": "cosmetico",
-          "categoria": "fundos",
-          "idItem": 6,
-          "nome": "Fundo Histórico",
-          "color": "#C18B55"
-        }
-      },
-      {
-        "id": 12,
-        "nome": "Guardião da história",
-        "icone": "📜",
-        "descricao": "Complete 20 atividades de história.",
-        "qtdAtual": 0,
-        "qtdCompleta": 20,
-        "recompensa": {
-          "tipo": "moedas",
-          "valor": 2000
-        }
-      }
-    ]
+    "nome": "Desafio semanal",
+    "icone": "📅",
+    "descricao": "Complete 10 desafios semanais.",
+    "qtdAtual": 4,
+    "qtdCompleta": 10,
+    "recompensa": {
+      "tipo": "moedas",
+      "valor": 2000
+    }
   },
   {
     "id": 4,
-    "materia": "Ciências",
-    "conquistas": [
-      {
-        "id": 13,
-        "nome": "Curioso",
-        "icone": "🔬",
-        "descricao": "Complete 5 atividades de ciências.",
-        "qtdAtual": 0,
-        "qtdCompleta": 5,
-        "recompensa": {
-          "tipo": "moedas",
-          "valor": 1000
-        }
-      },
-      {
-        "id": 14,
-        "nome": "Pequeno cientista",
-        "icone": "🧪",
-        "descricao": "Acerte 20 questões de ciências.",
-        "qtdAtual": 0,
-        "qtdCompleta": 20,
-        "recompensa": {
-          "tipo": "cosmetico",
-          "categoria": "avatares",
-          "idItem": 7,
-          "nome": "Avatar Cientista",
-          "img": "/imgs/perfil/boy_red.webp"
-        }
-      },
-      {
-        "id": 15,
-        "nome": "Mente brilhante",
-        "icone": "⚡",
-        "descricao": "Complete 30 atividades de ciências.",
-        "qtdAtual": 0,
-        "qtdCompleta": 30,
-        "recompensa": {
-          "tipo": "moedas",
-          "valor": 3000
-        }
-      }
-    ]
+    "nome": "Mestre da Matemática",
+    "icone": "🏅",
+    "descricao": "Resolva 100 questões.",
+    "qtdAtual": 0,
+    "qtdCompleta": 100,
+    "recompensa": {
+      "tipo": "cosmetico",
+      "categoria": "fundos",
+      "idItem": 4,
+      "nome": "Fundo Matemático",
+      "color": "#7657D6"
+    }
   },
   {
     "id": 5,
-    "materia": "Geral",
-    "conquistas": [
-      {
-        "id": 16,
-        "nome": "Constância",
-        "icone": "🔥",
-        "descricao": "Acesse o sistema por 7 dias consecutivos.",
-        "qtdAtual": 7,
-        "qtdCompleta": 7,
-        "recompensa": {
-          "tipo": "cosmetico",
-          "categoria": "bordas",
-          "idItem": 1,
-          "nome": "Borda Vermelha",
-          "color": "#FF0000"
-        }
-      },
-      {
-        "id": 17,
-        "nome": "Primeira fortuna",
-        "icone": "💰",
-        "descricao": "Ganhe 3000 moedas no total.",
-        "qtdAtual": 3000,
-        "qtdCompleta": 3000,
-        "recompensa": {
-          "tipo": "cosmetico",
-          "categoria": "fundos",
-          "idItem": 3,
-          "nome": "Fundo Azul",
-          "color": "#3A7BFD"
-        }
-      },
-      {
-        "id": 18,
-        "nome": "Subindo de nível",
-        "icone": "📈",
-        "descricao": "Alcance o nível 15.",
-        "qtdAtual": 12,
-        "qtdCompleta": 15,
-        "recompensa": {
-          "tipo": "cosmetico",
-          "categoria": "avatares",
-          "idItem": 2,
-          "nome": "Avatar Ruivo",
-          "img": "/imgs/perfil/boy_red.webp"
-        }
-      },
-      {
-        "id": 19,
-        "nome": "Socializador",
-        "icone": "🤝",
-        "descricao": "Realize 20 interações com amigos.",
-        "qtdAtual": 8,
-        "qtdCompleta": 20,
-        "recompensa": {
-          "tipo": "moedas",
-          "valor": 500
-        }
-      },
-      {
-        "id": 20,
-        "nome": "Incansável",
-        "icone": "🎯",
-        "descricao": "Complete 100 atividades no total.",
-        "qtdAtual": 0,
-        "qtdCompleta": 100,
-        "recompensa": {
-          "tipo": "moedas",
-          "valor": 5000
-        }
-      },
-      {
-        "id": 21,
-        "nome": "Lenda diária",
-        "icone": "🌟",
-        "descricao": "Entre no sistema por 30 dias.",
-        "qtdAtual": 0,
-        "qtdCompleta": 30,
-        "recompensa": {
-          "tipo": "cosmetico",
-          "categoria": "bordas",
-          "idItem": 8,
-          "nome": "Borda Dourada",
-          "color": "#FFD700"
-        }
-      },
-      {
-        "id": 22,
-        "nome": "Elite",
-        "icone": "👑",
-        "descricao": "Alcance o nível 25.",
-        "qtdAtual": 0,
-        "qtdCompleta": 25,
-        "recompensa": {
-          "tipo": "moedas",
-          "valor": 5000
-        }
-      }
-    ]
+    "nome": "Gênio dos números",
+    "icone": "💡",
+    "descricao": "Complete 20 atividades de matemática.",
+    "qtdAtual": 0,
+    "qtdCompleta": 20,
+    "recompensa": {
+      "tipo": "moedas",
+      "valor": 3000
+    }
+  },
+  {
+    "id": 6,
+    "nome": "Pequeno escritor",
+    "icone": "✏️",
+    "descricao": "Complete sua primeira atividade de português.",
+    "qtdAtual": 3,
+    "qtdCompleta": 5,
+    "recompensa": {
+      "tipo": "moedas",
+      "valor": 1000
+    }
+  },
+  {
+    "id": 7,
+    "nome": "Caçador de palavras",
+    "icone": "🔎",
+    "descricao": "Acerte 10 questões de português.",
+    "qtdAtual": 0,
+    "qtdCompleta": 10,
+    "recompensa": {
+      "tipo": "moedas",
+      "valor": 500
+    }
+  },
+  {
+    "id": 8,
+    "nome": "Amante da leitura",
+    "icone": "📚",
+    "descricao": "Complete 25 atividades de português.",
+    "qtdAtual": 0,
+    "qtdCompleta": 25,
+    "recompensa": {
+      "tipo": "cosmetico",
+      "categoria": "bordas",
+      "idItem": 5,
+      "nome": "Borda Literária",
+      "color": "#9B59B6"
+    }
+  },
+  {
+    "id": 9,
+    "nome": "Mestre das palavras",
+    "icone": "🖋️",
+    "descricao": "Acerte 50 questões de português.",
+    "qtdAtual": 0,
+    "qtdCompleta": 50,
+    "recompensa": {
+      "tipo": "moedas",
+      "valor": 2500
+    }
+  },
+  {
+    "id": 10,
+    "nome": "Viajante do tempo",
+    "icone": "⏳",
+    "descricao": "Complete 5 atividades de história.",
+    "qtdAtual": 0,
+    "qtdCompleta": 5,
+    "recompensa": {
+      "tipo": "moedas",
+      "valor": 1000
+    }
+  },
+  {
+    "id": 11,
+    "nome": "Explorador do passado",
+    "icone": "🏛️",
+    "descricao": "Acerte 15 questões de história.",
+    "qtdAtual": 0,
+    "qtdCompleta": 15,
+    "recompensa": {
+      "tipo": "cosmetico",
+      "categoria": "fundos",
+      "idItem": 6,
+      "nome": "Fundo Histórico",
+      "color": "#C18B55"
+    }
+  },
+  {
+    "id": 12,
+    "nome": "Guardião da história",
+    "icone": "📜",
+    "descricao": "Complete 20 atividades de história.",
+    "qtdAtual": 0,
+    "qtdCompleta": 20,
+    "recompensa": {
+      "tipo": "moedas",
+      "valor": 2000
+    }
+  },
+  {
+    "id": 13,
+    "nome": "Curioso",
+    "icone": "🔬",
+    "descricao": "Complete 5 atividades de ciências.",
+    "qtdAtual": 0,
+    "qtdCompleta": 5,
+    "recompensa": {
+      "tipo": "moedas",
+      "valor": 1000
+    }
+  },
+  {
+    "id": 14,
+    "nome": "Pequeno cientista",
+    "icone": "🧪",
+    "descricao": "Acerte 20 questões de ciências.",
+    "qtdAtual": 0,
+    "qtdCompleta": 20,
+    "recompensa": {
+      "tipo": "cosmetico",
+      "categoria": "avatares",
+      "idItem": 7,
+      "nome": "Avatar Cientista",
+      "img": "/imgs/perfil/boy_red.webp"
+    }
+  },
+  {
+    "id": 15,
+    "nome": "Mente brilhante",
+    "icone": "⚡",
+    "descricao": "Complete 30 atividades de ciências.",
+    "qtdAtual": 0,
+    "qtdCompleta": 30,
+    "recompensa": {
+      "tipo": "moedas",
+      "valor": 3000
+    }
+  },
+  {
+    "id": 16,
+    "nome": "Constância",
+    "icone": "🔥",
+    "descricao": "Acesse o sistema por 7 dias consecutivos.",
+    "qtdAtual": 7,
+    "qtdCompleta": 7,
+    "recompensa": {
+      "tipo": "cosmetico",
+      "categoria": "bordas",
+      "idItem": 1,
+      "nome": "Borda Vermelha",
+      "color": "#FF0000"
+    }
+  },
+  {
+    "id": 17,
+    "nome": "Primeira fortuna",
+    "icone": "💰",
+    "descricao": "Ganhe 3000 moedas no total.",
+    "qtdAtual": 3000,
+    "qtdCompleta": 3000,
+    "recompensa": {
+      "tipo": "cosmetico",
+      "categoria": "fundos",
+      "idItem": 3,
+      "nome": "Fundo Azul",
+      "color": "#3A7BFD"
+    }
+  },
+  {
+    "id": 18,
+    "nome": "Subindo de nível",
+    "icone": "📈",
+    "descricao": "Alcance o nível 15.",
+    "qtdAtual": 12,
+    "qtdCompleta": 15,
+    "recompensa": {
+      "tipo": "cosmetico",
+      "categoria": "avatares",
+      "idItem": 2,
+      "nome": "Avatar Ruivo",
+      "img": "/imgs/perfil/boy_red.webp"
+    }
+  },
+  {
+    "id": 19,
+    "nome": "Socializador",
+    "icone": "🤝",
+    "descricao": "Realize 20 interações com amigos.",
+    "qtdAtual": 8,
+    "qtdCompleta": 20,
+    "recompensa": {
+      "tipo": "moedas",
+      "valor": 500
+    }
+  },
+  {
+    "id": 20,
+    "nome": "Incansável",
+    "icone": "🎯",
+    "descricao": "Complete 100 atividades no total.",
+    "qtdAtual": 0,
+    "qtdCompleta": 100,
+    "recompensa": {
+      "tipo": "moedas",
+      "valor": 5000
+    }
+  },
+  {
+    "id": 21,
+    "nome": "Lenda diária",
+    "icone": "🌟",
+    "descricao": "Entre no sistema por 30 dias.",
+    "qtdAtual": 0,
+    "qtdCompleta": 30,
+    "recompensa": {
+      "tipo": "cosmetico",
+      "categoria": "bordas",
+      "idItem": 8,
+      "nome": "Borda Dourada",
+      "color": "#FFD700"
+    }
+  },
+  {
+    "id": 22,
+    "nome": "Elite",
+    "icone": "👑",
+    "descricao": "Alcance o nível 25.",
+    "qtdAtual": 0,
+    "qtdCompleta": 25,
+    "recompensa": {
+      "tipo": "moedas",
+      "valor": 5000
+    }
   }
 ]

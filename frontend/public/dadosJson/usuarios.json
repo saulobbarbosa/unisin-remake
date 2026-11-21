@@ -94,7 +94,6 @@
     "senha": "123",
     "nome": "Professor João",
     "telefone": "(11) 98800-0222",
-    "materia": "Matemática",
     "tipo": "professor"
   },
   {
@@ -107,7 +106,6 @@
   {
     "id": 11,
     "nome": "Silvia Menezes",
-    "materia": "Matemática",
     "email": "silvia@unisin.com",
     "telefone": "(11) 98800-0001",
     "tipo": "professor"
@@ -116,7 +114,6 @@
   {
     "id": 12,
     "nome": "Carlos Silva",
-    "materia": "Português",
     "email": "carlos@unisin.com",
     "telefone": "(11) 98800-0002",
     "tipo": "professor"
@@ -124,7 +121,6 @@
   {
     "id": 13,
     "nome": "Renata Alves",
-    "materia": "História",
     "email": "renata@unisin.com",
     "telefone": "(11) 98800-0003",
     "tipo": "professor"
@@ -132,7 +128,6 @@
   {
     "id": 14,
     "nome": "Pedro Nunes",
-    "materia": "Ciências",
     "email": "pedro@unisin.com",
     "telefone": "(11) 98800-0004",
     "tipo": "professor"

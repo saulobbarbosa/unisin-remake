@@ -50,7 +50,7 @@
     color: #fff;
     background: linear-gradient(135deg, #006bed, #0099fa);
     cursor: pointer;
-}   
+}
 
 /* Estilo para o Modal de cadastro de professores */
 .containerModal {
@@ -147,7 +147,8 @@ form {
 .btnCadastrar:hover {
     background: #006bed;
 }
-    /* Grid dos cards */
+
+/* Grid dos cards */
 .divCardsProfessores {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -206,12 +207,6 @@ form {
     margin: 0;
 }
 
-.nomeProfessor p {
-    font-size: 0.85rem;
-    color: #005bd1;
-    margin: 0;
-}
-
 /* Informações do professor */
 .infoProfessor {
     display: flex;
@@ -220,7 +215,7 @@ form {
     margin-top: 1rem;
 }
 
-.infoProfessor p {
+.infoProfessor>p {
     display: flex;
     align-items: center;
     gap: 0.65rem;
@@ -229,13 +224,13 @@ form {
     font-size: 0.9rem;
 }
 
-.infoProfessor p i {
+.infoProfessor>p>i {
     width: 1rem;
     font-size: 0.9rem;
     color: #526987;
 }
 
-.infoProfessor p span {
+.infoProfessor>p>span {
     overflow-wrap: anywhere;
 }
 
@@ -303,7 +298,7 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
- 
+
 
     width: 2.62rem;
     height: 2.62rem;
