@@ -58,8 +58,7 @@ function validarAlternativas(tipo, alternativas) {
   }
 }
 
-function formatar(atividade, revelarResposta) {
-  const dados = atividade.get({ plain: true });
+function formatar(atividade, revelarResposta) {  const dados = atividade.get({ plain: true });
   const alternativas = (dados.alternativas || [])
     .sort((a, b) => a.ordem - b.ordem)
     .map((alternativa) => {
@@ -369,8 +368,7 @@ async function concluidas(id_aluno) {
   }));
 }
 
-async function sortearAtivas(quantidade) {
-  const ativas = await Atividade.findAll({
+async function sortearAtivas(quantidade) {  const ativas = await Atividade.findAll({
     where: { ativo: true },
     attributes: ['id_atividade']
   });
@@ -390,6 +388,10 @@ async function sortearAtivas(quantidade) {
   return ids.map((id) => porId.get(id)).filter(Boolean);
 }
 
+function paraAluno(atividade) {
+  return formatar(atividade, false);
+}
+
 module.exports = {
   criar,
   listar,
@@ -398,5 +400,6 @@ module.exports = {
   alterarStatus,
   responder,
   concluidas,
-  sortearAtivas
+  sortearAtivas,
+  paraAluno
 };
