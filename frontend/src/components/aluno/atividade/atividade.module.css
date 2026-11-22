@@ -53,8 +53,6 @@
     flex-direction: column;
     gap: 1.5rem;
     margin-inline: 1rem;
-    box-shadow: 0 8px 25px #006bed2e;
-    border-radius: 1rem;
 }
 
 .containerResponder>h1 {
