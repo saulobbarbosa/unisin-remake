@@ -120,22 +120,11 @@
     border-radius: 100%;
 }
 
-.nomeNivel {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.nomeNivel>h1 {
+.infoUser>h1 {
     font-size: 1.125rem;
 }
 
-.nivel {
-    color: #006aff;
-    font-size: 0.875rem;
-}
-
-.moedas {
+.moedasNivel {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -143,14 +132,11 @@
     border-radius: 1.125rem;
     font-size: 1.125rem;
     font-weight: bold;
-}
-
-.moedas {
     background: #fff4cf;
     color: #a66a00;
 }
 
-.moedas>img {
-    width: 1.125rem;
-    height: 1.125rem;
+.imgMoeda {
+    width: 1.25rem;
+    height: 1.25rem;
 }

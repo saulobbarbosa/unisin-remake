@@ -4,34 +4,34 @@ import axios from "axios";
 import Style from "./ranking.module.css";
 
 export default function TelaRanking() {
-    const [menuRank, setMenuRank] = useState("humanas");
-    const [rankHumanas, setRankHumanas] = useState([]);
-    const [rankExatas, setRankExatas] = useState([]);
+    const [menuRank, setMenuRank] = useState("moedas");
+    const [rankMoedas, setRankMoedas] = useState([]);
+    const [rankNivel, setRankNivel] = useState([]);
     const nomeUser = localStorage.getItem("nomeUser");
 
     // Definir Array a ser Descarregado pelo map
-    const rankingAtual = menuRank === "humanas" ? rankHumanas : rankExatas;
+    const rankingAtual = menuRank === "moedas" ? rankMoedas : rankNivel;
 
     useEffect(() => {
-        const carregarRankHumanas = async () => {
+        const carregarRankMoedas = async () => {
             try {
                 const response = await axios.get("/dadosJson/ranking.json");
-                setRankHumanas(response.data.humanas);
+                setRankMoedas(response.data.moedas);
             } catch (error) {
-                console.error("Erro ao Buscar dados do Rank de Humanas", error);
+                console.error("Erro ao Buscar dados do Rank de Moedas", error);
             }
         }
-        const carregarRankExatas = async () => {
+        const carregarRankNivel = async () => {
             try {
                 const response = await axios.get("/dadosJson/ranking.json");
-                setRankExatas(response.data.exatas);
+                setRankNivel(response.data.nivel);
             } catch (error) {
-                console.error("Erro ao Buscar dados do Rank de Exatas", error);
+                console.error("Erro ao Buscar dados do Rank de Nível", error);
             }
         }
 
-        carregarRankHumanas();
-        carregarRankExatas();
+        carregarRankMoedas();
+        carregarRankNivel();
     }, []);
 
     return (
@@ -43,19 +43,19 @@ export default function TelaRanking() {
             <div className={Style.menuTrocarRanking}>
                 <button className={`
                     ${Style.btnMenu}
-                    ${menuRank === "humanas" ? Style.menuAtivo : ""}
+                    ${menuRank === "moedas" ? Style.menuAtivo : ""}
                 `}
-                    onClick={() => { setMenuRank("humanas") }}
+                    onClick={() => { setMenuRank("moedas") }}
                 >
-                    <p>Humanas</p>
+                    <p>Moedas</p>
                 </button>
                 <button className={`
                     ${Style.btnMenu}
-                    ${menuRank === "exatas" ? Style.menuAtivo : ""}
+                    ${menuRank === "nivel" ? Style.menuAtivo : ""}
                 `}
-                    onClick={() => { setMenuRank("exatas") }}
+                    onClick={() => { setMenuRank("nivel") }}
                 >
-                    <p>Exatas</p>
+                    <p>Nível</p>
                 </button>
             </div>
             <div className={Style.divListagem}>
@@ -71,20 +71,25 @@ export default function TelaRanking() {
                             <img src={item.avatar} alt="Imagem de Avatar do Usuário"
                                 style={{ border: `0.2rem solid ${item.borda}` }}
                             />
-                            <div className={Style.nomeNivel}>
-                                <h1>
-                                    {item.nome}{" "}
-                                    {item.nome === nomeUser ? "(você)" : ""}
-                                </h1>
-                                <p className={Style.nivel}>
-                                    <i className="fa-solid fa-star"></i>{" "}
-                                    Nv. {item.nivel}
-                                </p>
-                            </div>
+                            <h1>
+                                {item.nome}{" "}
+                                {item.nome === nomeUser ? "(você)" : ""}
+                            </h1>
                         </div>
-                        <div className={Style.moedas}>
-                            <img src={require('../../../imgs/moeda.png')} alt="Icon de Moeda" />
-                            <span>{item.moedas}</span>
+                        <div className={Style.moedasNivel}>
+                            {menuRank === "moedas" ? (
+                                <>
+                                    <img src={require('../../../imgs/moeda.png')} alt="Icon de Moeda"
+                                        className={Style.imgMoeda}
+                                    />
+                                    <span>{item.moedas}</span>
+                                </>
+                            ) : (
+                                <>
+                                    <i className="fa-solid fa-star"></i>{" "}
+                                    <p>Nv. {item.nivel}</p>
+                                </>
+                            )}
                         </div>
                     </div>
                 ))}

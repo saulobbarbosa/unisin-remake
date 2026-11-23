@@ -1,5 +1,5 @@
 {
-  "humanas": [
+  "moedas": [
     {
       "id": 1,
       "nome": "Guilherme Freitas",
@@ -51,7 +51,7 @@
   ],
 
 
-  "exatas": [
+  "nivel": [
     {
       "id": 1,
       "nome": "João Santos",
