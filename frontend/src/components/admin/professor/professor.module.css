@@ -45,3 +45,395 @@
     background: linear-gradient(135deg, #006bed, #0099fa);
     cursor: pointer;
 }
+/* Lista de atividades */
+.listaAtividades {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: -1rem;
+}
+
+/* Card da atividade */
+.cardAtividade {
+    width: 21rem;
+    height: 18.25rem;
+    background: linear-gradient(to bottom, #0084f8 40%, #fff 40%);
+    border-radius: 1.75rem;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 119, 255, 0.10);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+}
+
+.cardAtividade:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0.8rem 1.8rem rgba(0, 119, 255, 0.18);
+}
+
+/* Identificação da matéria */
+.materiaAtividade {
+    align-self: flex-end;
+    background-color: #f4f8ff;
+    padding: 0.35rem 1rem;
+    border-radius: 1.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Título e descrição */
+.infoAtividade {
+    margin-top: auto;
+}
+
+.infoAtividade h3 {
+    font-size: 1rem;
+    margin-bottom: 0.375rem;
+    color: #071a35;
+}
+
+.infoAtividade p {
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+/* Informações inferiores */
+.dadosAtividade > p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+}
+
+/* Progresso das entregas */
+.infoEntregas {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.375rem;
+    color: #071a35;
+}
+
+.barraProgresso {
+    width: 100%;
+    height: 0.5rem;
+    background-color: #e6f0ff;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.barraProgresso div {
+    height: 100%;
+    background: linear-gradient(135deg, #006bed, #0099fa);
+    border-radius: 1rem;
+}
+
+/* Botão Nova Atividade */
+.btnCadastrar {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btnCadastrar:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0.4rem 1rem rgba(0, 107, 237, 0.25);
+}
+
+/* Modal */
+.overlayModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(7, 26, 53, 0.45);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1rem;
+    animation: aparecerOverlay 0.2s ease;
+}
+
+.modalAtividade {
+    width: 100%;
+    max-width: 38rem;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #f8fbff;
+    border-radius: 2rem;
+    padding: 2rem;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15);
+    animation: aparecerModal 0.25s ease;
+}
+
+/* Título do formulário e modal */
+.tituloFormulario {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.tituloFormulario i {
+    color: #006bed;
+    font-size: 1.8rem;
+}
+
+.tituloFormulario h1 {
+    font-size: 2rem;
+}
+
+/* Formulário */
+.formNovaAtividade {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 119, 255, 0.10);
+}
+
+.campoFormulario {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+}
+
+.campoFormulario label {
+    font-size: 0.9rem;
+    color: #071a35;
+}
+
+/* Campos do formulário */
+.campoFormulario input,
+.campoFormulario textarea,
+.campoFormulario select {
+    width: 100%;
+    border: 1px solid #dce7f5;
+    border-radius: 1.2rem;
+    padding: 0.9rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: #071a35;
+    background-color: #f9fbff;
+    outline: none;
+    transition: 0.2s;
+}
+
+.campoFormulario input:focus,
+.campoFormulario textarea:focus,
+.campoFormulario select:focus {
+    border-color: #0084f8;
+    box-shadow: 0 0 0 3px rgba(0, 132, 248, 0.10);
+}
+
+.campoFormulario textarea {
+    height: 8rem;
+    resize: vertical;
+}
+
+/* Matéria e prazo */
+.camposLinha {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.camposLinha .campoFormulario {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Botão de cadastro */
+.btnEnviarAtividade {
+    width: 100%;
+    height: 2.8rem;
+    border: none;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #006bed, #0099fa);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btnEnviarAtividade:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+}
+
+/* Botão fechar modal */
+.btnFecharModal {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 50%;
+    background: #eaf2fc;
+    color: #54657a;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btnFecharModal:hover {
+    background: #dce9fa;
+    color: #006bed;
+}
+
+/* Animações */
+@keyframes aparecerOverlay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes aparecerModal {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Detalhes da atividade */
+.detalhesAtividade {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem;
+}
+
+/* Botão voltar */
+.btnVoltar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: fit-content;
+    background: transparent;
+    border: none;
+    color: #54657a;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btnVoltar:hover {
+    color: #006bed;
+    transform: translateX(-3px);
+}
+
+/* Cabeçalho dos detalhes */
+.cabecalhoDetalhes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 119, 255, 0.08);
+}
+
+.cabecalhoDetalhes h1 {
+    font-size: 2rem;
+    color: #071a35;
+}
+
+.cabecalhoDetalhes p {
+    font-size: 1rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Informações da atividade */
+.infoDetalhesAtividade {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.itemDetalhe {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    min-width: 13rem;
+    background-color: #fff;
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 119, 255, 0.08);
+}
+
+.itemDetalhe > i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    background-color: #eaf4ff;
+    color: #006bed;
+    font-size: 1.25rem;
+}
+
+.itemDetalhe div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.itemDetalhe span {
+    color: #64748b;
+    font-size: 0.8rem;
+}
+
+.itemDetalhe strong {
+    color: #071a35;
+    font-size: 1rem;
+}
+
+/* Entregas */
+.listaEntregas {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 119, 255, 0.08);
+}
+
+.listaEntregas h2 {
+    font-size: 1.4rem;
+    color: #071a35;
+    margin-bottom: 1rem;
+}
+
+.listaEntregas p {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .modalAtividade {
+        padding: 1.25rem;
+        border-radius: 1.5rem;
+    }
+
+    .tituloFormulario h1 {
+        font-size: 1.5rem;
+    }
+
+    .camposLinha {
+        flex-direction: column;
+    }
+
+    .cardAtividade {
+        width: 100%;
+    }
+}
