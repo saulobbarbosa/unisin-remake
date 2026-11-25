@@ -10,7 +10,7 @@
 .divTitulo {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 .divIconAtividade {
@@ -44,103 +44,119 @@
     color: #fff;
     background: linear-gradient(135deg, #006bed, #0099fa);
     cursor: pointer;
-}
-/* Lista de atividades */
-.listaAtividades {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.25rem;
-    margin-top: -1rem;
-}
-
-/* Card da atividade */
-.cardAtividade {
-    width: 21rem;
-    height: 18.25rem;
-    background: linear-gradient(to bottom, #0084f8 40%, #fff 40%);
-    border-radius: 1.75rem;
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 0.5rem 1.25rem rgba(0, 119, 255, 0.10);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    cursor: pointer;
-}
-
-.cardAtividade:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0.8rem 1.8rem rgba(0, 119, 255, 0.18);
-}
-
-/* Identificação da matéria */
-.materiaAtividade {
-    align-self: flex-end;
-    background-color: #f4f8ff;
-    padding: 0.35rem 1rem;
-    border-radius: 1.25rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-}
-
-/* Título e descrição */
-.infoAtividade {
-    margin-top: auto;
-}
-
-.infoAtividade h3 {
-    font-size: 1rem;
-    margin-bottom: 0.375rem;
-    color: #071a35;
-}
-
-.infoAtividade p {
-    font-size: 0.875rem;
-    color: #64748b;
-}
-
-/* Informações inferiores */
-.dadosAtividade > p {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.8125rem;
-    color: #64748b;
-    margin-bottom: 1rem;
-}
-
-/* Progresso das entregas */
-.infoEntregas {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.75rem;
-    font-weight: 600;
-    margin-bottom: 0.375rem;
-    color: #071a35;
-}
-
-.barraProgresso {
-    width: 100%;
-    height: 0.5rem;
-    background-color: #e6f0ff;
-    border-radius: 1rem;
-    overflow: hidden;
-}
-
-.barraProgresso div {
-    height: 100%;
-    background: linear-gradient(135deg, #006bed, #0099fa);
-    border-radius: 1rem;
-}
-
-/* Botão Nova Atividade */
-.btnCadastrar {
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .btnCadastrar:hover {
     transform: scale(1.03);
     box-shadow: 0 0.4rem 1rem rgba(0, 107, 237, 0.25);
+}
+
+/* Lista de atividades */
+.listaAtividades {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+.cardAtividade {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 20rem;
+    min-width: 12rem;
+    border-radius: 1.75rem;
+    cursor: pointer;
+    box-shadow: 0 0.8rem 1.8rem #0077ff1f;
+    transition: transform 0.25s ease;
+}
+
+.cardAtividade:hover {
+    transform: scale(1.03);
+}
+
+.infoAtividade {
+    background: linear-gradient(135deg, #006bed, #0099fa);
+    border-radius: 1.75rem 1.75rem 0rem 0rem;
+    padding: 1rem;
+    color: #fff;
+}
+
+.infoAtividade>h1 {
+    font-size: 1.25rem;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.infoAtividade>p {
+    font-size: 1rem;
+    opacity: 0.6;
+}
+
+.mostrarOpcoes {
+    margin-inline: 0.6rem;
+}
+
+.mostrarOpcoes>span {
+    font-size: 1rem;
+}
+
+.opcoes {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.875rem;
+    opacity: 0.6;
+}
+
+.opcoes>p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Botões */
+.acoesAtividade {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 0.3rem;
+    gap: 0.5rem;
+}
+
+.btnEditar,
+.btnRemover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btnEditar {
+    background: #e8f2ff;
+    color: #153653;
+}
+
+.btnEditar:hover {
+    background: #d3e6ff;
+}
+
+.btnRemover {
+    background: #ffe8eb;
+    color: #e00022;
+}
+
+.btnRemover:hover {
+    background: #ffd5dc;
 }
 
 /* Modal */
@@ -169,7 +185,23 @@
     animation: aparecerModal 0.25s ease;
 }
 
-/* Título do formulário e modal */
+/* Botão fechar modal */
+.btnFecharModal {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btnFecharModal:hover {
+    background: #dce9fa;
+    color: #006bed;
+}
+
+/* Título do formulário */
 .tituloFormulario {
     display: flex;
     align-items: center;
@@ -187,17 +219,15 @@
     font-size: 2rem;
 }
 
-/* Formulário */
 .formNovaAtividade {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     background-color: #fff;
     padding: 2rem;
-    border-radius: 2rem;
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 119, 255, 0.10);
 }
 
+/* Campos do formulário */
 .campoFormulario {
     display: flex;
     flex-direction: column;
@@ -205,15 +235,12 @@
     width: 100%;
 }
 
-.campoFormulario label {
+.campoFormulario>label {
     font-size: 0.9rem;
     color: #071a35;
 }
 
-/* Campos do formulário */
-.campoFormulario input,
-.campoFormulario textarea,
-.campoFormulario select {
+.inputTexto {
     width: 100%;
     border: 1px solid #dce7f5;
     border-radius: 1.2rem;
@@ -226,27 +253,36 @@
     transition: 0.2s;
 }
 
-.campoFormulario input:focus,
-.campoFormulario textarea:focus,
-.campoFormulario select:focus {
+.inputTexto:focus {
     border-color: #0084f8;
     box-shadow: 0 0 0 3px rgba(0, 132, 248, 0.10);
 }
 
-.campoFormulario textarea {
-    height: 8rem;
-    resize: vertical;
+.inputRadio {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin: 0;
+    flex-shrink: 0;
+    cursor: pointer;
+    accent-color: #006bed;
 }
 
-/* Matéria e prazo */
-.camposLinha {
+.inputsOpcoes {
     display: flex;
-    gap: 0.8rem;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
-.camposLinha .campoFormulario {
-    flex: 1;
-    min-width: 0;
+.opcaoInput {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.infoAlternativas {
+    font-size: 0.8rem;
+    color: #54657a;
+    margin-top: -0.3rem;
 }
 
 /* Botão de cadastro */
@@ -268,28 +304,15 @@
     transform: translateY(-1px);
 }
 
-/* Botão fechar modal */
-.btnFecharModal {
-    width: 2.5rem;
-    height: 2.5rem;
-    border: none;
-    border-radius: 50%;
-    background: #eaf2fc;
-    color: #54657a;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.btnFecharModal:hover {
-    background: #dce9fa;
-    color: #006bed;
-}
-
 /* Animações */
 @keyframes aparecerOverlay {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes aparecerModal {
@@ -297,143 +320,9 @@
         opacity: 0;
         transform: translateY(15px) scale(0.97);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
-    }
-}
-
-/* Detalhes da atividade */
-.detalhesAtividade {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 1.5rem;
-}
-
-/* Botão voltar */
-.btnVoltar {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    width: fit-content;
-    background: transparent;
-    border: none;
-    color: #54657a;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.btnVoltar:hover {
-    color: #006bed;
-    transform: translateX(-3px);
-}
-
-/* Cabeçalho dos detalhes */
-.cabecalhoDetalhes {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    background: #fff;
-    padding: 2rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 119, 255, 0.08);
-}
-
-.cabecalhoDetalhes h1 {
-    font-size: 2rem;
-    color: #071a35;
-}
-
-.cabecalhoDetalhes p {
-    font-size: 1rem;
-    color: #64748b;
-    line-height: 1.6;
-}
-
-/* Informações da atividade */
-.infoDetalhesAtividade {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.itemDetalhe {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex: 1;
-    min-width: 13rem;
-    background-color: #fff;
-    padding: 1.25rem;
-    border-radius: 1.25rem;
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 119, 255, 0.08);
-}
-
-.itemDetalhe > i {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 1rem;
-    background-color: #eaf4ff;
-    color: #006bed;
-    font-size: 1.25rem;
-}
-
-.itemDetalhe div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-}
-
-.itemDetalhe span {
-    color: #64748b;
-    font-size: 0.8rem;
-}
-
-.itemDetalhe strong {
-    color: #071a35;
-    font-size: 1rem;
-}
-
-/* Entregas */
-.listaEntregas {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 119, 255, 0.08);
-}
-
-.listaEntregas h2 {
-    font-size: 1.4rem;
-    color: #071a35;
-    margin-bottom: 1rem;
-}
-
-.listaEntregas p {
-    color: #64748b;
-    font-size: 0.95rem;
-}
-
-/* Responsividade */
-@media (max-width: 600px) {
-    .modalAtividade {
-        padding: 1.25rem;
-        border-radius: 1.5rem;
-    }
-
-    .tituloFormulario h1 {
-        font-size: 1.5rem;
-    }
-
-    .camposLinha {
-        flex-direction: column;
-    }
-
-    .cardAtividade {
-        width: 100%;
     }
 }
