@@ -15,6 +15,7 @@ const AlunoItemLoja = require('./AlunoItemLoja');
 const Amigos = require('./Amigos');
 const Conquista = require('./Conquista');
 const AlunoConquista = require('./AlunoConquista');
+const LogAuditoria = require('./LogAuditoria');
 
 // Usuários e perfis
 Usuario.hasOne(Aluno, { foreignKey: 'id_usuario', as: 'aluno' });
@@ -100,5 +101,6 @@ module.exports = {
   AlunoItemLoja,
   Amigos,
   Conquista,
-  AlunoConquista
+  AlunoConquista,
+  LogAuditoria
 };
