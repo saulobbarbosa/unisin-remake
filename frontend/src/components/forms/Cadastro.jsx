@@ -54,22 +54,6 @@ export default function CompCadastro({ fechar, entrar, tipoUsuario }) {
                                 placeholder="••••••••"
                             />
                         </div>
-                        <label>Confirmar senha</label>
-                        <div className={Style.inputIcon}>
-                            <i className="fa-solid fa-lock"></i>
-                            <input
-                                type="password"
-                                placeholder="••••••••"
-                            />
-                        </div>
-                        <label>Telefone</label>
-                        <div className={Style.inputIcon}>
-                            <i className="fa-solid fa-phone"></i>
-                            <input
-                                type="tel"
-                                placeholder="(00) 00000-0000"
-                            />
-                        </div>
                         <button className={Style.btnCadastrar}>
                             Cadastrar
                         </button>

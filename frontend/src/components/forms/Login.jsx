@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import { conectarSocket } from "../../services/socket";
-
 import Style from "./login.module.css";
 
 export default function CompLogin({ fechar, setMostrarCadastro }) {
@@ -13,33 +11,21 @@ export default function CompLogin({ fechar, setMostrarCadastro }) {
 
     const logar = async () => {
         try {
-            const response = await axios.get("/dadosJson/usuarios.json");
-            const usuario = response.data.find(u => u.email === email && u.senha === senha);
-            if (!usuario) {
+            const response = await axios.post("/api/auth/login", {
+                email: email,
+                senha: senha
+            });
+            const token = response.data.token;
+            // Validação
+            if (!token) {
                 alert("Login Invalido");
                 return;
             }
-            localStorage.setItem("id", usuario.id);
-            localStorage.setItem("nomeUser", usuario.nome);
-
-            if (usuario.tipo) {
-                localStorage.setItem("tipo", usuario.tipo);
-            }
-
-            // Conectar ao Socket.IO
-            conectarSocket(usuario.id);
-
-            // Redireciona para a tela correspondente
-            if (usuario.tipo === "professor") {
-                navigate("/home-prof");
-            } else if (usuario.tipo === "escola") {
-                navigate("/home-escola");
-            } else {
-                navigate("/aluno/home");
-                localStorage.setItem("tipo", "aluno");
-            }
+            localStorage.setItem("token", token);
+            navigate("/configuracao");
         } catch (error) {
             console.error("Ocorreu um Erro", error);
+            alert("E-mail ou senha inválidos.");
         }
     }
 

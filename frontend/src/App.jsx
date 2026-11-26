@@ -38,6 +38,8 @@ export default function App() {
                 {/* Rotas com Layout fixo */}
                 <Route element={<MainLayout />}>
                     {/* Rotas Alunos */}
+                    <Route path="/configuracao" element={<></>} />
+
                     <Route path="/aluno/home" element={<AlunoHome />} />
                     <Route path="/aluno/:materia" element={<AlunoTrilha />} />
                     <Route path="/aluno/:materia/atividade" element={<AlunoAtividade />} />
