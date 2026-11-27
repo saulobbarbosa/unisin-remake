@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Auditoria</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="pagina">
+      <header class="cabecalho">
+        <p class="sobretitulo">Unisin</p>
+        <h1>Auditoria</h1>
+        <p class="descricao">
+          Cadeia de registros protegida por SHA-256. Acesso restrito a administradores.
+        </p>
+      </header>
+
+      <section id="painel-login" class="painel">
+        <h2>Entrar</h2>
+        <form id="form-login" class="formulario">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="username" required />
+
+          <label for="senha">Senha</label>
+          <input id="senha" name="senha" type="password" autocomplete="current-password" required />
+
+          <button type="submit" class="botao primario">Entrar</button>
+          <p id="erro-login" class="mensagem erro" role="alert"></p>
+        </form>
+      </section>
+
+      <section id="painel-auditoria" class="painel oculto">
+        <div class="barra">
+          <div class="resumo">
+            <span id="total-blocos">0 blocos</span>
+            <span id="status-cadeia" class="etiqueta neutra">Não verificada</span>
+          </div>
+          <div class="acoes">
+            <button id="botao-atualizar" type="button" class="botao">Atualizar</button>
+            <button id="botao-verificar" type="button" class="botao primario">
+              Verificar integridade
+            </button>
+            <button id="botao-sair" type="button" class="botao">Sair</button>
+          </div>
+        </div>
+
+        <p id="mensagem" class="mensagem" role="status"></p>
+        <div id="lista-blocos" class="lista"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

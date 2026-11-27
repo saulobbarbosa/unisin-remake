@@ -9,6 +9,7 @@
     "dev": "node --watch src/server.js",
     "db:migrate": "node database/migrate.js",
     "db:seed": "node database/seed.js",
+    "auditoria:adulterar": "node scripts/adulterar-auditoria.js",
     "test": "jest --runInBand"
   },
   "dependencies": {

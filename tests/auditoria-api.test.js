@@ -84,3 +84,9 @@ test('lista blocos e detecta adulteração pela API', async () => {
     adulterada.body.problemas.some((problema) => problema.id_log === alvo.id_log)
   ).toBe(true);
 });
+
+test('serve a pagina separada de auditoria', async () => {
+  const resposta = await request(app).get('/auditoria/');
+  expect(resposta.status).toBe(200);
+  expect(resposta.text).toContain('Auditoria');
+});

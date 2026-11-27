@@ -1,0 +1,265 @@
+:root {
+  color-scheme: light;
+  --fundo: #f4f5f7;
+  --cartao: #ffffff;
+  --texto: #1f2933;
+  --suave: #616e7c;
+  --borda: #d9dee4;
+  --primario: #1d4ed8;
+  --primario-escuro: #1e40af;
+  --ok: #166534;
+  --ok-fundo: #dcfce7;
+  --erro: #991b1b;
+  --erro-fundo: #fee2e2;
+  --neutro-fundo: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.pagina {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 2rem auto 4rem;
+}
+
+.cabecalho h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.sobretitulo {
+  margin: 0;
+  color: var(--primario);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.descricao {
+  margin: 0.25rem 0 1.5rem;
+  color: var(--suave);
+}
+
+.painel {
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 6%);
+}
+
+.oculto {
+  display: none;
+}
+
+.formulario {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 380px;
+}
+
+.formulario h2 {
+  margin: 0 0 0.5rem;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  font: inherit;
+}
+
+input:focus {
+  border-color: var(--primario);
+  outline: 2px solid rgb(29 78 216 / 20%);
+}
+
+.botao {
+  border: 1px solid var(--borda);
+  background: var(--cartao);
+  color: var(--texto);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botao:hover {
+  border-color: var(--suave);
+}
+
+.botao.primario {
+  background: var(--primario);
+  border-color: var(--primario);
+  color: #ffffff;
+}
+
+.botao.primario:hover {
+  background: var(--primario-escuro);
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--borda);
+}
+
+.resumo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+}
+
+.etiqueta {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.15rem 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.etiqueta.neutra {
+  background: var(--neutro-fundo);
+  color: var(--suave);
+}
+
+.etiqueta.ok {
+  background: var(--ok-fundo);
+  color: var(--ok);
+}
+
+.etiqueta.erro {
+  background: var(--erro-fundo);
+  color: var(--erro);
+}
+
+.mensagem {
+  min-height: 1.5rem;
+  margin: 1rem 0 0;
+  font-weight: 600;
+}
+
+.mensagem.erro {
+  color: var(--erro);
+}
+
+.mensagem.ok {
+  color: var(--ok);
+}
+
+.lista {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.bloco {
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--primario);
+  border-radius: 10px;
+  padding: 1rem;
+  background: #fbfcfe;
+}
+
+.bloco.invalido {
+  border-color: var(--erro);
+  border-left-color: var(--erro);
+  background: #fff7f7;
+}
+
+.bloco-topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.bloco-titulo {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.bloco-corpo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.campo {
+  min-width: 0;
+}
+
+.campo-rotulo {
+  display: block;
+  color: var(--suave);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.campo-valor {
+  margin: 0.15rem 0 0;
+  overflow-wrap: anywhere;
+}
+
+pre.campo-valor {
+  margin: 0.15rem 0 0;
+  padding: 0.5rem;
+  max-height: 12rem;
+  overflow: auto;
+  background: #eef1f5;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+}
+
+code.hash {
+  display: block;
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+  color: var(--suave);
+}
+
+.vazio {
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--suave);
+}
+
+@media (max-width: 600px) {
+  .barra {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

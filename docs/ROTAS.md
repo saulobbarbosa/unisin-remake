@@ -1765,6 +1765,77 @@ A classificação usa as moedas do aluno em ordem decrescente. O retorno contém
 
 ---
 
+## Auditoria
+
+```text
+/api/auditoria GET:
+
+Permissão: administrador
+
+INPUT:
+
+{}
+
+Output:
+
+[
+    {
+        "id_log": 1,
+        "data_hora": "2026-11-26T14:30:00.000Z",
+        "id_usuario": 11,
+        "usuario_nome": "Carlos Pereira",
+        "acao": "inclusao",
+        "entidade": "atividade",
+        "entidade_id": "1",
+        "detalhes": {
+            "id_atividade": 1,
+            "nome_atividade": "Matemática básica",
+            "tipo": "multipla_escolha",
+            "id_nivel_ensino": 1
+        },
+        "hash_anterior": "0000000000000000000000000000000000000000000000000000000000000000",
+        "hash_atual": "9f2c1d7e5b2a4c6f8e0a1b3d5c7e9f1a2b4c6d8e0f1a3b5c7d9e1f2a4b6c8d0e"
+    }
+]
+```
+
+```text
+/api/auditoria/verificar GET:
+
+Permissão: administrador
+
+INPUT:
+
+{}
+
+Output:
+
+{
+    "integra": true,
+    "total": 1,
+    "problemas": []
+}
+```
+
+Quando um bloco é alterado diretamente no banco sem recálculo dos hashes, a resposta passa a ser:
+
+```json
+{
+    "integra": false,
+    "total": 1,
+    "problemas": [
+        {
+            "id_log": 1,
+            "motivo": "Hash atual não corresponde ao conteúdo do bloco"
+        }
+    ]
+}
+```
+
+A página administrativa da auditoria é servida em `/auditoria`.
+
+---
+
 ## Eventos Socket.IO (PvP)
 
 Conexão:

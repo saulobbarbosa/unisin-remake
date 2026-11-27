@@ -122,6 +122,8 @@ database/
 └── seed.js        criação do administrador inicial
 
 docs/ROTAS.md      documentação completa das rotas
+public/auditoria/  painel administrativo da auditoria
+scripts/           ferramentas de demonstração
 tests/             testes de integração com Jest e Supertest
 ```
 
@@ -171,6 +173,30 @@ const socket = io('http://localhost:3000', {
 Convites, aceite e recusa usam as rotas REST documentadas em `docs/ROTAS.md`. Durante a partida, o cliente envia as respostas pelo evento `pvp:responder`; o servidor valida, calcula a pontuação e envia `pvp:resultado`.
 
 Partidas e avaliações ficam em memória. Se o processo do servidor for encerrado, esses dados temporários são perdidos. Apenas moedas, vitórias, conquistas, compras e progresso são persistidos.
+
+## Auditoria
+
+Operações sensíveis são gravadas em uma cadeia de blocos. Cada bloco guarda data e hora, usuário responsável, ação, entidade afetada, detalhes, hash do bloco anterior e hash atual gerado com SHA-256. O primeiro bloco usa 64 zeros como hash anterior.
+
+Operações registradas:
+
+- atividades: criação, edição e desativação;
+- usuários: cadastro de aluno, cadastro de administrador e edição do aluno;
+- professores: criação e edição;
+- escolas: cadastro;
+- loja: compra de item.
+
+A consulta e a verificação exigem perfil de administrador. A interface fica em `http://localhost:3000/auditoria`, com login usando o mesmo e-mail e senha da API.
+
+Para verificar a integridade, a tela percorre todos os blocos e recalcula os hashes. Qualquer alteração direta no banco sem recálculo faz o bloco ser marcado como inválido.
+
+Demonstração de adulteração:
+
+```bash
+npm run auditoria:adulterar -- 1
+```
+
+O comando altera os detalhes do bloco indicado e mantém o hash antigo. Depois, abra `/auditoria` e clique em "Verificar integridade" para ver o bloco comprometido. Não existe endpoint de adulteração; a alteração é feita apenas pelo script local.
 
 ## Documentação das rotas
 
