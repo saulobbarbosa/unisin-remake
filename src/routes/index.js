@@ -14,6 +14,7 @@ const lojaRoutes = require('./lojaRoutes');
 const conquistaRoutes = require('./conquistaRoutes');
 const moduloRoutes = require('./moduloRoutes');
 const rankingRoutes = require('./rankingRoutes');
+const auditoriaRoutes = require('./auditoriaRoutes');
 
 const router = express.Router();
 
@@ -31,5 +32,6 @@ router.use('/loja', lojaRoutes);
 router.use('/conquistas', conquistaRoutes);
 router.use('/modulos', moduloRoutes);
 router.use('/ranking', rankingRoutes);
+router.use('/auditoria', auditoriaRoutes);
 
 module.exports = router;
