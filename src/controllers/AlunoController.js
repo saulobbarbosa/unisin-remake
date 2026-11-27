@@ -1,10 +1,23 @@
 const AuthService = require('../services/AuthService');
 const AlunoService = require('../services/AlunoService');
+const { registrarAuditoria } = require('../utils/auditoria');
 const { responderErro } = require('../utils/erro');
 
 async function criar(req, res) {
   try {
     const aluno = await AuthService.cadastrarAluno(req.body);
+    await registrarAuditoria(
+      { id_usuario: aluno.id_usuario, nome: aluno.nome },
+      'inclusao',
+      'usuario',
+      aluno.id_usuario,
+      {
+        id_usuario: aluno.id_usuario,
+        nome: aluno.nome,
+        email: aluno.email,
+        tipo: 'aluno'
+      }
+    );
     return res.status(201).json(aluno);
   } catch (erro) {
     return responderErro(res, erro);
@@ -41,6 +54,17 @@ async function listar(req, res) {
 async function atualizarMe(req, res) {
   try {
     const aluno = await AlunoService.atualizarMe(req.usuario.id_usuario, req.body);
+    const detalhes = {};
+    for (const campo of ['nome', 'email', 'dt_nasc']) {
+      if (req.body[campo] !== undefined) detalhes[campo] = req.body[campo];
+    }
+    await registrarAuditoria(
+      req.usuario,
+      'alteracao',
+      'usuario',
+      aluno.id_usuario,
+      detalhes
+    );
     return res.json(aluno);
   } catch (erro) {
     return responderErro(res, erro);

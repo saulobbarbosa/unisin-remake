@@ -1,4 +1,5 @@
 const LojaService = require('../services/LojaService');
+const { registrarAuditoria } = require('../utils/auditoria');
 const { responderErro } = require('../utils/erro');
 
 async function listarItens(req, res) {
@@ -51,6 +52,17 @@ async function comprar(req, res) {
     const resultado = await LojaService.comprar(
       req.usuario.id_usuario,
       Number(req.params.id)
+    );
+    await registrarAuditoria(
+      req.usuario,
+      'compra',
+      'compra',
+      Number(req.params.id),
+      {
+        item: resultado.item.nome,
+        preco: resultado.item.preco,
+        moedas: resultado.moedas
+      }
     );
     return res.json(resultado);
   } catch (erro) {

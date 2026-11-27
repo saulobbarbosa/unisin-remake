@@ -1,9 +1,16 @@
 const AtividadeService = require('../services/AtividadeService');
+const { registrarAuditoria } = require('../utils/auditoria');
 const { responderErro } = require('../utils/erro');
 
 async function criar(req, res) {
   try {
     const atividade = await AtividadeService.criar(req.usuario.id_usuario, req.body);
+    await registrarAuditoria(req.usuario, 'inclusao', 'atividade', atividade.id_atividade, {
+      id_atividade: atividade.id_atividade,
+      nome_atividade: atividade.nome_atividade,
+      tipo: atividade.tipo,
+      id_nivel_ensino: atividade.id_nivel_ensino
+    });
     return res.status(201).json(atividade);
   } catch (erro) {
     return responderErro(res, erro);
@@ -38,6 +45,17 @@ async function atualizar(req, res) {
       req.usuario.id_usuario,
       req.body
     );
+    const detalhes = { id_atividade: atividade.id_atividade };
+    for (const campo of ['nome_atividade', 'tipo', 'id_nivel_ensino']) {
+      if (req.body[campo] !== undefined) detalhes[campo] = req.body[campo];
+    }
+    await registrarAuditoria(
+      req.usuario,
+      'alteracao',
+      'atividade',
+      atividade.id_atividade,
+      detalhes
+    );
     return res.json(atividade);
   } catch (erro) {
     return responderErro(res, erro);
@@ -50,6 +68,17 @@ async function alterarStatus(req, res) {
       Number(req.params.id),
       req.usuario.id_usuario,
       req.body.ativo
+    );
+    await registrarAuditoria(
+      req.usuario,
+      atividade.ativo ? 'alteracao' : 'exclusao',
+      'atividade',
+      atividade.id_atividade,
+      {
+        id_atividade: atividade.id_atividade,
+        nome_atividade: atividade.nome_atividade,
+        ativo: atividade.ativo
+      }
     );
     return res.json(atividade);
   } catch (erro) {

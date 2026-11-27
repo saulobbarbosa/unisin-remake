@@ -1,4 +1,5 @@
 const AuthService = require('../services/AuthService');
+const { registrarAuditoria } = require('../utils/auditoria');
 const { responderErro } = require('../utils/erro');
 
 async function login(req, res) {
@@ -17,6 +18,18 @@ async function logout(req, res) {
 async function cadastrarAdministrador(req, res) {
   try {
     const administrador = await AuthService.cadastrarAdministrador(req.body);
+    await registrarAuditoria(
+      req.usuario,
+      'inclusao',
+      'usuario',
+      administrador.id_usuario,
+      {
+        id_usuario: administrador.id_usuario,
+        nome: administrador.nome,
+        email: administrador.email,
+        tipo: 'administrador'
+      }
+    );
     return res.status(201).json(administrador);
   } catch (erro) {
     return responderErro(res, erro);

@@ -1,4 +1,5 @@
 const ProfessorService = require('../services/ProfessorService');
+const { registrarAuditoria } = require('../utils/auditoria');
 const { responderErro } = require('../utils/erro');
 
 async function listar(req, res) {
@@ -25,6 +26,17 @@ async function atualizar(req, res) {
       Number(req.params.id),
       req.body,
       req.usuario
+    );
+    const detalhes = {};
+    for (const campo of ['nome', 'email', 'dt_nasc']) {
+      if (req.body[campo] !== undefined) detalhes[campo] = req.body[campo];
+    }
+    await registrarAuditoria(
+      req.usuario,
+      'alteracao',
+      'professor',
+      professor.id_usuario,
+      detalhes
     );
     return res.json(professor);
   } catch (erro) {
