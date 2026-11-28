@@ -51,7 +51,7 @@ function formatarItem(item) {
     id_item_loja: item.id_item_loja,
     nome: item.nome,
     descricao: item.descricao,
-    imagem: item.imagem,
+    valor: item.valor,
     categoria: item.categoria,
     preco: item.preco,
     ativo: Boolean(item.ativo)
@@ -85,7 +85,7 @@ async function criarItem(dados) {
   const item = await ItemLoja.create({
     nome: dados.nome,
     descricao: dados.descricao,
-    imagem: dados.imagem,
+    valor: dados.valor,
     categoria: validarCategoria(dados.categoria),
     preco: Number(dados.preco),
     ativo: dados.ativo === undefined ? true : Boolean(dados.ativo)
@@ -106,7 +106,7 @@ async function atualizarItem(id_item_loja, dados) {
   }
 
   const alteracoes = {};
-  for (const campo of ['nome', 'descricao', 'imagem', 'preco']) {
+  for (const campo of ['nome', 'descricao', 'valor', 'preco']) {
     if (dados[campo] !== undefined) alteracoes[campo] = dados[campo];
   }
   if (dados.categoria !== undefined) {
@@ -240,7 +240,7 @@ async function aparencia(id_aluno) {
       resultado[categoria] = {
         id_item_loja: registro.item.id_item_loja,
         nome: registro.item.nome,
-        valor: registro.item.imagem
+        valor: registro.item.valor
       };
     }
   }

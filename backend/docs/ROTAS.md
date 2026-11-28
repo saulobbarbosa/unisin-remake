@@ -1128,7 +1128,7 @@ Output:
         "id_item_loja": 1,
         "nome": "Avatar Azul",
         "descricao": "Avatar com fundo azul",
-        "imagem": "/itens/avatar-azul.png",
+        "valor": "/itens/avatar-azul.png",
         "categoria": "avatar",
         "preco": 20,
         "ativo": true
@@ -1137,7 +1137,7 @@ Output:
         "id_item_loja": 2,
         "nome": "Borda Ouro",
         "descricao": "Borda dourada para o perfil",
-        "imagem": "#FFD700",
+        "valor": "#FFD700",
         "categoria": "borda",
         "preco": 40,
         "ativo": true
@@ -1162,7 +1162,7 @@ Output:
     "id_item_loja": 1,
     "nome": "Avatar Azul",
     "descricao": "Avatar com fundo azul",
-    "imagem": "/itens/avatar-azul.png",
+    "valor": "/itens/avatar-azul.png",
     "categoria": "avatar",
     "preco": 20,
     "ativo": true
@@ -1179,7 +1179,7 @@ INPUT:
 {
     "nome": "Avatar Azul",
     "descricao": "Avatar com fundo azul",
-    "imagem": "/itens/avatar-azul.png",
+    "valor": "/itens/avatar-azul.png",
     "categoria": "avatar",
     "preco": 20
 }
@@ -1190,14 +1190,14 @@ Output:
     "id_item_loja": 1,
     "nome": "Avatar Azul",
     "descricao": "Avatar com fundo azul",
-    "imagem": "/itens/avatar-azul.png",
+    "valor": "/itens/avatar-azul.png",
     "categoria": "avatar",
     "preco": 20,
     "ativo": true
 }
 ```
 
-O campo `imagem` guarda o valor visual do item: uma cor (ex.: `#FFD700`) ou o caminho de uma imagem. Categorias aceitas: `avatar`, `borda`, `titulo` e `fundo`. Os aliases `moldura` (para `borda`) e `background` (para `fundo`) também são aceitos e normalizados.
+O campo `valor` guarda o conteúdo visual do item: uma cor (ex.: `#FFD700`) ou o caminho de uma imagem. Categorias aceitas: `avatar`, `borda`, `titulo` e `fundo`. Os aliases `moldura` (para `borda`) e `background` (para `fundo`) também são aceitos e normalizados.
 
 ```text
 /api/loja/itens/:id PUT:
@@ -1210,7 +1210,7 @@ INPUT:
     "id": 1,
     "nome": "Avatar Azul Escuro",
     "descricao": "Avatar com fundo azul escuro",
-    "imagem": "/itens/avatar-azul-escuro.png",
+    "valor": "/itens/avatar-azul-escuro.png",
     "categoria": "avatar",
     "preco": 25
 }
@@ -1221,7 +1221,7 @@ Output:
     "id_item_loja": 1,
     "nome": "Avatar Azul Escuro",
     "descricao": "Avatar com fundo azul escuro",
-    "imagem": "/itens/avatar-azul-escuro.png",
+    "valor": "/itens/avatar-azul-escuro.png",
     "categoria": "avatar",
     "preco": 25,
     "ativo": true
@@ -1246,7 +1246,7 @@ Output:
     "id_item_loja": 1,
     "nome": "Avatar Azul Escuro",
     "descricao": "Avatar com fundo azul escuro",
-    "imagem": "/itens/avatar-azul-escuro.png",
+    "valor": "/itens/avatar-azul-escuro.png",
     "categoria": "avatar",
     "preco": 25,
     "ativo": false
@@ -1271,7 +1271,7 @@ Output:
         "id_item_loja": 1,
         "nome": "Avatar Azul",
         "descricao": "Avatar com fundo azul",
-        "imagem": "/itens/avatar-azul.png",
+        "valor": "/itens/avatar-azul.png",
         "categoria": "avatar",
         "preco": 20,
         "ativo": true
@@ -1304,7 +1304,7 @@ Output:
         "id_item_loja": 1,
         "nome": "Avatar Azul",
         "descricao": "Avatar com fundo azul",
-        "imagem": "/itens/avatar-azul.png",
+        "valor": "/itens/avatar-azul.png",
         "categoria": "avatar",
         "preco": 20,
         "ativo": true,
@@ -1330,7 +1330,7 @@ Output:
         "id_item_loja": 1,
         "nome": "Avatar Azul",
         "descricao": "Avatar com fundo azul",
-        "imagem": "/itens/avatar-azul.png",
+        "valor": "/itens/avatar-azul.png",
         "categoria": "avatar",
         "preco": 20,
         "ativo": true,
@@ -1369,7 +1369,7 @@ Output:
 }
 ```
 
-Retorna o nome do aluno autenticado e o item equipado em cada categoria. O campo `valor` é o conteúdo de `imagem` do item, ou seja, uma cor ou o caminho de uma imagem. Categorias sem item equipado retornam `null`. Cada categoria aceita um item equipado por vez; ao equipar outro item da mesma categoria, o anterior é desequipado.
+Retorna o nome do aluno autenticado e o item equipado em cada categoria. O campo `valor` é o conteúdo visual do item, ou seja, uma cor ou o caminho de uma imagem. Categorias sem item equipado retornam `null`. Cada categoria aceita um item equipado por vez; ao equipar outro item da mesma categoria, o anterior é desequipado.
 
 ```text
 /api/loja/equipar/:id POST:
@@ -1388,7 +1388,7 @@ Output:
     "id_item_loja": 1,
     "nome": "Avatar Azul",
     "descricao": "Avatar com fundo azul",
-    "imagem": "/itens/avatar-azul.png",
+    "valor": "/itens/avatar-azul.png",
     "categoria": "avatar",
     "preco": 20,
     "ativo": true,
@@ -1414,7 +1414,7 @@ Output:
     "id_item_loja": 1,
     "nome": "Avatar Azul",
     "descricao": "Avatar com fundo azul",
-    "imagem": "/itens/avatar-azul.png",
+    "valor": "/itens/avatar-azul.png",
     "categoria": "avatar",
     "preco": 20,
     "ativo": true,

@@ -48,11 +48,11 @@ beforeAll(async () => {
   await Aluno.update({ moedas: 100 }, { where: { id_usuario: idAluno } });
 });
 
-async function criarItem(nome, categoria, preco, imagem) {
+async function criarItem(nome, categoria, preco, valor) {
   const resposta = await request(app)
     .post('/api/loja/itens')
     .set('Authorization', `Bearer ${tokenAdmin}`)
-    .send({ nome, descricao: `${nome} descrição`, categoria, preco, imagem });
+    .send({ nome, descricao: `${nome} descrição`, categoria, preco, valor });
   return resposta;
 }
 
