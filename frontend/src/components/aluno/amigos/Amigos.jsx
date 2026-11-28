@@ -11,14 +11,17 @@ export default function TelaAmigos() {
     const [dadosAmigos, setDadosAmigos] = useState([]);
     const [solicitacoes, setSolicitacoes] = useState([]);
     const [convitesPvP, setConvitesPvP] = useState([]);
-    const [modalAdicionar, setModalAdicionar] = useState(false);
-    const [pesquisa, setPesquisa] = useState("");
     const [solicitacoesEnviadas, setSolicitacoesEnviadas] = useState([]);
     const [menuAberto, setMenuAberto] = useState(null);
     const [aba, setAba] = useState("amigos");
     const idUser = localStorage.getItem("id");
 
-    // Teste de SocketIO
+    // States para Adicionar Amigos
+    const [modalAdicionar, setModalAdicionar] = useState(false);
+    const [pesquisa, setPesquisa] = useState("");
+    const [usuariosEncontrados, setUsuariosEncontrados] = useState([]);
+
+    // SocketIO
     useEffect(() => {
         const receberConvite = (dados) => {
             console.log("Convite PvP recebido:", dados);
@@ -29,7 +32,6 @@ export default function TelaAmigos() {
         };
         const receberResposta = (dados) => {
             console.log("Resposta do convite PvP:", dados);
-
             if (dados.aceito) {
                 console.log(`O jogador ${dados.jogadorId} aceitou seu convite!`);
             } else {
@@ -46,12 +48,10 @@ export default function TelaAmigos() {
                 }
             });
         };
-
         socket.on("pvp:convite", receberConvite);
         socket.on("pvp:erro", receberErro);
         socket.on("pvp:resposta", receberResposta);
         socket.on("lobby:entrar", entrarNoLobby);
-
         return () => {
             socket.off("pvp:convite", receberConvite);
             socket.off("pvp:erro", receberErro);
@@ -76,24 +76,40 @@ export default function TelaAmigos() {
             convidanteId: String(convite.idUser),
             aceito
         });
-
         setConvitesPvP(prev =>
             prev.filter(item => item !== convite)
         );
-
         console.log("Resposta ao convite PvP enviada:", {
             convidanteId: convite.idUser,
             aceito
         });
     };
 
-    // Código Leo
+    // CRUD padrão
+    const headers = {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+    }
+
     const carregarDados = async () => {
         try {
-            const response = await axios.get("/dadosJson/usuarios.json");
+            const response = await axios.get("/api/amigos", headers);
             setDadosAmigos(response.data);
         } catch (error) {
             console.error("Erro ao carregar dados", error);
+        }
+    }
+
+    const buscarUsuarios = async () => {
+        try {
+            const response = await axios.get(
+                `/api/amigos/buscar?nome=${encodeURIComponent(pesquisa)}`,
+                headers
+            );
+            setUsuariosEncontrados(response.data);
+        } catch (error) {
+            console.error("Erro ao Buscar Amigo: ", error);
         }
     }
 
@@ -116,18 +132,6 @@ export default function TelaAmigos() {
         setSolicitacoes(prev => prev.filter(item => item.id !== amigo.id));
     };
 
-    const recusarSolicitacao = (id) => {
-        setSolicitacoes(prev => prev.filter(item => item.id !== id));
-    };
-
-    const enviarSolicitacao = (usuario) => {
-        setSolicitacoesEnviadas(prev => [...prev, usuario]);
-    };
-
-    const desfazerAmizade = (id) => {
-        setDadosAmigos(prev => prev.filter(amigo => amigo.id !== id));
-    };
-
     return (
         <div className={Style.pagina}>
             <main className={Style.conteudo}>
@@ -137,7 +141,6 @@ export default function TelaAmigos() {
                         <i className="fa-solid fa-user-group"></i>
                         <h1>Amigos</h1>
                     </div>
-
                     <div className={Style.acoes}>
                         <button className={Style.btnAdicionar}
                             onClick={() => setModalAdicionar(true)}
@@ -147,7 +150,6 @@ export default function TelaAmigos() {
                         </button>
                     </div>
                 </div>
-
                 {/* ABAS */}
                 <div className={Style.abas}>
                     <button
@@ -156,7 +158,6 @@ export default function TelaAmigos() {
                     >
                         Meus amigos ({dadosAmigos.length})
                     </button>
-
                     <button
                         className={aba === "solicitacoes" ? Style.abaAtiva : ""}
                         onClick={() => setAba("solicitacoes")}
@@ -164,28 +165,26 @@ export default function TelaAmigos() {
                         Solicitações ({solicitacoes.length + convitesPvP.length})
                     </button>
                 </div>
-
                 {/* LISTA */}
                 {aba === "amigos" && (
                     <div className={Style.lista}>
                         {dadosAmigos.map(amigo => (
-                            <div key={amigo.id} className={Style.cardAmigo}>
+                            <div key={amigo.id_usuario} className={Style.cardAmigo}>
                                 <div className={Style.avatarAmigo}>
                                     <img
-                                        src={amigo.avatar}
-                                        alt={`Avatar de ${amigo.nome}`}
+                                        src={amigo?.avatar || "/imgs/boy_black.webp"}
+                                        alt="Avatar dos Amigos"
                                         style={{
-                                            border: `0.2rem solid ${amigo.borda}`
+                                            border: `0.2rem solid ${amigo?.borda || "#000"}`
                                         }}
                                     />
                                 </div>
-
                                 <div className={Style.infoAmigo}>
-                                    <h3>{amigo.nome}</h3>
+                                    <h3>{amigo?.nome}</h3>
                                     <div className={Style.status}>
                                         <span className={Style.nivelAmigo}>
                                             <i className="fa-solid fa-star"></i>
-                                            Nv. {amigo.nivel}
+                                            Nv. {amigo?.nivel}
                                         </span>
                                         <span className={Style.moedasAmigo}>
                                             <img
@@ -193,47 +192,45 @@ export default function TelaAmigos() {
                                                 alt="Moedas"
                                                 className={Style.iconeMoeda}
                                             />
-                                            {amigo.moedas}
+                                            {amigo?.moedas}
                                         </span>
                                     </div>
                                 </div>
-
                                 <div className={Style.menuContainer}>
                                     <button className={Style.btnMenu}
-                                        onClick={() => setMenuAberto(menuAberto === amigo.id ? null : amigo.id)}>
+                                        onClick={() => {
+                                            setMenuAberto(menuAberto === amigo.id_usuario ?
+                                                null : amigo.id_usuario
+                                            )
+                                        }}
+                                    >
                                         <i className="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
-
-                                    {menuAberto === amigo.id && (
+                                    {menuAberto === amigo.id_usuario && (
                                         <div className={Style.menuOpcoes}>
-
                                             <button onClick={() => {
-                                                convidarParaPvP(amigo.id);
+                                                convidarParaPvP(amigo.id_usuario);
                                                 setMenuAberto(null);
                                             }}>
                                                 <i className="fa-solid fa-gamepad"></i>
                                                 Convidar para PvP
                                             </button>
-
                                             <button
                                                 className={Style.btnVerPerfil}
-                                                onClick={() => { navigate(`/aluno/perfil/${amigo.id}`) }}
+                                                onClick={() => { navigate(`/aluno/perfil/${amigo.id_usuario}`) }}
                                             >
                                                 <i className="fa-solid fa-user"></i>
                                                 Ver Perfil
                                             </button>
-
                                             <button
                                                 className={Style.btnDesfazer}
                                                 onClick={() => {
-                                                    desfazerAmizade(amigo.id);
                                                     setMenuAberto(null);
                                                 }}
                                             >
                                                 <i className="fa-solid fa-xmark"></i>
                                                 Desfazer amizade
                                             </button>
-
                                         </div>
                                     )}
                                 </div>
@@ -245,18 +242,15 @@ export default function TelaAmigos() {
                     <div className={Style.lista}>
                         {convitesPvP.map((convite, index) => {
                             const jogador = dadosAmigos.find(
-                                usuario => String(usuario.id) === String(convite.idUser)
+                                usuario => String(usuario.id_usuario) === String(convite.idUser)
                             );
-
                             return (
                                 <div key={`pvp-${index}`} className={Style.cardAmigo}>
-
                                     <div className={Style.avatarAmigo}>
                                         <img src={jogador?.avatar} alt={jogador?.nome || "Jogador"}
                                             style={{ border: `0.2rem solid ${jogador?.borda || "transparent"}` }}
                                         />
                                     </div>
-
                                     <div className={Style.infoAmigo}>
                                         <h3>{jogador?.nome}</h3>
                                         <span className={Style.nivelAmigo}
@@ -265,48 +259,40 @@ export default function TelaAmigos() {
                                             Convite de PvP
                                         </span>
                                     </div>
-
                                     <div className={Style.acoesSolicitacao}>
                                         <button onClick={() => { responderConvitePvP(convite, true) }}>
                                             Aceitar
                                         </button>
-
                                         <button onClick={() => { responderConvitePvP(convite, false) }}>
                                             Recusar
                                         </button>
                                     </div>
-
                                 </div>
                             );
                         })}
                         {solicitacoes.map(amigo => (
                             <div key={amigo.id} className={Style.cardAmigo}>
-
                                 <div className={Style.avatarAmigo}>
                                     <img src={amigo.avatar} alt={amigo.nome}
                                         style={{ border: `0.2rem solid ${amigo.borda}` }}
                                     />
                                 </div>
-
                                 <div className={Style.infoAmigo}>
                                     <h3>{amigo.nome}</h3>
                                     <span className={Style.nivelAmigo}>
                                         Pedido de Amizade
                                     </span>
                                 </div>
-
                                 <div className={Style.acoesSolicitacao}>
                                     <button onClick={() => aceitarSolicitacao(amigo)}>
                                         Aceitar
                                     </button>
-                                    <button onClick={() => recusarSolicitacao(amigo.id)}>
+                                    <button onClick={() => { }}>
                                         Recusar
                                     </button>
                                 </div>
-
                             </div>
                         ))}
-
                         {solicitacoes.length === 0 && convitesPvP.length === 0 && (
                             <p>Nenhuma solicitação pendente.</p>
                         )}
@@ -315,49 +301,47 @@ export default function TelaAmigos() {
                 {modalAdicionar && (
                     <div className={Style.modal}>
                         <div className={Style.modalConteudo}>
-
                             <h2>Adicionar amigos</h2>
-
-                            <input type="text" placeholder="Pesquisar por nome ou e-mail..." value={pesquisa} onChange={(e) => setPesquisa(e.target.value)} />
-
-                            {dadosAmigos
-                                .filter(usuario =>
-                                    usuario.nome.toLowerCase().includes(pesquisa.toLowerCase()) ||
-                                    usuario.email.toLowerCase().includes(pesquisa.toLowerCase())
-                                )
-                                .map(usuario => (
-                                    <div key={usuario.id} className={Style.cardAmigo}>
-
-                                        <div className={Style.avatarAmigo}>
-                                            <img src={usuario.avatar} alt={usuario.nome} />
-                                        </div>
-
-                                        <div className={Style.infoAmigo}>
-                                            <h3>{usuario.nome}</h3>
-
-                                            <span className={Style.nivelAmigo}>
-                                                <i className="fa-solid fa-star"></i>
-                                                Nv. {usuario.nivel}
-                                            </span>
-                                        </div>
-
-                                        <button
-                                            className={Style.btnAdicionarUsuario}
-                                            disabled={solicitacoesEnviadas.some(item => item.id === usuario.id)}
-                                            onClick={() => enviarSolicitacao(usuario)}
-                                        >
-                                            {solicitacoesEnviadas.some(item => item.id === usuario.id)
-                                                ? "Enviada" : "Adicionar"}
-                                        </button>
-
+                            <div className={Style.modalInputPesquisa}>
+                                <input type="text" placeholder="Pesquisar por nome ou e-mail..."
+                                    value={pesquisa} onChange={(e) => setPesquisa(e.target.value)}
+                                />
+                                <button onClick={buscarUsuarios}>
+                                    <i className="fa-solid fa-magnifying-glass"></i>
+                                    Buscar
+                                </button>
+                            </div>
+                            {usuariosEncontrados.map(usuario => (
+                                <div key={usuario.id_usuario} className={Style.cardAmigo}>
+                                    <div className={Style.avatarAmigo}>
+                                        <img src={usuario?.avatar || "/imgs/boy_black.webp"}
+                                            alt="Avatar do User Encontrado"
+                                        />
                                     </div>
-                                ))}
-
+                                    <div className={Style.infoAmigo}>
+                                        <h3>{usuario.nome}</h3>
+                                        <span className={Style.nivelAmigo}>
+                                            <i className="fa-solid fa-star"></i>
+                                            Nv. {usuario?.nivel}
+                                        </span>
+                                    </div>
+                                    <button
+                                        className={Style.btnAdicionarUsuario}
+                                        disabled={solicitacoesEnviadas.some(
+                                            item => item.id_usuario === usuario.id_usuario
+                                        )}
+                                        onClick={() => { }}
+                                    >
+                                        {solicitacoesEnviadas.some(item =>
+                                            item.id_usuario === usuario.id_usuario
+                                        ) ? "Enviada" : "Adicionar"}
+                                    </button>
+                                </div>
+                            ))}
                             <button className={Style.btnFechar}
                                 onClick={() => setModalAdicionar(false)}>
                                 Fechar
                             </button>
-
                         </div>
                     </div>
                 )}

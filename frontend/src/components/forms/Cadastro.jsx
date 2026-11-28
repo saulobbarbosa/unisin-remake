@@ -24,6 +24,7 @@ export default function CompCadastro({ fechar, entrar, tipoUsuario }) {
         try{
             const response = await axios.post("/api/alunos" , dadosCadastroAluno);
             console.log("Aluno Cadastrado:", response.data);
+            entrar();
         } catch (error) {
             console.error("Erro ao cadastrar aluno:", error);
         }

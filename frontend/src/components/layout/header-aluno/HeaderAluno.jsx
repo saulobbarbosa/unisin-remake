@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import Style from "./headerAluno.module.css";
 
@@ -8,7 +9,40 @@ import BarraLateral from "../barra-lateral/BarraLateral";
 export default function CompHeaderAluno({ usuario, logout }) {
     const navigate = useNavigate();
     const [barraAberta, setBarraAberta] = useState(false);
-   
+    const [dadosHeader, setDadosHeader] = useState(null);
+
+    useEffect(() => {
+        const carregarHeader = async () => {
+            try {
+                const response = await axios.get("/api/loja/aparencia", {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
+                    }
+                })
+                setDadosHeader(response.data);
+            } catch (error) {
+                console.error("Erro ao Carregar Dados do Header: ", error);
+            }
+        }
+        carregarHeader();
+
+        const atualizarHeader = () => {
+            carregarHeader();
+        };
+        window.addEventListener("aparenciaAlterada", atualizarHeader);
+        return () => {
+            window.removeEventListener("aparenciaAlterada", atualizarHeader);
+        };
+    }, []);
+
+    const usuarioModificado = {
+        ...usuario,
+        avatar: dadosHeader?.avatar,
+        borda: dadosHeader?.borda,
+        titulo: dadosHeader?.titulo,
+        fundo: dadosHeader?.fundo
+    };
+
     return (
         <div className={Style.header}>
             <div className={Style.divLogotipo} onClick={() => { navigate("/aluno/home") }}>
@@ -22,7 +56,7 @@ export default function CompHeaderAluno({ usuario, logout }) {
             <div className={Style.infoUsuario}>
                 <div className={Style.nivel}>
                     <i className="fa-solid fa-star"></i>
-                    <span>Nível {usuario?.nivel_ensino}</span>
+                    <span>Nível {usuario?.nivel}</span>
                 </div>
                 <div className={Style.moedas}>
                     <img src={require('../../../imgs/moeda.png')} alt="Icon de Moeda" />
@@ -31,19 +65,18 @@ export default function CompHeaderAluno({ usuario, logout }) {
                 <div className={Style.usuario}
                     onClick={() => { setBarraAberta(true) }}
                 >
-                    <img src={usuario?.avatar || "/imgs/boy_black.webp"} alt="Avatar"
+                    <img src={dadosHeader?.avatar?.valor || "/imgs/boy_black.webp"} alt="Avatar"
                         className={Style.avatar}
-                        style={{ border: `0.188rem solid ${usuario?.borda || "#000"}` }}
+                        style={{ border: `0.188rem solid ${dadosHeader?.borda?.valor || "#000"}` }}
                     />
                     <p>{usuario?.nome || "Usuário"}</p>
                 </div>
             </div>
-
             {/* Parte da Slide Bar */}
             <BarraLateral
                 barraAberta={barraAberta}
                 setBarraAberta={setBarraAberta}
-                dadosUser={usuario}
+                dadosUser={usuarioModificado}
                 logout={logout}
             />
         </div>
