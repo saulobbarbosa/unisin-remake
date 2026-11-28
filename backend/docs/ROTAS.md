@@ -848,11 +848,18 @@ Output:
     {
         "id_usuario": 2,
         "nome": "Maria Souza",
-        "email": "maria@exemplo.com",
-        "data_amizade": "2026-11-20T12:20:00.000Z"
+        "nivel_ensino": {
+            "id_nivel_ensino": 2,
+            "nome": "Fundamental II"
+        },
+        "moedas": 120,
+        "borda": "#FFD700",
+        "avatar": "/itens/avatar-azul.png"
     }
 ]
 ```
+
+A lista retorna somente esses campos. `borda` e `avatar` trazem o valor do item equipado na categoria (`null` quando não há item equipado).
 
 ```text
 /api/amigos/buscar?nome=Maria GET:

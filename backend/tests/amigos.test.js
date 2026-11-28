@@ -1,5 +1,6 @@
 const request = require('supertest');
 const app = require('../src/app');
+const { Aluno, ItemLoja, AlunoItemLoja } = require('../src/models');
 const { prepararBanco, fecharBanco } = require('./helpers/banco');
 
 beforeAll(prepararBanco);
@@ -75,6 +76,54 @@ test('adiciona amizade recíproca e bloqueia duplicidade', async () => {
     .set('Authorization', `Bearer ${alunoA.token}`)
     .send({ id_amigo: alunoB.usuario.id_usuario });
   expect(duplicada.status).toBe(409);
+});
+
+test('lista somente id, nome, nível, moedas, borda e avatar', async () => {
+  await Aluno.update(
+    { moedas: 77, id_nivel_ensino: 2 },
+    { where: { id_usuario: alunoB.usuario.id_usuario } }
+  );
+
+  const avatar = await ItemLoja.create({
+    nome: 'Avatar Verde',
+    categoria: 'avatar',
+    preco: 0,
+    valor: '/itens/avatar-verde.png'
+  });
+  const borda = await ItemLoja.create({
+    nome: 'Borda Ouro',
+    categoria: 'borda',
+    preco: 0,
+    valor: '#FFD700'
+  });
+  await AlunoItemLoja.bulkCreate([
+    {
+      aluno_id_usuario: alunoB.usuario.id_usuario,
+      item_loja_id_item_loja: avatar.id_item_loja,
+      equipado: true
+    },
+    {
+      aluno_id_usuario: alunoB.usuario.id_usuario,
+      item_loja_id_item_loja: borda.id_item_loja,
+      equipado: true
+    }
+  ]);
+
+  const lista = await request(app)
+    .get('/api/amigos')
+    .set('Authorization', `Bearer ${alunoA.token}`);
+
+  expect(lista.status).toBe(200);
+  expect(lista.body).toEqual([
+    {
+      id_usuario: alunoB.usuario.id_usuario,
+      nome: 'Maria Souza',
+      nivel_ensino: { id_nivel_ensino: 2, nome: 'Fundamental II' },
+      moedas: 77,
+      borda: '#FFD700',
+      avatar: '/itens/avatar-verde.png'
+    }
+  ]);
 });
 
 test('remove amizade nos dois sentidos', async () => {

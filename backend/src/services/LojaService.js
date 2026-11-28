@@ -322,5 +322,6 @@ module.exports = {
   equipados,
   aparencia,
   equipar,
-  desequipar
+  desequipar,
+  categoriaCanonica
 };

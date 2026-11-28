@@ -1,5 +1,14 @@
 const { Op } = require('sequelize');
-const { sequelize, Amigos, Aluno, Usuario } = require('../models');
+const {
+  sequelize,
+  Amigos,
+  Aluno,
+  Usuario,
+  NivelEnsino,
+  AlunoItemLoja,
+  ItemLoja
+} = require('../models');
+const { categoriaCanonica } = require('./LojaService');
 const { criarErro } = require('../utils/erro');
 
 const incluirAmigo = [
@@ -7,17 +16,51 @@ const incluirAmigo = [
     model: Aluno,
     as: 'amigo',
     include: [
-      { model: Usuario, as: 'usuario', attributes: ['id_usuario', 'nome', 'email'] }
+      { model: Usuario, as: 'usuario', attributes: ['id_usuario', 'nome'] },
+      {
+        model: NivelEnsino,
+        as: 'nivelEnsino',
+        attributes: ['id_nivel_ensino', 'nome']
+      },
+      {
+        model: AlunoItemLoja,
+        as: 'itens',
+        required: false,
+        where: { equipado: true },
+        include: [
+          {
+            model: ItemLoja,
+            as: 'item',
+            attributes: ['id_item_loja', 'nome', 'valor', 'categoria']
+          }
+        ]
+      }
     ]
   }
 ];
 
+function valorEquipado(itens, categoria) {
+  const registro = (itens || []).find(
+    (equipado) => categoriaCanonica(equipado.item.categoria) === categoria
+  );
+  return registro ? registro.item.valor : null;
+}
+
 function formatar(relacao) {
+  const aluno = relacao.amigo;
+
   return {
     id_usuario: relacao.amigo_id_usuario,
-    nome: relacao.amigo.usuario.nome,
-    email: relacao.amigo.usuario.email,
-    data_amizade: relacao.data_amizade
+    nome: aluno.usuario.nome,
+    nivel_ensino: aluno.nivelEnsino
+      ? {
+          id_nivel_ensino: aluno.nivelEnsino.id_nivel_ensino,
+          nome: aluno.nivelEnsino.nome
+        }
+      : null,
+    moedas: aluno.moedas,
+    borda: valorEquipado(aluno.itens, 'borda'),
+    avatar: valorEquipado(aluno.itens, 'avatar')
   };
 }
 
