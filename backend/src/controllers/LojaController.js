@@ -88,6 +88,15 @@ async function equipados(req, res) {
   }
 }
 
+async function aparencia(req, res) {
+  try {
+    const resultado = await LojaService.aparencia(req.usuario.id_usuario);
+    return res.json(resultado);
+  } catch (erro) {
+    return responderErro(res, erro);
+  }
+}
+
 async function equipar(req, res) {
   try {
     const item = await LojaService.equipar(
@@ -121,6 +130,7 @@ module.exports = {
   comprar,
   inventario,
   equipados,
+  aparencia,
   equipar,
   desequipar
 };

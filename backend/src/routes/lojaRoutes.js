@@ -20,6 +20,7 @@ router.patch(
 router.post('/comprar/:id', permitir('aluno'), LojaController.comprar);
 router.get('/inventario', permitir('aluno'), LojaController.inventario);
 router.get('/equipados', permitir('aluno'), LojaController.equipados);
+router.get('/aparencia', permitir('aluno'), LojaController.aparencia);
 router.post('/equipar/:id', permitir('aluno'), LojaController.equipar);
 router.post('/desequipar/:id', permitir('aluno'), LojaController.desequipar);
 

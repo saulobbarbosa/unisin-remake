@@ -1135,10 +1135,10 @@ Output:
     },
     {
         "id_item_loja": 2,
-        "nome": "Moldura Ouro",
-        "descricao": "Moldura dourada para o perfil",
-        "imagem": "/itens/moldura-ouro.png",
-        "categoria": "moldura",
+        "nome": "Borda Ouro",
+        "descricao": "Borda dourada para o perfil",
+        "imagem": "#FFD700",
+        "categoria": "borda",
         "preco": 40,
         "ativo": true
     }
@@ -1196,6 +1196,8 @@ Output:
     "ativo": true
 }
 ```
+
+O campo `imagem` guarda o valor visual do item: uma cor (ex.: `#FFD700`) ou o caminho de uma imagem. Categorias aceitas: `avatar`, `borda`, `titulo` e `fundo`. Os aliases `moldura` (para `borda`) e `background` (para `fundo`) também são aceitos e normalizados.
 
 ```text
 /api/loja/itens/:id PUT:
@@ -1337,6 +1339,37 @@ Output:
     }
 ]
 ```
+
+```text
+/api/loja/aparencia GET:
+
+Permissão: aluno
+
+INPUT:
+
+{}
+
+Output:
+
+{
+    "id_usuario": 4,
+    "nome": "João Silva",
+    "avatar": {
+        "id_item_loja": 1,
+        "nome": "Avatar Azul",
+        "valor": "/itens/avatar-azul.png"
+    },
+    "borda": {
+        "id_item_loja": 2,
+        "nome": "Borda Ouro",
+        "valor": "#FFD700"
+    },
+    "titulo": null,
+    "fundo": null
+}
+```
+
+Retorna o nome do aluno autenticado e o item equipado em cada categoria. O campo `valor` é o conteúdo de `imagem` do item, ou seja, uma cor ou o caminho de uma imagem. Categorias sem item equipado retornam `null`. Cada categoria aceita um item equipado por vez; ao equipar outro item da mesma categoria, o anterior é desequipado.
 
 ```text
 /api/loja/equipar/:id POST:

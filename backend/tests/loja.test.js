@@ -18,7 +18,8 @@ let tokenAluno;
 let idAluno;
 let idItemAvatar;
 let idItemAvatar2;
-let idItemMoldura;
+let idItemBorda;
+let idItemTitulo;
 
 async function login(email, senha) {
   const resposta = await request(app).post('/api/auth/login').send({ email, senha });
@@ -47,11 +48,11 @@ beforeAll(async () => {
   await Aluno.update({ moedas: 100 }, { where: { id_usuario: idAluno } });
 });
 
-async function criarItem(nome, categoria, preco) {
+async function criarItem(nome, categoria, preco, imagem) {
   const resposta = await request(app)
     .post('/api/loja/itens')
     .set('Authorization', `Bearer ${tokenAdmin}`)
-    .send({ nome, descricao: `${nome} descrição`, categoria, preco });
+    .send({ nome, descricao: `${nome} descrição`, categoria, preco, imagem });
   return resposta;
 }
 
@@ -66,8 +67,12 @@ test('somente administrador cadastra itens', async () => {
   expect(avatar.status).toBe(201);
   idItemAvatar = avatar.body.id_item_loja;
 
-  idItemAvatar2 = (await criarItem('Avatar Verde', 'avatar', 30)).body.id_item_loja;
-  idItemMoldura = (await criarItem('Moldura Ouro', 'moldura', 40)).body.id_item_loja;
+  idItemAvatar2 = (
+    await criarItem('Avatar Verde', 'avatar', 30, '/itens/avatar-verde.png')
+  ).body.id_item_loja;
+  idItemBorda = (
+    await criarItem('Borda Ouro', 'borda', 40, '#FFD700')
+  ).body.id_item_loja;
 });
 
 test('compra desconta moedas, registra inventário e desbloqueia conquista', async () => {
@@ -106,7 +111,7 @@ test('impede compra duplicada e saldo insuficiente', async () => {
     .send({});
   expect(duplicada.status).toBe(409);
 
-  const caro = await criarItem('Item Caro', 'acessorio', 999);
+  const caro = await criarItem('Item Caro', 'titulo', 999);
   const semSaldo = await request(app)
     .post(`/api/loja/comprar/${caro.body.id_item_loja}`)
     .set('Authorization', `Bearer ${tokenAluno}`)
@@ -153,7 +158,7 @@ test('equipar item da mesma categoria desequipa o anterior', async () => {
 
 test('não equipa item não adquirido e permite desequipar', async () => {
   const naoAdquirido = await request(app)
-    .post(`/api/loja/equipar/${idItemMoldura}`)
+    .post(`/api/loja/equipar/${idItemBorda}`)
     .set('Authorization', `Bearer ${tokenAluno}`)
     .send({});
   expect(naoAdquirido.status).toBe(403);
@@ -170,24 +175,72 @@ test('não equipa item não adquirido e permite desequipar', async () => {
   expect(equipados.body).toHaveLength(0);
 });
 
+test('retorna a aparência equipada por categoria', async () => {
+  idItemTitulo = (
+    await criarItem('Título Mestre', 'titulo', 5, '/titulos/mestre.png')
+  ).body.id_item_loja;
+
+  for (const id of [idItemBorda, idItemTitulo]) {
+    const compra = await request(app)
+      .post(`/api/loja/comprar/${id}`)
+      .set('Authorization', `Bearer ${tokenAluno}`)
+      .send({});
+    expect(compra.status).toBe(200);
+  }
+
+  for (const id of [idItemAvatar2, idItemBorda, idItemTitulo]) {
+    const equipado = await request(app)
+      .post(`/api/loja/equipar/${id}`)
+      .set('Authorization', `Bearer ${tokenAluno}`)
+      .send({});
+    expect(equipado.status).toBe(200);
+  }
+
+  const aparencia = await request(app)
+    .get('/api/loja/aparencia')
+    .set('Authorization', `Bearer ${tokenAluno}`);
+
+  expect(aparencia.status).toBe(200);
+  expect(aparencia.body).toEqual({
+    id_usuario: idAluno,
+    nome: 'Aluno Loja',
+    avatar: {
+      id_item_loja: idItemAvatar2,
+      nome: 'Avatar Verde',
+      valor: '/itens/avatar-verde.png'
+    },
+    borda: {
+      id_item_loja: idItemBorda,
+      nome: 'Borda Ouro',
+      valor: '#FFD700'
+    },
+    titulo: {
+      id_item_loja: idItemTitulo,
+      nome: 'Título Mestre',
+      valor: '/titulos/mestre.png'
+    },
+    fundo: null
+  });
+});
+
 test('item inativo não aparece nem pode ser comprado', async () => {
   await request(app)
-    .patch(`/api/loja/itens/${idItemMoldura}/status`)
+    .patch(`/api/loja/itens/${idItemBorda}/status`)
     .set('Authorization', `Bearer ${tokenAdmin}`)
     .send({ ativo: false });
 
   const lista = await request(app)
     .get('/api/loja/itens')
     .set('Authorization', `Bearer ${tokenAluno}`);
-  expect(lista.body.some((item) => item.id_item_loja === idItemMoldura)).toBe(false);
+  expect(lista.body.some((item) => item.id_item_loja === idItemBorda)).toBe(false);
 
   const alvo = await request(app)
-    .get(`/api/loja/itens/${idItemMoldura}`)
+    .get(`/api/loja/itens/${idItemBorda}`)
     .set('Authorization', `Bearer ${tokenAluno}`);
   expect(alvo.status).toBe(404);
 
   const compra = await request(app)
-    .post(`/api/loja/comprar/${idItemMoldura}`)
+    .post(`/api/loja/comprar/${idItemBorda}`)
     .set('Authorization', `Bearer ${tokenAluno}`)
     .send({});
   expect(compra.status).toBe(400);
