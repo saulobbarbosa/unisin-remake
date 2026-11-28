@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('./env');
 
 function numero(nome, padrao) {
   const valor = Number(process.env[nome]);

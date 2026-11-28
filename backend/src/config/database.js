@@ -2,8 +2,9 @@ const path = require('path');
 const fs = require('fs');
 const { Sequelize } = require('sequelize');
 
-require('dotenv').config();
+require('./env');
 
+const raizProjeto = path.join(__dirname, '..', '..');
 const ehTeste = process.env.NODE_ENV === 'test';
 const dialect = process.env.DB_DIALECT || 'sqlite';
 
@@ -17,9 +18,10 @@ const opcoes = {
 };
 
 if (dialect === 'sqlite') {
-  const storage = ehTeste ? ':memory:' : (process.env.DB_STORAGE || './database/database.sqlite');
+  const storageConfigurado = process.env.DB_STORAGE || path.join('database', 'database.sqlite');
+  const storage = ehTeste ? ':memory:' : path.resolve(raizProjeto, storageConfigurado);
   if (storage !== ':memory:') {
-    fs.mkdirSync(path.dirname(path.resolve(storage)), { recursive: true });
+    fs.mkdirSync(path.dirname(storage), { recursive: true });
   }
   opcoes.storage = storage;
 } else {

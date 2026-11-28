@@ -20,7 +20,10 @@ Backend da plataforma de ensino gamificada, construído com Node.js, Express, Se
 
 ## Instalação
 
+O backend fica na pasta `backend/`. Execute os comandos a partir dela:
+
 ```bash
+cd backend
 npm install
 ```
 
@@ -103,6 +106,8 @@ Authorization: Bearer <token>
 Perfis disponíveis: `aluno`, `professor`, `escola` e `administrador`.
 
 ## Estrutura
+
+A estrutura abaixo fica dentro de `backend/`.
 
 ```text
 src/
@@ -200,4 +205,4 @@ O comando altera os detalhes do bloco indicado e mantém o hash antigo. Depois, 
 
 ## Documentação das rotas
 
-Todas as rotas estão documentadas em [`docs/ROTAS.md`](docs/ROTAS.md), incluindo exemplos de entrada e saída e os eventos Socket.IO do PvP.
+Todas as rotas estão documentadas em [`backend/docs/ROTAS.md`](backend/docs/ROTAS.md), incluindo exemplos de entrada e saída e os eventos Socket.IO do PvP.
