@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import Style from "./mainLayout.module.css";
 
 import { conectarSocket } from "../../../services/socket";
+import { desconectarSocket } from "../../../services/socket";
 
 // Import dos Componentes
 import HeaderAluno from "../header-aluno/HeaderAluno";
@@ -18,7 +19,7 @@ export default function TelaLayout() {
     const token = localStorage.getItem("token");
 
     // Dados do usuário logado
-    const [usuario, setUsuario] = useState([]);
+    const [usuario, setUsuario] = useState(null);
     // Enquanto verifica o login
     const [carregando, setCarregando] = useState(true);
 
@@ -84,6 +85,7 @@ export default function TelaLayout() {
                     Authorization: `Bearer ${token}`
                 }
             });
+            desconectarSocket();
             localStorage.removeItem("token");
             localStorage.removeItem("id");
             localStorage.removeItem("nomeUser");

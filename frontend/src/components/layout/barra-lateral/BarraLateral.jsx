@@ -1,12 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2';
-
-import { desconectarSocket } from "../../../services/socket";
 
 import Style from "./barraLateral.module.css";
 
-export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUser }) {
+export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUser, logout }) {
     const navigate = useNavigate();
     const barraRef = useRef(null);
     const idUser = localStorage.getItem("id");
@@ -15,34 +12,6 @@ export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUse
     const navegar = (rota) => {
         setBarraAberta(false);
         navigate(rota);
-    }
-
-    // Função Logout
-    const logout = () => {
-        try {
-            desconectarSocket();
-            localStorage.removeItem("id");
-            localStorage.removeItem("nomeUser");
-            localStorage.removeItem("tipo");
-            navigate("/");
-        } catch (error) {
-            console.error("Erro ao Realizar logout", error);
-        }
-    }
-
-    const alertSair = () => {
-        Swal.fire({
-            title: "Quer Realmente Sair?",
-            icon: "question",
-            showCancelButton: true,
-            confirmButtonText: "Sim, Quero Sair!",
-            cancelButtonColor: "#d33",
-            confirmButtonColor: "#012663"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                logout();
-            }
-        });
     }
 
     // Ref para fechar a Barra caso clicar fora dela
@@ -145,7 +114,7 @@ export default function CompBarraLateral({ barraAberta, setBarraAberta, dadosUse
                         <p>Perfil</p>
                     </div>
                     <div className={Style.itemMenu + " " + Style.itemMenuSair}
-                        onClick={() => { alertSair() }}
+                        onClick={() => { logout() }}
                     >
                         <div className={Style.iconMenu}>
                             <i className="fa-solid fa-arrow-right-from-bracket"></i>

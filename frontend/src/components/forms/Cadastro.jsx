@@ -1,7 +1,34 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
+import axios from "axios";
+
 import Style from "../forms/cadastro.module.css";
 
 export default function CompCadastro({ fechar, entrar, tipoUsuario }) {
+    const [dadosCadastroAluno, setDadosCadastroAluno] = useState({
+        nome: "",
+        dt_nasc: "",
+        email: "",
+        senha: ""
+    });
+
+    const capturarValoresAluno = (e) => {
+        const { name, value } = e.target;
+        setDadosCadastroAluno(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    }
+
+    const cadastrarAluno = async (e) => {
+        e.preventDefault();
+        try{
+            const response = await axios.post("/api/alunos" , dadosCadastroAluno);
+            console.log("Aluno Cadastrado:", response.data);
+        } catch (error) {
+            console.error("Erro ao cadastrar aluno:", error);
+        }
+    }
+
     return (
         <div className={Style.overlay}>
             <div className={Style.modalCadastro}>
@@ -21,43 +48,41 @@ export default function CompCadastro({ fechar, entrar, tipoUsuario }) {
                 </p>
                 {/* ==============ALUNO============== */}
                 {(tipoUsuario === "") && (
-                    <div className={Style.formCadastro}>
+                    <form className={Style.formCadastro}
+                        onSubmit={cadastrarAluno}
+                    >
                         <label>Nome completo</label>
                         <div className={Style.inputIcon}>
                             <i className="fa-regular fa-user"></i>
-
-                            <input
-                                type="text"
-                                placeholder="Seu nome"
+                            <input type="text" placeholder="Seu nome" name="nome" required
+                                value={dadosCadastroAluno.nome} onChange={capturarValoresAluno}
                             />
                         </div>
                         <label>Data de nascimento</label>
                         <div className={Style.inputIcon}>
                             <i className="fa-regular fa-calendar"></i>
-                            <input
-                                type="date"
+                            <input type="date" name="dt_nasc" required
+                                value={dadosCadastroAluno.dt_nasc} onChange={capturarValoresAluno}
                             />
                         </div>
                         <label>E-mail</label>
                         <div className={Style.inputIcon}>
                             <i className="fa-regular fa-envelope"></i>
-                            <input
-                                type="email"
-                                placeholder="voce@exemplo.com"
+                            <input type="email" placeholder="voce@exemplo.com" name="email" required
+                                value={dadosCadastroAluno.email} onChange={capturarValoresAluno}
                             />
                         </div>
                         <label>Senha</label>
                         <div className={Style.inputIcon}>
                             <i className="fa-solid fa-lock"></i>
-                            <input
-                                type="password"
-                                placeholder="••••••••"
+                            <input type="password" placeholder="••••••••" name="senha" required
+                                value={dadosCadastroAluno.senha} onChange={capturarValoresAluno}
                             />
                         </div>
-                        <button className={Style.btnCadastrar}>
+                        <button type="submit" className={Style.btnCadastrar}>
                             Cadastrar
                         </button>
-                    </div>
+                    </form>
                 )}
                 {/* ==============ESCOLA============== */}
                 {tipoUsuario === "escola" && (
