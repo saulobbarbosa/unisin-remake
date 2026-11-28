@@ -3,9 +3,9 @@ const {
   Aluno,
   Escola,
   Professor,
-  Administrador,
-  NivelEnsino
+  Administrador
 } = require('../models');
+const NivelService = require('./NivelService');
 const { criarErro } = require('../utils/erro');
 
 function tipoDoPerfil(perfil) {
@@ -21,8 +21,7 @@ async function buscarMe(id_usuario) {
     include: [
       {
         model: Aluno,
-        as: 'aluno',
-        include: [{ model: NivelEnsino, as: 'nivelEnsino' }]
+        as: 'aluno'
       },
       {
         model: Professor,
@@ -48,12 +47,7 @@ async function buscarMe(id_usuario) {
   if (perfil.aluno) {
     resposta.moedas = perfil.aluno.moedas;
     resposta.vitorias_pvp = perfil.aluno.vitorias_pvp;
-    resposta.nivel_ensino = perfil.aluno.nivelEnsino
-      ? {
-          id_nivel_ensino: perfil.aluno.nivelEnsino.id_nivel_ensino,
-          nome: perfil.aluno.nivelEnsino.nome
-        }
-      : null;
+    resposta.nivel = await NivelService.nivelMedio(perfil.aluno.id_usuario);
   }
 
   if (perfil.professor) {

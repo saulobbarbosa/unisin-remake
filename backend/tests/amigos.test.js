@@ -1,6 +1,6 @@
 const request = require('supertest');
 const app = require('../src/app');
-const { Aluno, ItemLoja, AlunoItemLoja } = require('../src/models');
+const { Aluno, ItemLoja, AlunoItemLoja, ModuloEnsino, AlunoModuloEnsino } = require('../src/models');
 const { prepararBanco, fecharBanco } = require('./helpers/banco');
 
 beforeAll(prepararBanco);
@@ -80,9 +80,23 @@ test('adiciona amizade recíproca e bloqueia duplicidade', async () => {
 
 test('lista somente id, nome, nível, moedas, borda e avatar', async () => {
   await Aluno.update(
-    { moedas: 77, id_nivel_ensino: 2 },
+    { moedas: 77 },
     { where: { id_usuario: alunoB.usuario.id_usuario } }
   );
+
+  const modulo = await ModuloEnsino.create({ nome: 'Módulo Nível Médio' });
+  await AlunoModuloEnsino.bulkCreate([
+    {
+      id_modulo_ensino: modulo.id_modulo_ensino,
+      id_nivel_ensino: 1,
+      aluno_id_usuario: alunoB.usuario.id_usuario
+    },
+    {
+      id_modulo_ensino: modulo.id_modulo_ensino,
+      id_nivel_ensino: 3,
+      aluno_id_usuario: alunoB.usuario.id_usuario
+    }
+  ]);
 
   const avatar = await ItemLoja.create({
     nome: 'Avatar Verde',
@@ -118,7 +132,7 @@ test('lista somente id, nome, nível, moedas, borda e avatar', async () => {
     {
       id_usuario: alunoB.usuario.id_usuario,
       nome: 'Maria Souza',
-      nivel_ensino: { id_nivel_ensino: 2, nome: 'Fundamental II' },
+      nivel: 2,
       moedas: 77,
       borda: '#FFD700',
       avatar: '/itens/avatar-verde.png'

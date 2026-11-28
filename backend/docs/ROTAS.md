@@ -78,10 +78,7 @@ Output:
     "tipo": "aluno",
     "moedas": 120,
     "vitorias_pvp": 3,
-    "nivel_ensino": {
-        "id_nivel_ensino": 2,
-        "nome": "Fundamental II"
-    }
+    "nivel": 2
 }
 ```
 
@@ -156,10 +153,7 @@ Output:
     "email": "joao@exemplo.com",
     "moedas": 120,
     "vitorias_pvp": 3,
-    "nivel_ensino": {
-        "id_nivel_ensino": 2,
-        "nome": "Fundamental II"
-    }
+    "nivel": 2
 }
 ```
 
@@ -184,10 +178,7 @@ Output:
     "email": "joao.santos@exemplo.com",
     "moedas": 120,
     "vitorias_pvp": 3,
-    "nivel_ensino": {
-        "id_nivel_ensino": 2,
-        "nome": "Fundamental II"
-    }
+    "nivel": 2
 }
 ```
 
@@ -210,10 +201,7 @@ Output:
     "email": "maria@exemplo.com",
     "moedas": 90,
     "vitorias_pvp": 1,
-    "nivel_ensino": {
-        "id_nivel_ensino": 1,
-        "nome": "Fundamental I"
-    }
+    "nivel": 1
 }
 ```
 
@@ -235,10 +223,7 @@ Output:
         "email": "joao@exemplo.com",
         "moedas": 120,
         "vitorias_pvp": 3,
-        "nivel_ensino": {
-            "id_nivel_ensino": 2,
-            "nome": "Fundamental II"
-        }
+        "nivel": 2
     },
     {
         "id_usuario": 2,
@@ -246,13 +231,12 @@ Output:
         "email": "maria@exemplo.com",
         "moedas": 90,
         "vitorias_pvp": 1,
-        "nivel_ensino": {
-            "id_nivel_ensino": 1,
-            "nome": "Fundamental I"
-        }
+        "nivel": 1
     }
 ]
 ```
+
+`nivel` é a média dos níveis de ensino dos módulos em que o aluno está matriculado, arredondada para uma casa decimal. Sem matrículas, retorna `0`.
 
 ---
 
@@ -848,10 +832,7 @@ Output:
     {
         "id_usuario": 2,
         "nome": "Maria Souza",
-        "nivel_ensino": {
-            "id_nivel_ensino": 2,
-            "nome": "Fundamental II"
-        },
+        "nivel": 2,
         "moedas": 120,
         "borda": "#FFD700",
         "avatar": "/itens/avatar-azul.png"
@@ -859,7 +840,7 @@ Output:
 ]
 ```
 
-A lista retorna somente esses campos. `borda` e `avatar` trazem o valor do item equipado na categoria (`null` quando não há item equipado).
+A lista retorna somente esses campos. `nivel` é a média dos níveis de ensino dos módulos do amigo. `borda` e `avatar` trazem o valor do item equipado na categoria (`null` quando não há item equipado).
 
 ```text
 /api/amigos/buscar?nome=Maria GET:

@@ -4,10 +4,10 @@ const {
   Amigos,
   Aluno,
   Usuario,
-  NivelEnsino,
   AlunoItemLoja,
   ItemLoja
 } = require('../models');
+const NivelService = require('./NivelService');
 const { categoriaCanonica } = require('./LojaService');
 const { criarErro } = require('../utils/erro');
 
@@ -17,11 +17,6 @@ const incluirAmigo = [
     as: 'amigo',
     include: [
       { model: Usuario, as: 'usuario', attributes: ['id_usuario', 'nome'] },
-      {
-        model: NivelEnsino,
-        as: 'nivelEnsino',
-        attributes: ['id_nivel_ensino', 'nome']
-      },
       {
         model: AlunoItemLoja,
         as: 'itens',
@@ -46,18 +41,13 @@ function valorEquipado(itens, categoria) {
   return registro ? registro.item.valor : null;
 }
 
-function formatar(relacao) {
+function formatar(relacao, nivel) {
   const aluno = relacao.amigo;
 
   return {
     id_usuario: relacao.amigo_id_usuario,
     nome: aluno.usuario.nome,
-    nivel_ensino: aluno.nivelEnsino
-      ? {
-          id_nivel_ensino: aluno.nivelEnsino.id_nivel_ensino,
-          nome: aluno.nivelEnsino.nome
-        }
-      : null,
+    nivel,
     moedas: aluno.moedas,
     borda: valorEquipado(aluno.itens, 'borda'),
     avatar: valorEquipado(aluno.itens, 'avatar')
@@ -70,7 +60,14 @@ async function listar(id_aluno) {
     include: incluirAmigo,
     order: [['data_amizade', 'ASC']]
   });
-  return relacoes.map(formatar);
+
+  const niveis = await NivelService.niveisMedios(
+    relacoes.map((relacao) => relacao.amigo_id_usuario)
+  );
+
+  return relacoes.map((relacao) =>
+    formatar(relacao, niveis.get(relacao.amigo_id_usuario) || 0)
+  );
 }
 
 async function buscar(id_aluno, termo) {

@@ -1,7 +1,7 @@
 const request = require('supertest');
 const bcrypt = require('bcryptjs');
 const app = require('../src/app');
-const { Usuario, Administrador, Aluno } = require('../src/models');
+const { Usuario, Administrador, Aluno, ModuloEnsino, AlunoModuloEnsino } = require('../src/models');
 const ConquistaService = require('../src/services/ConquistaService');
 const { prepararBanco, fecharBanco } = require('./helpers/banco');
 
@@ -108,6 +108,35 @@ test('lista conquistas ativas e oculta inativas', async () => {
     .get('/api/conquistas')
     .set('Authorization', `Bearer ${tokenAluno}`);
   expect(depois.body).toHaveLength(0);
+});
+
+test('requisito de nível usa a média dos módulos do aluno', async () => {
+  const conquista = await request(app)
+    .post('/api/conquistas')
+    .set('Authorization', `Bearer ${tokenAdmin}`)
+    .send({
+      nome_conquista: 'Nível intermediário',
+      tipo_requisito: 'nivel_ensino',
+      valor_requisito: 2
+    });
+  expect(conquista.status).toBe(201);
+
+  const modulo = await ModuloEnsino.create({ nome: 'Módulo Nível Conquista' });
+  await AlunoModuloEnsino.bulkCreate([
+    {
+      id_modulo_ensino: modulo.id_modulo_ensino,
+      id_nivel_ensino: 1,
+      aluno_id_usuario: idAluno
+    },
+    {
+      id_modulo_ensino: modulo.id_modulo_ensino,
+      id_nivel_ensino: 3,
+      aluno_id_usuario: idAluno
+    }
+  ]);
+
+  const desbloqueadas = await ConquistaService.verificarConquistas(idAluno);
+  expect(desbloqueadas.map((item) => item.nome_conquista)).toContain('Nível intermediário');
 });
 
 test('administrador edita conquista', async () => {

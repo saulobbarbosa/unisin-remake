@@ -5,6 +5,7 @@ const {
   AlunoItemLoja,
   Aluno
 } = require('../models');
+const NivelService = require('./NivelService');
 const { criarErro } = require('../utils/erro');
 
 const TIPOS_REQUISITO = [
@@ -134,7 +135,7 @@ async function verificarConquistas(id_aluno, transaction) {
     atividades_concluidas: atividadesConcluidas,
     vitorias_pvp: aluno.vitorias_pvp,
     itens_comprados: itensComprados,
-    nivel_ensino: aluno.id_nivel_ensino || 0
+    nivel_ensino: await NivelService.nivelMedio(id_aluno, transaction)
   };
 
   const desbloqueadas = [];

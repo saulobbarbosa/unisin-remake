@@ -1,33 +1,32 @@
-const { Usuario, Aluno, Escola, NivelEnsino } = require('../models');
+const { Usuario, Aluno, Escola } = require('../models');
+const NivelService = require('./NivelService');
 const { criarErro } = require('../utils/erro');
 
-function formatar(aluno) {
+function formatar(aluno, nivel) {
   return {
     id_usuario: aluno.id_usuario,
     nome: aluno.usuario.nome,
     email: aluno.usuario.email,
     moedas: aluno.moedas,
     vitorias_pvp: aluno.vitorias_pvp,
-    nivel_ensino: aluno.nivelEnsino
-      ? { id_nivel_ensino: aluno.nivelEnsino.id_nivel_ensino, nome: aluno.nivelEnsino.nome }
-      : null
+    nivel
   };
 }
 
 const incluir = [
-  { model: Usuario, as: 'usuario', attributes: ['id_usuario', 'nome', 'email'] },
-  { model: NivelEnsino, as: 'nivelEnsino' }
+  { model: Usuario, as: 'usuario', attributes: ['id_usuario', 'nome', 'email'] }
 ];
 
 async function listar() {
   const alunos = await Aluno.findAll({ include: incluir, order: [['id_usuario', 'ASC']] });
-  return alunos.map(formatar);
+  const niveis = await NivelService.niveisMedios(alunos.map((aluno) => aluno.id_usuario));
+  return alunos.map((aluno) => formatar(aluno, niveis.get(aluno.id_usuario) || 0));
 }
 
 async function buscarPorId(id_usuario) {
   const aluno = await Aluno.findByPk(id_usuario, { include: incluir });
   if (!aluno) throw criarErro('Aluno não encontrado', 404);
-  return formatar(aluno);
+  return formatar(aluno, await NivelService.nivelMedio(id_usuario));
 }
 
 async function atualizarMe(id_usuario, dados) {

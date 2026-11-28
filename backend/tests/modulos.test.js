@@ -139,3 +139,25 @@ test('administrador edita o nome do módulo', async () => {
   expect(resposta.status).toBe(200);
   expect(resposta.body.nome).toBe('Frações e Decimais');
 });
+
+test('calcula o nível médio dos módulos nas rotas de aluno e usuário', async () => {
+  const outro = await request(app)
+    .post('/api/modulos')
+    .set('Authorization', `Bearer ${tokenAdmin}`)
+    .send({ nome: 'Geometria' });
+
+  await request(app)
+    .post(`/api/modulos/${outro.body.id_modulo_ensino}/alunos`)
+    .set('Authorization', `Bearer ${tokenAdmin}`)
+    .send({ id_aluno: idAluno, id_nivel_ensino: 3 });
+
+  const aluno = await request(app)
+    .get('/api/alunos/me')
+    .set('Authorization', `Bearer ${tokenAluno}`);
+  expect(aluno.body.nivel).toBe(2);
+
+  const usuario = await request(app)
+    .get('/api/usuarios/me')
+    .set('Authorization', `Bearer ${tokenAluno}`);
+  expect(usuario.body.nivel).toBe(2);
+});
